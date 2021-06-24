@@ -11,7 +11,9 @@ struct HomeView: View {
     @State private var showingAlert = false
     
     var body: some View {
-        NavigationView {
+        ZStack {
+            Color(red: 241 / 255, green: 241 / 255, blue: 241 / 255)
+                .edgesIgnoringSafeArea(.top)
             GeometryReader { geometry in
                 // Courses Text
                 Text("Courses")

@@ -9,7 +9,11 @@ import SwiftUI
 
 struct PlanView: View {
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        ZStack {
+            Color(red: 241 / 255, green: 241 / 255, blue: 241 / 255)
+                .edgesIgnoringSafeArea(.top)
+            Text("Plan")
+        }
     }
 }
 

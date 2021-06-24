@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		46330FFD2685500600E63D68 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46330FFC2685500600E63D68 /* User.swift */; };
+		463310002685502800E63D68 /* Message.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46330FFF2685502800E63D68 /* Message.swift */; };
+		463310022685508F00E63D68 /* MessageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 463310012685508F00E63D68 /* MessageView.swift */; };
 		4680290026843000000ADC22 /* PlanView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 468028FF26843000000ADC22 /* PlanView.swift */; };
 		4680290226843049000ADC22 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4680290126843049000ADC22 /* HomeView.swift */; };
 		4680290426843061000ADC22 /* FriendsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4680290326843061000ADC22 /* FriendsView.swift */; };
@@ -21,6 +24,9 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		46330FFC2685500600E63D68 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		46330FFF2685502800E63D68 /* Message.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Message.swift; sourceTree = "<group>"; };
+		463310012685508F00E63D68 /* MessageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageView.swift; sourceTree = "<group>"; };
 		468028FF26843000000ADC22 /* PlanView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlanView.swift; sourceTree = "<group>"; };
 		4680290126843049000ADC22 /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
 		4680290326843061000ADC22 /* FriendsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendsView.swift; sourceTree = "<group>"; };
@@ -47,6 +53,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		463310032685509900E63D68 /* Message */ = {
+			isa = PBXGroup;
+			children = (
+				46330FFF2685502800E63D68 /* Message.swift */,
+				463310012685508F00E63D68 /* MessageView.swift */,
+			);
+			path = Message;
+			sourceTree = "<group>";
+		};
 		46969C2B26804CD000A82666 = {
 			isa = PBXGroup;
 			children = (
@@ -74,9 +89,11 @@
 				4680290326843061000ADC22 /* FriendsView.swift */,
 				468028FF26843000000ADC22 /* PlanView.swift */,
 				4680290526843070000ADC22 /* MeView.swift */,
-				46969C3D26804CD100A82666 /* Preview Content */,
+				46330FFC2685500600E63D68 /* User.swift */,
+				463310032685509900E63D68 /* Message */,
 				46802907268449B4000ADC22 /* CourseItem.swift */,
 				46B2CED52684D9B8009A006B /* CourseDiscussionView.swift */,
+				46969C3D26804CD100A82666 /* Preview Content */,
 				46B2CED72684F87F009A006B /* UserCourses.xcdatamodeld */,
 			);
 			path = Academix;
@@ -159,14 +176,17 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				463310022685508F00E63D68 /* MessageView.swift in Sources */,
 				4680290626843070000ADC22 /* MeView.swift in Sources */,
 				4680290426843061000ADC22 /* FriendsView.swift in Sources */,
 				46969C3A26804CD000A82666 /* ContentView.swift in Sources */,
 				46802908268449B4000ADC22 /* CourseItem.swift in Sources */,
 				4680290226843049000ADC22 /* HomeView.swift in Sources */,
 				46B2CED62684D9B8009A006B /* CourseDiscussionView.swift in Sources */,
+				463310002685502800E63D68 /* Message.swift in Sources */,
 				46969C3826804CD000A82666 /* AcademixApp.swift in Sources */,
 				46B2CED92684F87F009A006B /* UserCourses.xcdatamodeld in Sources */,
+				46330FFD2685500600E63D68 /* User.swift in Sources */,
 				4680290026843000000ADC22 /* PlanView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -225,7 +245,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 14.5;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -280,7 +300,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 14.5;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;
@@ -300,7 +320,7 @@
 				DEVELOPMENT_TEAM = WWY4FZL2UH;
 				ENABLE_PREVIEWS = YES;
 				INFOPLIST_FILE = Academix/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 14.5;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -322,7 +342,7 @@
 				DEVELOPMENT_TEAM = WWY4FZL2UH;
 				ENABLE_PREVIEWS = YES;
 				INFOPLIST_FILE = Academix/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 14.5;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
