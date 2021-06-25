@@ -8,44 +8,108 @@
 import SwiftUI
 
 struct ContentView: View {
-    @State var tabSelection = 1
+    @State var tabSelection = 0
     
     var body: some View {
-        TabView(selection: $tabSelection) {
-            NavigationView {
+        NavigationView {
+            TabView(selection: $tabSelection) {
                 HomeView()
-            }
-            .tabItem {
-                    Image(systemName: "house")
-                    Text("Home")
-            }
-            .tag(1)
-            NavigationView {
+                    .tabItem {Item(type: .home, selection: tabSelection)}
+                    .tag(ItemType.home.rawValue)
                 FriendsView()
-            }
-            .tabItem {
-                    Image(systemName: "person.2")
-                    Text("Friends")
-            }
-            .tag(2)
-            NavigationView {
+                    .tabItem {Item(type: .friends, selection: tabSelection)}
+                    .tag(ItemType.friends.rawValue)
                 PlanView()
-            }
-            .tabItem {
-                    Image(systemName: "calendar")
-                    Text("Plan")
-            }
-            .tag(3)
-            NavigationView {
+                    .tabItem {Item(type: .plan, selection: tabSelection)}
+                    .tag(ItemType.plan.rawValue)
                 MeView()
+                    .tabItem {Item(type: .me, selection: tabSelection)}
+                    .tag(ItemType.me.rawValue)
             }
-            .tabItem {
-                    Image(systemName: "person.circle")
-                    Text("Me")
-            }
-            .tag(4)
+            .navigationBarTitle(itemType.title, displayMode: .inline)
+            .navigationBarItems(leading: itemType.navigationBarLeadingItems(selection: tabSelection),
+                                trailing: itemType.navigationBarTrailingItems(selection: tabSelection))
         }
     }
+    
+    enum ItemType: Int {
+        case home
+        case friends
+        case plan
+        case me
+        
+        var image: Image {
+            switch self {
+            case .home:     return Image(systemName: "house")
+            case .friends:  return Image(systemName: "person.2")
+            case .plan:     return Image(systemName: "calendar")
+            case .me:       return Image(systemName: "person.circle")
+            }
+        }
+        
+        var selectedImage: Image {
+            switch self {
+            case .home:     return Image(systemName: "house.fill")
+            case .friends:  return Image(systemName: "person.2.fill")
+            case .plan:     return Image(systemName: "calendar")
+            case .me:       return Image(systemName: "person.circle.fill")
+            }
+        }
+        
+        var title: String {
+            switch self {
+            case .home:     return "Home"
+            case .friends:  return "Firends"
+            case .plan:     return "Plan"
+            case .me:       return "Me"
+            }
+        }
+        
+        func navigationBarTrailingItems(selection: Int) -> AnyView {
+            switch ItemType(rawValue: selection)! {
+            case .home:
+                return AnyView(EmptyView())
+            case .friends:
+                return AnyView(Image(systemName: "person.badge.plus"))
+            case .plan:
+                return AnyView(Image(systemName: "arrow.up.arrow.down"))
+            case .me:
+                return AnyView(Image(systemName: "gearshape"))
+            }
+        }
+        
+        func navigationBarLeadingItems(selection: Int) -> AnyView {
+            switch ItemType(rawValue: selection)! {
+            case .home:
+                return AnyView(EmptyView())
+            case .friends:
+                return AnyView(Image(systemName: "magnifyingglass"))
+            case .plan:
+                return AnyView(EmptyView())
+            case .me:
+                return AnyView(EmptyView())
+            }
+        }
+    }
+    
+    struct Item: View {
+        let type: ItemType
+        let selection: Int
+        
+        var body: some View {
+            VStack {
+                if type.rawValue == selection {
+                    type.selectedImage
+                } else {
+                    type.image
+                }
+                
+                Text(type.title)
+            }
+        }
+    }
+    
+    private var itemType: ItemType { ItemType(rawValue: tabSelection)! }
 }
 
 struct ContentView_Previews: PreviewProvider {

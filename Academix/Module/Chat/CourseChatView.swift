@@ -1,5 +1,5 @@
 //
-//  CourseDiscussionView.swift
+//  CourseChatView.swift
 //  Academix
 //
 //  Created by Changhao Song on 2021-06-24.
@@ -7,21 +7,11 @@
 
 import SwiftUI
 
-struct CourseDiscussionView: View {
+struct CourseChatView: View {
     let course: CourseItem
     @State var uiTabarController: UITabBarController?
-    @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
-
-    var btnBack : some View { Button(action: {
-        self.presentationMode.wrappedValue.dismiss()
-        }) {
-            Image(systemName: "chevron.backward") // back button
-                .foregroundColor(.black)
-        }
-    }
     
     var btnMore : some View { Button(action: {
-        self.presentationMode.wrappedValue.dismiss()
         }) {
             Image(systemName: "ellipsis") // back button
                 .foregroundColor(.black)
@@ -37,15 +27,14 @@ struct CourseDiscussionView: View {
         }
         .navigationTitle(course.name)
         .navigationBarTitleDisplayMode(.inline)
-        .navigationBarBackButtonHidden(true)
-        .navigationBarItems(leading: btnBack, trailing: btnMore)
+        .navigationBarItems(trailing: btnMore)
     }
 }
 
 struct CourseDiscussionView_Previews: PreviewProvider {
     static var previews: some View {
         NavigationView {
-            CourseDiscussionView(course: CourseItem(name: "CSCC10"))
+            CourseChatView(course: CourseItem(name: "CSCC10"))
         }
     }
 }

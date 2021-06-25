@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		461718BF26867391005F12F7 /* ChatSendBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 461718BE26867391005F12F7 /* ChatSendBar.swift */; };
+		461718C2268673D2005F12F7 /* Separator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 461718C1268673D2005F12F7 /* Separator.swift */; };
+		461718C5268676D9005F12F7 /* UIImage++.swift in Sources */ = {isa = PBXBuildFile; fileRef = 461718C4268676D9005F12F7 /* UIImage++.swift */; };
 		46330FFD2685500600E63D68 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46330FFC2685500600E63D68 /* User.swift */; };
 		463310002685502800E63D68 /* Message.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46330FFF2685502800E63D68 /* Message.swift */; };
 		463310022685508F00E63D68 /* MessageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 463310012685508F00E63D68 /* MessageView.swift */; };
@@ -25,6 +28,9 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		461718BE26867391005F12F7 /* ChatSendBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatSendBar.swift; sourceTree = "<group>"; };
+		461718C1268673D2005F12F7 /* Separator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Separator.swift; sourceTree = "<group>"; };
+		461718C4268676D9005F12F7 /* UIImage++.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage++.swift"; sourceTree = "<group>"; };
 		46330FFC2685500600E63D68 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		46330FFF2685502800E63D68 /* Message.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Message.swift; sourceTree = "<group>"; };
 		463310012685508F00E63D68 /* MessageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageView.swift; sourceTree = "<group>"; };
@@ -59,6 +65,7 @@
 			isa = PBXGroup;
 			children = (
 				4633100626855C2F00E63D68 /* UINavigationController++.swift */,
+				461718C4268676D9005F12F7 /* UIImage++.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -115,6 +122,7 @@
 			isa = PBXGroup;
 			children = (
 				46B2CED52684D9B8009A006B /* CourseChatView.swift */,
+				461718BE26867391005F12F7 /* ChatSendBar.swift */,
 			);
 			path = Chat;
 			sourceTree = "<group>";
@@ -133,6 +141,14 @@
 				46969C3926804CD000A82666 /* ContentView.swift */,
 			);
 			path = Main;
+			sourceTree = "<group>";
+		};
+		461718C0268673B7005F12F7 /* Components */ = {
+			isa = PBXGroup;
+			children = (
+				461718C1268673D2005F12F7 /* Separator.swift */,
+			);
+			path = Components;
 			sourceTree = "<group>";
 		};
 		463310032685509900E63D68 /* Message */ = {
@@ -164,12 +180,13 @@
 			children = (
 				46969C3726804CD000A82666 /* AcademixApp.swift */,
 				46969C3B26804CD100A82666 /* Assets.xcassets */,
-				46969C4026804CD100A82666 /* Info.plist */,
+				461718C0268673B7005F12F7 /* Components */,
 				461718B726863B8F005F12F7 /* Module */,
 				461718B626863B80005F12F7 /* Model */,
 				461718B526863B2B005F12F7 /* Extensions */,
 				46969C3D26804CD100A82666 /* Preview Content */,
 				46B2CED72684F87F009A006B /* UserCourses.xcdatamodeld */,
+				46969C4026804CD100A82666 /* Info.plist */,
 			);
 			path = Academix;
 			sourceTree = "<group>";
@@ -256,12 +273,15 @@
 			buildActionMask = 2147483647;
 			files = (
 				463310022685508F00E63D68 /* MessageView.swift in Sources */,
+				461718C5268676D9005F12F7 /* UIImage++.swift in Sources */,
 				4680290626843070000ADC22 /* MeView.swift in Sources */,
+				461718C2268673D2005F12F7 /* Separator.swift in Sources */,
 				4680290426843061000ADC22 /* FriendsView.swift in Sources */,
 				46969C3A26804CD000A82666 /* ContentView.swift in Sources */,
 				46802908268449B4000ADC22 /* CourseItem.swift in Sources */,
 				4680290226843049000ADC22 /* HomeView.swift in Sources */,
 				46B2CED62684D9B8009A006B /* CourseChatView.swift in Sources */,
+				461718BF26867391005F12F7 /* ChatSendBar.swift in Sources */,
 				463310002685502800E63D68 /* Message.swift in Sources */,
 				46969C3826804CD000A82666 /* AcademixApp.swift in Sources */,
 				4633100726855C2F00E63D68 /* UINavigationController++.swift in Sources */,

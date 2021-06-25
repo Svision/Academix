@@ -67,7 +67,7 @@ struct CoursesView: View {
     var body: some View {
             LazyVGrid(columns: layout, spacing: 70) {
                 ForEach(courses, id: \.self) { course in
-                    NavigationLink(destination: CourseDiscussionView(course: course)){
+                    NavigationLink(destination: CourseChatView(course: course)){
                         Text(course.name)
                             .foregroundColor(.black)
                             .font(.title2)
