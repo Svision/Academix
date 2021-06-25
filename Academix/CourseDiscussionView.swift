@@ -9,14 +9,27 @@ import SwiftUI
 
 struct CourseDiscussionView: View {
     let course: CourseItem
+    @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
+
+    var btnBack : some View { Button(action: {
+        self.presentationMode.wrappedValue.dismiss()
+        }) {
+            Image(systemName: "chevron.backward") // back button
+                .foregroundColor(.black)
+        }
+    }
     
     var body: some View {
-        VStack {
+        ZStack {
+            Color(red: 241 / 255, green: 241 / 255, blue: 241 / 255)
+                .ignoresSafeArea()
             Text(course.name)
                 .font(.largeTitle)
         }
         .navigationTitle(course.name)
         .navigationBarTitleDisplayMode(.inline)
+        .navigationBarBackButtonHidden(true)
+        .navigationBarItems(leading: btnBack)
     }
 }
 

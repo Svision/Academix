@@ -10,6 +10,7 @@
 		46330FFD2685500600E63D68 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46330FFC2685500600E63D68 /* User.swift */; };
 		463310002685502800E63D68 /* Message.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46330FFF2685502800E63D68 /* Message.swift */; };
 		463310022685508F00E63D68 /* MessageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 463310012685508F00E63D68 /* MessageView.swift */; };
+		4633100726855C2F00E63D68 /* UINavigationController+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4633100626855C2F00E63D68 /* UINavigationController+.swift */; };
 		4680290026843000000ADC22 /* PlanView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 468028FF26843000000ADC22 /* PlanView.swift */; };
 		4680290226843049000ADC22 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4680290126843049000ADC22 /* HomeView.swift */; };
 		4680290426843061000ADC22 /* FriendsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4680290326843061000ADC22 /* FriendsView.swift */; };
@@ -27,6 +28,7 @@
 		46330FFC2685500600E63D68 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		46330FFF2685502800E63D68 /* Message.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Message.swift; sourceTree = "<group>"; };
 		463310012685508F00E63D68 /* MessageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageView.swift; sourceTree = "<group>"; };
+		4633100626855C2F00E63D68 /* UINavigationController+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UINavigationController+.swift"; sourceTree = "<group>"; };
 		468028FF26843000000ADC22 /* PlanView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlanView.swift; sourceTree = "<group>"; };
 		4680290126843049000ADC22 /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
 		4680290326843061000ADC22 /* FriendsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendsView.swift; sourceTree = "<group>"; };
@@ -86,13 +88,14 @@
 				46969C3B26804CD100A82666 /* Assets.xcassets */,
 				46969C4026804CD100A82666 /* Info.plist */,
 				4680290126843049000ADC22 /* HomeView.swift */,
+				46B2CED52684D9B8009A006B /* CourseDiscussionView.swift */,
 				4680290326843061000ADC22 /* FriendsView.swift */,
 				468028FF26843000000ADC22 /* PlanView.swift */,
 				4680290526843070000ADC22 /* MeView.swift */,
 				46330FFC2685500600E63D68 /* User.swift */,
+				4633100626855C2F00E63D68 /* UINavigationController+.swift */,
 				463310032685509900E63D68 /* Message */,
 				46802907268449B4000ADC22 /* CourseItem.swift */,
-				46B2CED52684D9B8009A006B /* CourseDiscussionView.swift */,
 				46969C3D26804CD100A82666 /* Preview Content */,
 				46B2CED72684F87F009A006B /* UserCourses.xcdatamodeld */,
 			);
@@ -185,6 +188,7 @@
 				46B2CED62684D9B8009A006B /* CourseDiscussionView.swift in Sources */,
 				463310002685502800E63D68 /* Message.swift in Sources */,
 				46969C3826804CD000A82666 /* AcademixApp.swift in Sources */,
+				4633100726855C2F00E63D68 /* UINavigationController+.swift in Sources */,
 				46B2CED92684F87F009A006B /* UserCourses.xcdatamodeld in Sources */,
 				46330FFD2685500600E63D68 /* User.swift in Sources */,
 				4680290026843000000ADC22 /* PlanView.swift in Sources */,
