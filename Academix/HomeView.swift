@@ -7,6 +7,12 @@
 
 import SwiftUI
 
+var courses: Array<CourseItem> = [CourseItem(name: "CSCC10"),
+                                  CourseItem(name: "CSC369"),
+                                  CourseItem(name: "CSC373"),
+                                  CourseItem(name: "STA301"),
+                                  CourseItem(name: "MAT301")]
+
 struct HomeView: View {
     @State private var showingAlert = false
     
@@ -35,6 +41,7 @@ struct HomeView: View {
                         showingAlert = true
                     } else {
                         // TODO: add a course
+                        addCourse(course: CourseItem(name: "ADD101"))
                     }
                 }, label: {
                     Image(systemName: "plus.circle")
@@ -81,14 +88,17 @@ private func getCoursesView(for metrics: GeometryProxy) -> some View {
         .position(x: metrics.size.width / 2, y: metrics.size.height / 2)
 }
 
+private func addCourse(course: CourseItem) {
+    courses.append(course)
+}
 
 private func getCourses() -> Array<CourseItem> {
-    // TODO: Hard code for now
-    return [CourseItem(name: "CSCC10"),
-            CourseItem(name: "CSC369"),
-            CourseItem(name: "CSC373"),
-            CourseItem(name: "STA301"),
-            CourseItem(name: "MAT301")]
+    return courses
+}
+
+private func fetchCourses() -> Array<CourseItem> {
+    // TODO: hard code
+    return courses
 }
 
 struct HomeView_Previews: PreviewProvider {
