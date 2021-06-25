@@ -8,24 +8,25 @@
 import SwiftUI
 
 struct ContentView: View {
-    @State var tabSelection = 0
+    @State private var tabSelection: Int = 0
     
     var body: some View {
         NavigationView {
             TabView(selection: $tabSelection) {
                 HomeView()
-                    .tabItem {Item(type: .home, selection: tabSelection)}
+                    .tabItem { Item(type: .home, selection: tabSelection) }
                     .tag(ItemType.home.rawValue)
                 FriendsView()
-                    .tabItem {Item(type: .friends, selection: tabSelection)}
+                    .tabItem { Item(type: .friends, selection: tabSelection) }
                     .tag(ItemType.friends.rawValue)
                 PlanView()
-                    .tabItem {Item(type: .plan, selection: tabSelection)}
+                    .tabItem { Item(type: .plan, selection: tabSelection) }
                     .tag(ItemType.plan.rawValue)
                 MeView()
-                    .tabItem {Item(type: .me, selection: tabSelection)}
+                    .tabItem { Item(type: .me, selection: tabSelection) }
                     .tag(ItemType.me.rawValue)
             }
+            // .navigationBarHidden(itemType.isNavigationBarHidden(selection: tabSelection))
             .navigationBarTitle(itemType.title, displayMode: .inline)
             .navigationBarItems(leading: itemType.navigationBarLeadingItems(selection: tabSelection),
                                 trailing: itemType.navigationBarTrailingItems(selection: tabSelection))
@@ -65,6 +66,10 @@ struct ContentView: View {
             }
         }
         
+        func isNavigationBarHidden(selection: Int) -> Bool {
+            selection == ItemType.home.rawValue
+        }
+        
         func navigationBarTrailingItems(selection: Int) -> AnyView {
             switch ItemType(rawValue: selection)! {
             case .home:
@@ -98,11 +103,7 @@ struct ContentView: View {
         
         var body: some View {
             VStack {
-                if type.rawValue == selection {
-                    type.selectedImage
-                } else {
-                    type.image
-                }
+                type.rawValue == selection ? type.selectedImage : type.image
                 
                 Text(type.title)
             }

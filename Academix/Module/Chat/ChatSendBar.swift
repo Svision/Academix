@@ -18,6 +18,7 @@ struct ChatSendBar: View {
             
             ZStack {
                 Color("chat_send_background")
+                    .ignoresSafeArea(edges: .bottom)
                 
                 VStack {
                     HStack(spacing: 12) {
@@ -45,7 +46,10 @@ struct ChatSendBar: View {
 struct ChatSendBar_Previews: PreviewProvider {
     static var previews: some View {
         GeometryReader {geometry in
-            ChatSendBar(proxy: geometry)
+            VStack {
+                Spacer()
+                ChatSendBar(proxy: geometry)
+            }
         }
     }
 }

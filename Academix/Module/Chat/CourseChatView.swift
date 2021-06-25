@@ -6,12 +6,14 @@
 //
 
 import SwiftUI
+import Combine
 
 struct CourseChatView: View {
     let course: CourseItem
     @State var uiTabarController: UITabBarController?
     
     var btnMore : some View { Button(action: {
+        // TODO: more
         }) {
             Image(systemName: "ellipsis") // back button
                 .foregroundColor(.black)
@@ -19,22 +21,31 @@ struct CourseChatView: View {
     }
     
     var body: some View {
-        ZStack {
-            Color(red: 241 / 255, green: 241 / 255, blue: 241 / 255)
-                .ignoresSafeArea()
-            Text(course.name)
-                .font(.largeTitle)
+        GeometryReader { proxy in
+            ZStack {
+                // Temporary solution for navigationbarTitile
+                let navigationbarTitlePosition_y = -20.0
+                Text(course.name).zIndex(1).position(x: proxy.size.width / 2, y: navigationbarTitlePosition_y)
+                
+                VStack(spacing: 0) {
+                    Separator(color: Color("navigation_separator"))
+                    
+                    Spacer()
+                    
+                    ChatSendBar(proxy: proxy)
+                }
+                .edgesIgnoringSafeArea(.bottom)
+            }
         }
-        .navigationTitle(course.name)
-        .navigationBarTitleDisplayMode(.inline)
+        .background(Color("light_gray"))
+        .navigationBarTitle(course.name, displayMode: .inline)
         .navigationBarItems(trailing: btnMore)
     }
 }
 
 struct CourseDiscussionView_Previews: PreviewProvider {
     static var previews: some View {
-        NavigationView {
-            CourseChatView(course: CourseItem(name: "CSCC10"))
-        }
+        let testCourse = CourseItem(name: "CSCC10")
+        NavigationView { CourseChatView(course: testCourse) }
     }
 }

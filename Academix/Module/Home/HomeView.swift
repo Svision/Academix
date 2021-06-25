@@ -18,7 +18,7 @@ struct HomeView: View {
     
     var body: some View {
         ZStack {
-            Color(red: 241 / 255, green: 241 / 255, blue: 241 / 255)
+            Color("light_gray")
                 .edgesIgnoringSafeArea(.top)
             GeometryReader { geometry in
                 // Courses Text
