@@ -10,6 +10,11 @@ import Foundation
 struct User {
     var name: String
     var avatar: String
+    var university: String
     // email also the id
     let email: String
+    
+    var major: String
+    var url: String
+    
 }

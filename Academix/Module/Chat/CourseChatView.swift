@@ -20,6 +20,14 @@ struct CourseDiscussionView: View {
         }
     }
     
+    var btnMore : some View { Button(action: {
+        self.presentationMode.wrappedValue.dismiss()
+        }) {
+            Image(systemName: "ellipsis") // back button
+                .foregroundColor(.black)
+        }
+    }
+    
     var body: some View {
         ZStack {
             Color(red: 241 / 255, green: 241 / 255, blue: 241 / 255)
@@ -30,7 +38,7 @@ struct CourseDiscussionView: View {
         .navigationTitle(course.name)
         .navigationBarTitleDisplayMode(.inline)
         .navigationBarBackButtonHidden(true)
-        .navigationBarItems(leading: btnBack)
+        .navigationBarItems(leading: btnBack, trailing: btnMore)
     }
 }
 
