@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 54;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -94,8 +94,8 @@
 				4680290526843070000ADC22 /* MeView.swift */,
 				46330FFC2685500600E63D68 /* User.swift */,
 				4633100626855C2F00E63D68 /* UINavigationController+.swift */,
-				463310032685509900E63D68 /* Message */,
 				46802907268449B4000ADC22 /* CourseItem.swift */,
+				463310032685509900E63D68 /* Message */,
 				46969C3D26804CD100A82666 /* Preview Content */,
 				46B2CED72684F87F009A006B /* UserCourses.xcdatamodeld */,
 			);
@@ -126,6 +126,8 @@
 			dependencies = (
 			);
 			name = Academix;
+			packageProductDependencies = (
+			);
 			productName = Academix;
 			productReference = 46969C3426804CD000A82666 /* Academix.app */;
 			productType = "com.apple.product-type.application";
@@ -145,7 +147,7 @@
 				};
 			};
 			buildConfigurationList = 46969C2F26804CD000A82666 /* Build configuration list for PBXProject "Academix" */;
-			compatibilityVersion = "Xcode 9.3";
+			compatibilityVersion = "Xcode 12.0";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
 			knownRegions = (
@@ -153,6 +155,8 @@
 				Base,
 			);
 			mainGroup = 46969C2B26804CD000A82666;
+			packageReferences = (
+			);
 			productRefGroup = 46969C3526804CD000A82666 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -249,7 +253,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.5;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -304,7 +308,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.5;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;
@@ -329,10 +333,11 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = changhao.song.Academix;
+				MARKETING_VERSION = 0.0.1;
+				PRODUCT_BUNDLE_IDENTIFIER = com.changhao.song.Academix;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -351,10 +356,11 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = changhao.song.Academix;
+				MARKETING_VERSION = 0.0.1;
+				PRODUCT_BUNDLE_IDENTIFIER = com.changhao.song.Academix;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};

@@ -9,6 +9,7 @@ import SwiftUI
 
 struct CourseDiscussionView: View {
     let course: CourseItem
+    @State var uiTabarController: UITabBarController?
     @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
 
     var btnBack : some View { Button(action: {
