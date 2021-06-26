@@ -29,7 +29,7 @@ struct HomeView: View {
                                     .stroke()
                                     .frame(width: 150, height: 50)
                     )
-                    .position(x: geometry.size.width / 2, y: 100)
+                    .position(x: geometry.size.width / 2, y: geometry.size.height / 8)
                 
                 // Courses selection
                 getCoursesView(for: geometry)

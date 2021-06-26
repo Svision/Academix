@@ -23,10 +23,10 @@ struct CourseChatView: View {
     var body: some View {
         GeometryReader { proxy in
             ZStack {
-                // Temporary solution for navigationbarTitile
-                let navigationbarTitlePosition_y: CGFloat = -20.0
-                Text(course.name).zIndex(1).position(x: proxy.size.width / 2, y: navigationbarTitlePosition_y)
-                
+                // Temporary solution for navigationbarTitile in iOS 15
+                if #available(iOS 15, *) {
+                    Text(course.name).zIndex(1).position(x: proxy.size.width / 2, y: -20.0)
+                }
                 VStack(spacing: 0) {
                     Separator(color: Color("navigation_separator"))
                     Spacer()
@@ -36,6 +36,7 @@ struct CourseChatView: View {
                 }
                 .edgesIgnoringSafeArea(.bottom)
             }
+            .edgesIgnoringSafeArea(.bottom)
         }
         .background(Color("light_gray"))
         .navigationBarTitle(course.name, displayMode: .inline)
