@@ -7,11 +7,9 @@
 
 import Foundation
 
-private var courseId = 0
-
-struct CourseItem: Hashable {
+struct CourseItem: Hashable, Identifiable {
     let name: String
-    let id = courseId
+    let id = UUID()
     var users: Array<User> = []
     
     static func == (lhs: CourseItem, rhs: CourseItem) -> Bool {
@@ -21,7 +19,6 @@ struct CourseItem: Hashable {
     
     init(name: String) {
         self.name = name
-        courseId += 1
     }
     
     func hash(into hasher: inout Hasher) {

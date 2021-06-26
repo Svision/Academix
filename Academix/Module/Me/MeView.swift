@@ -12,7 +12,6 @@ struct MeView: View {
         GeometryReader { proxy in
             ZStack {
                 Color("light_gray")
-                    .edgesIgnoringSafeArea(.top)
                 VStack(spacing: 0) {
                     Separator(color: Color("navigation_separator"))
                     Spacer()

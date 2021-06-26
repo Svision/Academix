@@ -26,6 +26,13 @@
 		46969C3F26804CD100A82666 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 46969C3E26804CD100A82666 /* Preview Assets.xcassets */; };
 		46B2CED62684D9B8009A006B /* CourseChatView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46B2CED52684D9B8009A006B /* CourseChatView.swift */; };
 		46B2CED92684F87F009A006B /* UserCourses.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 46B2CED72684F87F009A006B /* UserCourses.xcdatamodeld */; };
+		46E2E03F2687CCA70071649B /* FriendsChatRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46E2E03E2687CCA70071649B /* FriendsChatRow.swift */; };
+		46E2E0412687CE210071649B /* Chat.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46E2E0402687CE210071649B /* Chat.swift */; };
+		46E2E0432687CF680071649B /* FriendsFilterByCourse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46E2E0422687CF680071649B /* FriendsFilterByCourse.swift */; };
+		46E2E0452687D3C40071649B /* Date++.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46E2E0442687D3C40071649B /* Date++.swift */; };
+		46E2E0472687D8590071649B /* FriendsChatList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46E2E0462687D8590071649B /* FriendsChatList.swift */; };
+		46E2E0492687D90F0071649B /* FriendsChatView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46E2E0482687D90E0071649B /* FriendsChatView.swift */; };
+		46E2E04B2687DE030071649B /* Media.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46E2E04A2687DE030071649B /* Media.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -50,6 +57,13 @@
 		46969C4026804CD100A82666 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		46B2CED52684D9B8009A006B /* CourseChatView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CourseChatView.swift; sourceTree = "<group>"; };
 		46B2CED82684F87F009A006B /* UserCourses.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = UserCourses.xcdatamodel; sourceTree = "<group>"; };
+		46E2E03E2687CCA70071649B /* FriendsChatRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendsChatRow.swift; sourceTree = "<group>"; };
+		46E2E0402687CE210071649B /* Chat.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Chat.swift; sourceTree = "<group>"; };
+		46E2E0422687CF680071649B /* FriendsFilterByCourse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendsFilterByCourse.swift; sourceTree = "<group>"; };
+		46E2E0442687D3C40071649B /* Date++.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date++.swift"; sourceTree = "<group>"; };
+		46E2E0462687D8590071649B /* FriendsChatList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendsChatList.swift; sourceTree = "<group>"; };
+		46E2E0482687D90E0071649B /* FriendsChatView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendsChatView.swift; sourceTree = "<group>"; };
+		46E2E04A2687DE030071649B /* Media.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Media.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -69,6 +83,7 @@
 				4633100626855C2F00E63D68 /* UINavigationController++.swift */,
 				461718C4268676D9005F12F7 /* UIImage++.swift */,
 				461807452686C0830001252C /* UIViewController++.swift */,
+				46E2E0442687D3C40071649B /* Date++.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -79,6 +94,8 @@
 				46802907268449B4000ADC22 /* CourseItem.swift */,
 				46330FFC2685500600E63D68 /* User.swift */,
 				46330FFF2685502800E63D68 /* Message.swift */,
+				46E2E0402687CE210071649B /* Chat.swift */,
+				46E2E04A2687DE030071649B /* Media.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -88,7 +105,7 @@
 			children = (
 				461718BD26863E4C005F12F7 /* Main */,
 				461718B826863BBB005F12F7 /* Home */,
-				461718BB26863BEC005F12F7 /* Chat */,
+				461718BB26863BEC005F12F7 /* CourseChat */,
 				461718B926863BCD005F12F7 /* Friends */,
 				461718BA26863BDE005F12F7 /* Plan */,
 				461718BC26863C0A005F12F7 /* Me */,
@@ -109,6 +126,10 @@
 			isa = PBXGroup;
 			children = (
 				4680290326843061000ADC22 /* FriendsView.swift */,
+				46E2E03E2687CCA70071649B /* FriendsChatRow.swift */,
+				46E2E0422687CF680071649B /* FriendsFilterByCourse.swift */,
+				46E2E0462687D8590071649B /* FriendsChatList.swift */,
+				46E2E0482687D90E0071649B /* FriendsChatView.swift */,
 			);
 			path = Friends;
 			sourceTree = "<group>";
@@ -121,13 +142,12 @@
 			path = Plan;
 			sourceTree = "<group>";
 		};
-		461718BB26863BEC005F12F7 /* Chat */ = {
+		461718BB26863BEC005F12F7 /* CourseChat */ = {
 			isa = PBXGroup;
 			children = (
 				46B2CED52684D9B8009A006B /* CourseChatView.swift */,
-				461718BE26867391005F12F7 /* ChatSendBar.swift */,
 			);
-			path = Chat;
+			path = CourseChat;
 			sourceTree = "<group>";
 		};
 		461718BC26863C0A005F12F7 /* Me */ = {
@@ -149,6 +169,7 @@
 		461718C0268673B7005F12F7 /* Components */ = {
 			isa = PBXGroup;
 			children = (
+				461718BE26867391005F12F7 /* ChatSendBar.swift */,
 				461718C1268673D2005F12F7 /* Separator.swift */,
 			);
 			path = Components;
@@ -277,13 +298,19 @@
 			files = (
 				463310022685508F00E63D68 /* MessageView.swift in Sources */,
 				461718C5268676D9005F12F7 /* UIImage++.swift in Sources */,
+				46E2E0412687CE210071649B /* Chat.swift in Sources */,
 				4680290626843070000ADC22 /* MeView.swift in Sources */,
+				46E2E0452687D3C40071649B /* Date++.swift in Sources */,
 				461718C2268673D2005F12F7 /* Separator.swift in Sources */,
+				46E2E03F2687CCA70071649B /* FriendsChatRow.swift in Sources */,
+				46E2E0432687CF680071649B /* FriendsFilterByCourse.swift in Sources */,
 				4680290426843061000ADC22 /* FriendsView.swift in Sources */,
+				46E2E0492687D90F0071649B /* FriendsChatView.swift in Sources */,
 				46969C3A26804CD000A82666 /* ContentView.swift in Sources */,
 				46802908268449B4000ADC22 /* CourseItem.swift in Sources */,
 				4680290226843049000ADC22 /* HomeView.swift in Sources */,
 				46B2CED62684D9B8009A006B /* CourseChatView.swift in Sources */,
+				46E2E04B2687DE030071649B /* Media.swift in Sources */,
 				461807462686C0830001252C /* UIViewController++.swift in Sources */,
 				461718BF26867391005F12F7 /* ChatSendBar.swift in Sources */,
 				463310002685502800E63D68 /* Message.swift in Sources */,
@@ -292,6 +319,7 @@
 				46B2CED92684F87F009A006B /* UserCourses.xcdatamodeld in Sources */,
 				46330FFD2685500600E63D68 /* User.swift in Sources */,
 				4680290026843000000ADC22 /* PlanView.swift in Sources */,
+				46E2E0472687D8590071649B /* FriendsChatList.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
