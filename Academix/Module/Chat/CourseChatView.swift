@@ -24,7 +24,7 @@ struct CourseChatView: View {
         GeometryReader { proxy in
             ZStack {
                 // Temporary solution for navigationbarTitile
-                let navigationbarTitlePosition_y = -20.0
+                let navigationbarTitlePosition_y: CGFloat = -20.0
                 Text(course.name).zIndex(1).position(x: proxy.size.width / 2, y: navigationbarTitlePosition_y)
                 
                 VStack(spacing: 0) {
