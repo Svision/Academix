@@ -29,9 +29,9 @@ struct CourseChatView: View {
                 
                 VStack(spacing: 0) {
                     Separator(color: Color("navigation_separator"))
-                    
                     Spacer()
-                    
+                    Text("courseId: \(course.id)")
+                    Spacer()
                     ChatSendBar(proxy: proxy)
                 }
                 .edgesIgnoringSafeArea(.bottom)

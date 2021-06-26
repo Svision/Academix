@@ -9,10 +9,17 @@ import SwiftUI
 
 struct FriendsView: View {
     var body: some View {
-        ZStack {
-            Color(red: 241 / 255, green: 241 / 255, blue: 241 / 255)
-                .edgesIgnoringSafeArea(.top)
-            Text("Friends")
+        GeometryReader { proxy in
+            ZStack {
+                Color("light_gray")
+                    .edgesIgnoringSafeArea(.top)
+                VStack(spacing: 0) {
+                    Separator(color: Color("navigation_separator"))
+                    Spacer()
+                    Text("Implementing...")
+                    Spacer()
+                }
+            }
         }
     }
 }

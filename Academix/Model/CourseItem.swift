@@ -12,6 +12,12 @@ private var courseId = 0
 struct CourseItem: Hashable {
     let name: String
     let id = courseId
+    var users: Array<User> = []
+    
+    static func == (lhs: CourseItem, rhs: CourseItem) -> Bool {
+        return lhs.id == rhs.id
+    }
+    
     
     init(name: String) {
         self.name = name

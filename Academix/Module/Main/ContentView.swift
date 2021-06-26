@@ -26,7 +26,6 @@ struct ContentView: View {
                     .tabItem { Item(type: .me, selection: tabSelection) }
                     .tag(ItemType.me.rawValue)
             }
-            // .navigationBarHidden(itemType.isNavigationBarHidden(selection: tabSelection))
             .navigationBarTitle(itemType.title, displayMode: .inline)
             .navigationBarItems(leading: itemType.navigationBarLeadingItems(selection: tabSelection),
                                 trailing: itemType.navigationBarTrailingItems(selection: tabSelection))
@@ -59,7 +58,7 @@ struct ContentView: View {
         
         var title: String {
             switch self {
-            case .home:     return "Home"
+            case .home:     return ""
             case .friends:  return "Firends"
             case .plan:     return "Plan"
             case .me:       return "Me"
@@ -104,8 +103,7 @@ struct ContentView: View {
         var body: some View {
             VStack {
                 type.rawValue == selection ? type.selectedImage : type.image
-                
-                Text(type.title)
+                type.rawValue == ItemType.home.rawValue ? Text("Home") : Text(type.title)
             }
         }
     }
