@@ -33,6 +33,8 @@
 		46E2E0472687D8590071649B /* FriendsChatList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46E2E0462687D8590071649B /* FriendsChatList.swift */; };
 		46E2E0492687D90F0071649B /* FriendsChatView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46E2E0482687D90E0071649B /* FriendsChatView.swift */; };
 		46E2E04B2687DE030071649B /* Media.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46E2E04A2687DE030071649B /* Media.swift */; };
+		46F2E4702688353A002DDE18 /* FriendsMoreInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46F2E46F2688353A002DDE18 /* FriendsMoreInfoView.swift */; };
+		46F2E47226883AE5002DDE18 /* CourseChatMoreInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46F2E47126883AE5002DDE18 /* CourseChatMoreInfoView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -64,6 +66,8 @@
 		46E2E0462687D8590071649B /* FriendsChatList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendsChatList.swift; sourceTree = "<group>"; };
 		46E2E0482687D90E0071649B /* FriendsChatView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendsChatView.swift; sourceTree = "<group>"; };
 		46E2E04A2687DE030071649B /* Media.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Media.swift; sourceTree = "<group>"; };
+		46F2E46F2688353A002DDE18 /* FriendsMoreInfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendsMoreInfoView.swift; sourceTree = "<group>"; };
+		46F2E47126883AE5002DDE18 /* CourseChatMoreInfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CourseChatMoreInfoView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -130,6 +134,7 @@
 				46E2E0422687CF680071649B /* FriendsFilterByCourse.swift */,
 				46E2E0462687D8590071649B /* FriendsChatList.swift */,
 				46E2E0482687D90E0071649B /* FriendsChatView.swift */,
+				46F2E46F2688353A002DDE18 /* FriendsMoreInfoView.swift */,
 			);
 			path = Friends;
 			sourceTree = "<group>";
@@ -146,6 +151,7 @@
 			isa = PBXGroup;
 			children = (
 				46B2CED52684D9B8009A006B /* CourseChatView.swift */,
+				46F2E47126883AE5002DDE18 /* CourseChatMoreInfoView.swift */,
 			);
 			path = CourseChat;
 			sourceTree = "<group>";
@@ -308,10 +314,12 @@
 				46E2E0492687D90F0071649B /* FriendsChatView.swift in Sources */,
 				46969C3A26804CD000A82666 /* ContentView.swift in Sources */,
 				46802908268449B4000ADC22 /* CourseItem.swift in Sources */,
+				46F2E47226883AE5002DDE18 /* CourseChatMoreInfoView.swift in Sources */,
 				4680290226843049000ADC22 /* HomeView.swift in Sources */,
 				46B2CED62684D9B8009A006B /* CourseChatView.swift in Sources */,
 				46E2E04B2687DE030071649B /* Media.swift in Sources */,
 				461807462686C0830001252C /* UIViewController++.swift in Sources */,
+				46F2E4702688353A002DDE18 /* FriendsMoreInfoView.swift in Sources */,
 				461718BF26867391005F12F7 /* ChatSendBar.swift in Sources */,
 				463310002685502800E63D68 /* Message.swift in Sources */,
 				46969C3826804CD000A82666 /* AcademixApp.swift in Sources */,

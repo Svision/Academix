@@ -18,7 +18,7 @@ struct AcademixApp: App {
     
     func setupAppearance() {
         let backImage = UIImage(systemName: "chevron.backward")?
-                .withPadding(.init(top: -2, left: 0, bottom: 0, right: -4))
+                .withPadding(.init(top: 2, left: 0, bottom: 0, right: -4))
         
         
         // Synchronize navigation bar style

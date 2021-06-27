@@ -32,7 +32,7 @@ extension Chat {
     )
     
     static let me = Chat(
-        desc: "Hello World!",
+        desc: "Academix is a mobile software that integrates different functionalities that help students in both academic and social aspects.",
         sender: .me,
         time: Date()
     )

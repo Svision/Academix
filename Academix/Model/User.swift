@@ -13,6 +13,7 @@ struct User: Identifiable, Codable {
     var avatar: String
     var university: String
     let id: String // email == id
+    var courses: Array<CourseItem>
     
     // setting
     var major: String = ""
@@ -26,23 +27,24 @@ struct User: Identifiable, Codable {
         self.avatar = avatar
         self.university = university
         self.id = email
+        self.courses = []
     }
     
 }
 
 extension User {
     static let me = User(
-        name: "Shawn",
+        name: "Changhao",
         avatar: "data_avatar1",
         university: "UofT",
         email: "changhao.song@mail.utoronto.ca"
     )
     
     static let amanda = User(
-        name: "Amanda",
+        name: "Sweety🍬",
         avatar: "data_avatar2",
         university: "UofT",
-        email: "wenqing.cao@mail.utoronto.ca"
+        email: "@mail.utoronto.ca"
     )
     
     static let sky = User(

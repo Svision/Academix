@@ -7,11 +7,7 @@
 
 import SwiftUI
 
-var courses: Array<CourseItem> = [CourseItem(name: "CSCC10"),
-                                  CourseItem(name: "CSC369"),
-                                  CourseItem(name: "CSC373"),
-                                  CourseItem(name: "STA301"),
-                                  CourseItem(name: "MAT301")]
+var courses: Array<CourseItem> = [.cscc10, .csc369, .csc373, .sta301, .mat301]
 
 struct HomeView: View {
     @State private var showingAlert = false
@@ -41,7 +37,6 @@ struct HomeView: View {
                         showingAlert = true
                     } else {
                         // TODO: add a course
-                        addCourse(course: CourseItem(name: "ADD101"))
                     }
                 }, label: {
                     Image(systemName: "plus.circle")
