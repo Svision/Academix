@@ -9,13 +9,16 @@ import SwiftUI
 
 struct FriendsChatList: View {
     @State private var chats: [Chat] = []
+    @Binding var selected: String
     
+    @ViewBuilder
     var body: some View {
         ScrollView {
             LazyVStack(spacing: 0) {
                 ForEach(chats) { chat in
                     NavigationLink(destination: FriendsChatView(chat: chat)) {
                         FriendsChatRow(chat: chat)
+                            .isHidden(!(selected == "" || chat.sender.getCoursesString().contains(selected)), remove: true)
                     }
                     Separator()
                 }
@@ -32,7 +35,8 @@ struct FriendsChatList: View {
 }
 
 struct FriendsChatList_Previews: PreviewProvider {
+    @State static var selected = ""
     static var previews: some View {
-        FriendsChatList()
+        FriendsChatList(selected: $selected)
     }
 }

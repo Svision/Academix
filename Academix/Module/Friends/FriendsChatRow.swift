@@ -20,9 +20,14 @@ struct FriendsChatRow: View {
 
             VStack(alignment: .leading, spacing: 5) {
                 HStack(alignment: .top) {
-                    Text(chat.sender.name)
-                        .font(.system(size: 16, weight: .regular))
-                        .foregroundColor(.primary)
+                    HStack {
+                        let senderExtention = chat.sender.courses.count == 0 ? Text("") : Text(" - \(chat.sender.getCoursesString())").foregroundColor(.gray)
+                        
+                        Text("\(chat.sender.name)\(senderExtention)")
+                            .lineLimit(1)
+                            .font(.system(size: 16, weight: .regular))
+                            .foregroundColor(.primary)
+                    }
                     Spacer()
                     Text(chat.time.formatString)
                         .font(.system(size: 10))

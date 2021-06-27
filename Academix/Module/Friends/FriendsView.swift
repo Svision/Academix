@@ -8,14 +8,15 @@
 import SwiftUI
 
 struct FriendsView: View {
+    @State var selected: String = ""
     var body: some View {
         GeometryReader { proxy in
             ZStack {
                 Color("light_gray")
                 VStack(spacing: 0) {
                     Separator(color: Color("navigation_separator"))
-//                    Spacer()
-                    FriendsChatList()
+                    FriendsFilterByCourse(selected: $selected)
+                    FriendsChatList(selected: $selected)
                 }
             }
         }
@@ -23,7 +24,8 @@ struct FriendsView: View {
 }
 
 struct FriendsView_Previews: PreviewProvider {
+    @State static var selected = ""
     static var previews: some View {
-        FriendsView()
+        FriendsView(selected: selected)
     }
 }

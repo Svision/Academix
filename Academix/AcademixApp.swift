@@ -11,7 +11,7 @@ import SwiftUI
 struct AcademixApp: App {
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            MainView()
                 .onAppear(perform: setupAppearance)
         }
     }

@@ -35,6 +35,8 @@ struct CourseItem: Hashable, Identifiable, Codable {
 }
 
 extension CourseItem {
+    static let all: [CourseItem] = [cscc10, csc369, csc373, sta301, mat301]
+    
     static let cscc10 = CourseItem(
         university: "UofT",
         department: "CSC",

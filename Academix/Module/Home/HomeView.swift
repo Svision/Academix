@@ -7,8 +7,6 @@
 
 import SwiftUI
 
-var courses: Array<CourseItem> = [.cscc10, .csc369, .csc373, .sta301, .mat301]
-
 struct HomeView: View {
     @State private var showingAlert = false
     
@@ -83,18 +81,18 @@ private func getCoursesView(for metrics: GeometryProxy) -> some View {
         .position(x: metrics.size.width / 2, y: metrics.size.height / 2)
 }
 
-private func addCourse(course: CourseItem) {
-    courses.append(course)
-}
+//private func addCourse(course: CourseItem) {
+//    courses.append(course)
+//}
 
 private func getCourses() -> Array<CourseItem> {
-    return courses
+    return CourseItem.all
 }
 
-private func fetchCourses() -> Array<CourseItem> {
-    // TODO: hard code
-    return courses
-}
+//private func fetchCourses() -> Array<CourseItem> {
+//    // TODO: hard code
+//    return courses
+//}
 
 struct HomeView_Previews: PreviewProvider {
     static var previews: some View {

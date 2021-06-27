@@ -8,13 +8,44 @@
 import SwiftUI
 
 struct FriendsFilterByCourse: View {
+    @Binding var selected : String
+    private let spacing: CGFloat = 20.0
+    
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        VStack {
+            ScrollView(.horizontal, showsIndicators: false) {
+                HStack(spacing: spacing) {
+                    ForEach(CourseItem.all) { course in
+                        Button(action: {
+                            if selected == course.name {
+                                selected = ""
+                            } else {
+                                selected = course.name
+                            }
+                        }) {
+                            Text(course.name)
+                                .foregroundColor(selected == course.name ? .red : .gray)
+                                .padding(.horizontal, 10)
+                                .background(RoundedRectangle(cornerRadius: 10)
+                                                .stroke(Color.black)
+                                                .frame(height: 20)
+                                )
+                        }
+                    }
+                }
+                .padding(.leading, spacing)
+                .frame(height: 30)
+            }
+            .frame(height: 50)
+            Separator()
+        }
+
     }
 }
 
 struct FriendsFilterByCourse_Previews: PreviewProvider {
+    @State static var selected = ""
     static var previews: some View {
-        FriendsFilterByCourse()
+        FriendsFilterByCourse(selected: $selected)
     }
 }

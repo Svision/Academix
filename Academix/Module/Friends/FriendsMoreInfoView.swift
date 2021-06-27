@@ -15,8 +15,8 @@ struct FriendsMoreInfoView: View {
             Text("name: \(friend.name)")
             Text("id: \(friend.id)")
             Text("university: \(friend.university)")
+            Text("courses: \(friend.getCoursesString())")
         }
-        
     }
 }
 
