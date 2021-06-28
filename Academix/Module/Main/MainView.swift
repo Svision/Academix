@@ -59,9 +59,9 @@ struct MainView: View {
         var title: String {
             switch self {
             case .home:     return ""
-            case .friends:  return "Firends"
-            case .plan:     return "Plan"
-            case .me:       return "Me"
+            case .friends:  return NSLocalizedString("Friends", comment: "")
+            case .plan:     return NSLocalizedString("Plan", comment: "")
+            case .me:       return NSLocalizedString("Me", comment: "")
             }
         }
         

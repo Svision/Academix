@@ -1,0 +1,13 @@
+/* 
+  File.strings
+  Academix
+
+  Created by Changhao Song on 2021-06-28.
+  
+*/
+"Home" = "主页";
+"Plan" = "计划";
+"Me" = "我";
+"Friends" = "朋友";
+"Courses" = "课程";
+"Implementing..." = "开发中...";
