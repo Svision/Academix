@@ -10,7 +10,7 @@ import Combine
 
 struct CourseChatView: View {
     let course: CourseItem
-    @State private var isMoreInfoViewActive = false
+    @State private var isMoreInfoViewActive: Bool = false
     
     var moreInfoView : some View {
         NavigationLink(destination: CourseChatMoreInfoView(course: course), isActive: $isMoreInfoViewActive) {
@@ -18,25 +18,31 @@ struct CourseChatView: View {
         }
     }
     
-    var btnMore : some View { Button(action: { isMoreInfoViewActive = true }) {
-            Image(systemName: "ellipsis") // more button
-                .foregroundColor(.black)
-        }
+    var btnMore: some View {
+        Button(action: { isMoreInfoViewActive = true }) {
+                Image(systemName: "ellipsis") // more button
+                    .foregroundColor(.black)
+                    .padding(EdgeInsets(top: 20, leading: 0, bottom: 20, trailing: 30)) // increase tap area
+                    .offset(x: 30)
+            }
     }
     
     var body: some View {
         GeometryReader { proxy in
-                VStack(spacing: 0) {
-                    Separator(color: Color("navigation_separator"))
-                    Spacer()
-                    ChatSendBar(proxy: proxy)
-                }
-                .edgesIgnoringSafeArea(.bottom)
+            VStack(spacing: 0) {
+                Separator(color: Color("navigation_separator"))
+                Spacer()
+                ChatSendBar(proxy: proxy)
             }
-            .background(Color("light_gray"))
-            .background(moreInfoView)
-            .navigationBarTitle(course.name, displayMode: .inline)
-            .navigationBarItems(trailing: btnMore)
+            .edgesIgnoringSafeArea(.bottom)
+        }
+        .background(Color("light_gray"))
+        .background(moreInfoView)
+        .navigationBarTitle(course.name, displayMode: .inline)
+        .navigationBarItems(trailing: btnMore)
+        .onTapGesture {
+            self.endTextEditing()
+        }
     }
 }
 

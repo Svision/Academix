@@ -12,6 +12,38 @@ struct ChatSendBar: View {
     
     @State private var text: String = ""
     
+    func chatBarMore() -> some View {
+        HStack {
+            GeometryReader { hstack in
+                if text == "" {
+                    HStack {
+                        Button(action: {
+                            // TODO: emoji
+                        }, label: {
+                            Image("chat_send_emoji")
+                        })
+                        Button(action: {
+                            // TODO: more
+                        }, label: {
+                            Image("chat_send_more")
+                        })
+                    }
+                    .frame(width: hstack.size.width, height: hstack.size.height)
+                }
+                else {
+                    Button(action: {
+                        // TODO: send
+                        text = ""
+                    }, label: {
+                        Text("Send")
+                            .frame(width: hstack.size.width, height: hstack.size.height)
+                    })
+                }
+            }
+        }
+        .frame(width: proxy.size.width / 6) // 1/6 of the chat bar width
+    }
+    
     var body: some View {
         VStack(spacing: 0) {
             Separator(color: Color("chat_send_line"))
@@ -22,15 +54,11 @@ struct ChatSendBar: View {
                 
                 VStack {
                     HStack(spacing: 12) {
-                        Image("chat_send_voice")
-                        
                         TextEditor(text: $text)
                             .frame(height: 40)
                             .background(Color("chat_send_text_background"))
                             .cornerRadius(4)
-                        
-                        Image("chat_send_emoji")
-                        Image("chat_send_more")
+                        chatBarMore()
                     }
                     .frame(height: 56)
                     .padding(.horizontal, 12)

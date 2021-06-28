@@ -38,7 +38,7 @@ extension Chat {
     )
     
     static let sky = Chat(
-        desc: "( 。ì_í 。)",
+        desc: "(｡ì_í｡)",
         sender: .sky,
         time: Calendar.current.date(byAdding: .day, value: -1, to: Calendar.current.date(bySettingHour: 11, minute: 0, second: 0, of: Date().self)!)!
     )

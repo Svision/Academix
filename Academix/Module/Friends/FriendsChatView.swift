@@ -9,18 +9,21 @@ import SwiftUI
 
 struct FriendsChatView: View {
     let chat: Chat
-    @State private var isMoreInfoViewActive = false
+    @State var isMoreInfoViewActive: Bool = false
     
     var moreInfoView : some View {
         NavigationLink(destination: FriendsMoreInfoView(friend: chat.sender), isActive: $isMoreInfoViewActive) {
             EmptyView()
         }
     }
-    
-    var btnMore : some View { Button(action: { isMoreInfoViewActive = true }) {
-            Image(systemName: "ellipsis") // more button
-                .foregroundColor(.black)
-        }
+
+    var btnMore: some View {
+        Button(action: { isMoreInfoViewActive = true }) {
+                Image(systemName: "ellipsis") // more button
+                    .foregroundColor(.black)
+                    .padding(EdgeInsets(top: 20, leading: 0, bottom: 20, trailing: 30)) // increase tap area
+                    .offset(x: 30)
+            }
     }
     
     var body: some View {
@@ -38,6 +41,9 @@ struct FriendsChatView: View {
         .background(moreInfoView)
         .navigationBarTitle(chat.sender.name, displayMode: .inline)
         .navigationBarItems(trailing: btnMore)
+        .onTapGesture {
+            self.endTextEditing()
+        }
     }
 }
 
