@@ -16,18 +16,21 @@ struct HomeView: View {
                 .edgesIgnoringSafeArea(.top)
             GeometryReader { geometry in
                 // Courses Text
-                Text("Courses")
-                    .font(.title2)
-                    .bold()
-                    .background(RoundedRectangle(cornerRadius: 25.0)
-                                    .stroke()
-                                    .frame(width: 150, height: 50)
-                    )
-                    .position(x: geometry.size.width / 2, y: geometry.size.height / 8)
-                
-                // Courses selection
-                getCoursesView(for: geometry)
-                
+                VStack {
+                    Text("Courses")
+                        .font(.title2)
+                        .bold()
+                        .background(RoundedRectangle(cornerRadius: 25.0)
+                                        .stroke()
+                                        .frame(width: 150, height: 50)
+                        )
+                        .frame(width: 150, height: 60)
+                        .padding(.top, geometry.size.height / 12)
+                    
+                    // Courses selection
+                    CoursesView(metrics: geometry)
+                        .position(x: geometry.size.width / 2, y: geometry.size.height / 3)
+                }
                 // Add button
                 Button(action: {
                     print("Add clicked!")
@@ -39,7 +42,7 @@ struct HomeView: View {
                 }, label: {
                     Image(systemName: "plus.circle")
                         .font(.system(size: 60))
-                        .foregroundColor(.black)
+                        .foregroundColor(.primary)
                 })
                 .alert(isPresented: $showingAlert) {
                     Alert(title: Text("Exceed Maximum Courses"),
@@ -56,16 +59,17 @@ let layout = [GridItem(.adaptive(minimum: 150))]
 
 struct CoursesView: View {
     let courses = getCourses()
+    let metrics: GeometryProxy
 
     var body: some View {
-            LazyVGrid(columns: layout, spacing: 70) {
+        LazyVGrid(columns: layout, spacing: metrics.size.height / 8) {
                 ForEach(courses, id: \.self) { course in
                     NavigationLink(destination: CourseChatView(course: course)){
                         Text(course.name)
-                            .foregroundColor(.black)
+                            .foregroundColor(.primary)
                             .font(.title2)
                             .background(RoundedRectangle(cornerRadius: 10)
-                                            .stroke(Color.black)
+                                            .stroke(Color.primary)
                                             .frame(width: 150, height: 60)
                             )
                     }
@@ -73,12 +77,6 @@ struct CoursesView: View {
                 }
             }
     }
-}
-
-
-private func getCoursesView(for metrics: GeometryProxy) -> some View {
-    return CoursesView()
-        .position(x: metrics.size.width / 2, y: metrics.size.height / 2)
 }
 
 //private func addCourse(course: CourseItem) {

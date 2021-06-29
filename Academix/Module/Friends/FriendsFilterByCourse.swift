@@ -27,7 +27,7 @@ struct FriendsFilterByCourse: View {
                                 .foregroundColor(selected == course.name ? .red : .gray)
                                 .padding(.horizontal, 10)
                                 .background(RoundedRectangle(cornerRadius: 10)
-                                                .stroke(Color.black)
+                                                .stroke(Color.primary)
                                                 .frame(height: 20)
                                 )
                         }

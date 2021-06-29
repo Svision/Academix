@@ -20,7 +20,7 @@ struct FriendsChatView: View {
     var btnMore: some View {
         Button(action: { isMoreInfoViewActive = true }) {
                 Image(systemName: "ellipsis") // more button
-                    .foregroundColor(.black)
+                    .foregroundColor(.primary)
                     .padding(EdgeInsets(top: 20, leading: 0, bottom: 20, trailing: 30)) // increase tap area
                     .offset(x: 30)
             }
