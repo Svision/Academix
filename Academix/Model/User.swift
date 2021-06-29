@@ -31,6 +31,7 @@ struct User: Identifiable, Codable {
     }
     
     func getCoursesString() -> String {
+        if courses.count == 0 { return "" }
         var coursesString: String = ""
         for course in courses {
             coursesString += "\(course.name), "
@@ -94,5 +95,27 @@ extension User {
         university: "UofT",
         email: "@mail.utoronto.ca",
         courses: [.cscc10]
+    )
+    
+    static let owen = User(
+        name: "Owen",
+        avatar: "data_avatar8",
+        university: "McMaster",
+        email: "@mcmaster.ca"
+    )
+    
+
+    static let leon = User(
+        name: "Leon",
+        avatar: "data_avatar10",
+        university: "UofT",
+        email: "@mail.utoronto.ca"
+    )
+    
+    static let bill = User(
+        name: "Bill",
+        avatar: "data_avatar9",
+        university: "University of Melbourne",
+        email: "@melbourne.au"
     )
 }

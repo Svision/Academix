@@ -19,10 +19,13 @@ extension Chat {
         amanda,
         me,
         sky,
+        leon,
         yuhong,
         meixuan,
         xiaoning,
-        yitong
+        yitong,
+        owen,
+        bill
     ]
     
     static let amanda = Chat(
@@ -40,6 +43,12 @@ extension Chat {
     static let sky = Chat(
         desc: "(｡ì_í｡)",
         sender: .sky,
+        time: Calendar.current.date(byAdding: .day, value: -1, to: Calendar.current.date(bySettingHour: 11, minute: 0, second: 0, of: Date().self)!)!
+    )
+    
+    static let leon = Chat(
+        desc: "Hello World!",
+        sender: .leon,
         time: Calendar.current.date(byAdding: .day, value: -1, to: Calendar.current.date(bySettingHour: 11, minute: 0, second: 0, of: Date().self)!)!
     )
     
@@ -64,6 +73,18 @@ extension Chat {
     static let yitong = Chat(
         desc: "✨",
         sender: .yitong,
+        time: Calendar.current.date(byAdding: .day, value: -1, to: Calendar.current.date(bySettingHour: 11, minute: 0, second: 0, of: Date().self)!)!
+    )
+    
+    static let owen = Chat(
+        desc: "爱生活，爱自己",
+        sender: .owen,
+        time: Calendar.current.date(byAdding: .day, value: -1, to: Calendar.current.date(bySettingHour: 11, minute: 0, second: 0, of: Date().self)!)!
+    )
+    
+    static let bill = Chat(
+        desc: "FUTURE IS THE PAST",
+        sender: .bill,
         time: Calendar.current.date(byAdding: .day, value: -1, to: Calendar.current.date(bySettingHour: 11, minute: 0, second: 0, of: Date().self)!)!
     )
     

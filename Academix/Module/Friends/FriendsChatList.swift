@@ -17,10 +17,12 @@ struct FriendsChatList: View {
             LazyVStack(spacing: 0) {
                 ForEach(chats) { chat in
                     NavigationLink(destination: FriendsChatView(chat: chat)) {
-                        FriendsChatRow(chat: chat)
-                            .isHidden(!(selected == "" || chat.sender.getCoursesString().contains(selected)), remove: true)
+                        VStack(spacing: 0) {
+                            FriendsChatRow(chat: chat)
+                            Separator()
+                        }
+                        .isHidden(!(selected == "" || chat.sender.getCoursesString().contains(selected)), remove: true)
                     }
-                    Separator()
                 }
             }
             .background(Color("cell"))

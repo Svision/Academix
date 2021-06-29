@@ -37,6 +37,11 @@ struct ChatSendBar: View {
                     }, label: {
                         Text("Send")
                             .frame(width: hstack.size.width, height: hstack.size.height)
+                            .background(RoundedRectangle(
+                                cornerRadius: 10.0)
+                                            .stroke()
+                                            .frame(width: hstack.size.width, height: 30)
+                            )
                     })
                 }
             }
