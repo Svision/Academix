@@ -6,29 +6,81 @@
 //
 
 import SwiftUI
+import Firebase
+
+class AppViewModel: ObservableObject {
+    let auth = Auth.auth()
+    let defaults = UserDefaults.standard
+    
+    @Published var signedIn = false
+    @Published var errorMessage: String?
+    
+    var isSignedIn: Bool {
+        return auth.currentUser != nil
+    }
+    
+    func signIn(email: String, password: String) {
+        Auth.auth().signIn(withEmail: email, password: password) { [weak self] result, error in
+            if error != nil {
+                self?.errorMessage = error?.localizedDescription ?? ""
+            } else {
+                DispatchQueue.main.async {
+                    self?.signedIn = true
+                }
+            }
+        }
+    }
+    
+    func signUp(email: String, password: String) {
+        Auth.auth().createUser(withEmail: email, password: password) { [weak self] result, error in
+            if error != nil {
+                self?.errorMessage = error?.localizedDescription ?? ""
+            } else {
+                DispatchQueue.main.async {
+                    self?.signedIn = true
+                }
+            }
+        }
+    }
+    
+    func signOut() {
+        try? auth.signOut()
+        
+        self.signedIn = false
+    }
+}
 
 struct MainView: View {
     @State private var tabSelection: Int = 0
+    @EnvironmentObject var viewModel: AppViewModel
     
     var body: some View {
         NavigationView {
-            TabView(selection: $tabSelection) {
-                HomeView()
-                    .tabItem { Item(type: .home, selection: tabSelection) }
-                    .tag(ItemType.home.rawValue)
-                FriendsView()
-                    .tabItem { Item(type: .friends, selection: tabSelection) }
-                    .tag(ItemType.friends.rawValue)
-                PlanView()
-                    .tabItem { Item(type: .plan, selection: tabSelection) }
-                    .tag(ItemType.plan.rawValue)
-                MeView()
-                    .tabItem { Item(type: .me, selection: tabSelection) }
-                    .tag(ItemType.me.rawValue)
+            if viewModel.signedIn {
+                TabView(selection: $tabSelection) {
+                    HomeView()
+                        .tabItem { Item(type: .home, selection: tabSelection) }
+                        .tag(ItemType.home.rawValue)
+                    FriendsView()
+                        .tabItem { Item(type: .friends, selection: tabSelection) }
+                        .tag(ItemType.friends.rawValue)
+                    PlanView()
+                        .tabItem { Item(type: .plan, selection: tabSelection) }
+                        .tag(ItemType.plan.rawValue)
+                    MeView()
+                        .tabItem { Item(type: .me, selection: tabSelection) }
+                        .tag(ItemType.me.rawValue)
+                }
+                .navigationBarTitle(itemType.title, displayMode: .inline)
+                .navigationBarItems(leading: itemType.navigationBarLeadingItems(selection: tabSelection),
+                                    trailing: itemType.navigationBarTrailingItems(selection: tabSelection))
             }
-            .navigationBarTitle(itemType.title, displayMode: .inline)
-            .navigationBarItems(leading: itemType.navigationBarLeadingItems(selection: tabSelection),
-                                trailing: itemType.navigationBarTrailingItems(selection: tabSelection))
+            else {
+                SignInView()
+            }
+        }
+        .onAppear {
+            viewModel.signedIn = viewModel.isSignedIn
         }
     }
     

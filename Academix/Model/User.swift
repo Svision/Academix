@@ -7,9 +7,9 @@
 
 import Foundation
 
-struct User: Identifiable, Codable {
+class User: ObservableObject, Identifiable {
     // basic info
-    var name: String
+    @Published var name: String
     var avatar: String
     var university: String
     let id: String // email == id

@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct Message: Codable, Identifiable, Equatable  {
+struct Message: Identifiable, Equatable  {
     var id = UUID()
     let createdAt: Double?
     let image: Media?

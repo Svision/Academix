@@ -8,6 +8,9 @@
 import SwiftUI
 
 struct MeView: View {
+    @EnvironmentObject var viewModel: AppViewModel
+    let defaults = UserDefaults.standard
+    
     var body: some View {
         GeometryReader { proxy in
             ZStack {
@@ -15,8 +18,18 @@ struct MeView: View {
                 VStack(spacing: 0) {
                     Separator(color: Color("navigation_separator"))
                     Spacer()
-                    Text("Implementing...")
+                    Text("My email: \(defaults.string(forKey: defaultsKeys.email)!)")
                     Spacer()
+                    Button(action: {
+                        viewModel.signOut()
+                    }) {
+                        Text("Sign Out")
+                            .padding()
+                    }
+                    .background(Color.secondary)
+                    .foregroundColor(.red)
+                    .cornerRadius(10)
+                    .padding()
                 }
             }
         }

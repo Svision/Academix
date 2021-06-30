@@ -6,12 +6,18 @@
 //
 
 import SwiftUI
+import Firebase
 
 @main
 struct AcademixApp: App {
+    
+    @UIApplicationDelegateAdaptor(AppDelegate.self) var appDelegate
+    
     var body: some Scene {
         WindowGroup {
+            let viewModel = AppViewModel()
             MainView()
+                .environmentObject(viewModel)
                 .onAppear(perform: setupAppearance)
         }
     }
@@ -28,4 +34,12 @@ struct AcademixApp: App {
         UINavigationBar.appearance().tintColor = UIColor(named: "navigation_tint")
         UINavigationBar.appearance().barTintColor = UIColor(named: "navigation_bar_tint")
     }
+}
+
+class AppDelegate: NSObject, UIApplicationDelegate {
+    func application(_ application: UIApplication,
+                     didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey : Any]? = nil) -> Bool {
+    FirebaseApp.configure()
+    return true
+  }
 }

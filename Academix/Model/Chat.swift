@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct Chat: Codable, Identifiable {
+struct Chat: Identifiable {
     var id = UUID()
     let desc: String
     let sender: User
