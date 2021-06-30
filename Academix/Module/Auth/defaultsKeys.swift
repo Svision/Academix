@@ -8,5 +8,6 @@
 import Foundation
 
 struct defaultsKeys {
+    static let hasRunbefore = false
     static let email = "NONE"
 }

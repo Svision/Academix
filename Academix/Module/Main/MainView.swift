@@ -56,6 +56,29 @@ class AppViewModel: ObservableObject {
 struct MainView: View {
     @State private var tabSelection: Int = 0
     @EnvironmentObject var viewModel: AppViewModel
+    init() {
+        let defaults = UserDefaults.standard
+        if (!defaults.bool(forKey: "hasRunBefore")) {
+            print("The app is launching for the first time. Setting UserDefaults...")
+            
+            do {
+                try Auth.auth().signOut()
+            } catch {
+                print("Error info: \(error)")
+            }
+
+            // Update the flag indicator
+            defaults.set(true, forKey: "hasRunBefore")
+            defaults.synchronize() // This forces the app to update userDefaults
+
+            // Run code here for the first launch
+
+        } else {
+            print("The app has been launched before. Loading UserDefaults...")
+            // Run code here for every other launch but the first
+        }
+    }
+    
     
     var body: some View {
         NavigationView {
