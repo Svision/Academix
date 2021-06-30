@@ -36,7 +36,6 @@ struct SignInView: View {
             }
             else {
                 // success
-                defaults.set(email, forKey: defaultsKeys.email)
             }
         }
     }
@@ -48,7 +47,7 @@ struct SignInView: View {
                     .font(.title)
                     .foregroundColor(.primary)
                 HStack {
-                    Image(systemName: "person")
+                    Image(systemName: "envelope")
                         .foregroundColor(.secondary)
                     TextField("Enter Email", text: $email)
                         .foregroundColor(.primary)

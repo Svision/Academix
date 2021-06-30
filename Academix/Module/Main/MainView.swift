@@ -26,6 +26,7 @@ class AppViewModel: ObservableObject {
             } else {
                 DispatchQueue.main.async {
                     self?.signedIn = true
+                    self?.defaults.set(email, forKey: defaultsKeys.email)
                 }
             }
         }
@@ -38,6 +39,7 @@ class AppViewModel: ObservableObject {
             } else {
                 DispatchQueue.main.async {
                     self?.signedIn = true
+                    self?.defaults.set(email, forKey: defaultsKeys.email)
                 }
             }
         }
@@ -47,6 +49,7 @@ class AppViewModel: ObservableObject {
         try? auth.signOut()
         
         self.signedIn = false
+        self.defaults.set("NONE", forKey: defaultsKeys.email)
     }
 }
 

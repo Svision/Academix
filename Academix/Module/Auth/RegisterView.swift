@@ -41,7 +41,6 @@ struct RegisterView: View {
                 alertMessage = viewModel.errorMessage!
             } else {
                 alertMessage = "Account created"
-                defaults.set(email, forKey: defaultsKeys.email)
             }
         }
     }
@@ -53,7 +52,7 @@ struct RegisterView: View {
                     .font(.title)
                     .foregroundColor(.primary)
                 HStack {
-                    Image(systemName: "person")
+                    Image(systemName: "envelope")
                         .foregroundColor(.secondary)
                     TextField("Enter Email", text: $email)
                         .foregroundColor(.primary)
