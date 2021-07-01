@@ -80,8 +80,8 @@ struct CoursesView: View {
 //    courses.append(course)
 //}
 
-private func getCourses() -> Array<CourseItem> {
-    return CourseItem.all
+private func getCourses() -> Array<CourseModel> {
+    return CourseModel.all
 }
 
 //private func fetchCourses() -> Array<CourseItem> {

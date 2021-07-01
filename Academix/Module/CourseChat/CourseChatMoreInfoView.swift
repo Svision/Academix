@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct CourseChatMoreInfoView: View {
-    let course: CourseItem
+    let course: CourseModel
     
     var body: some View {
         VStack {

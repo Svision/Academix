@@ -9,7 +9,7 @@ import SwiftUI
 import Combine
 
 struct CourseChatView: View {
-    @ObservedObject var course: CourseItem
+    @ObservedObject var course: CourseModel
     @State private var isMoreInfoViewActive: Bool = false
     
     var moreInfoView : some View {
@@ -46,7 +46,7 @@ struct CourseChatView: View {
         }
     }
     
-    init(course: CourseItem) {
+    init(course: CourseModel) {
         self.course = course
     }
     

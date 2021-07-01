@@ -1,5 +1,5 @@
 //
-//  CourseItem.swift
+//  CourseModel.swift
 //  Academix
 //
 //  Created by Changhao Song on 2021-06-24.
@@ -9,7 +9,7 @@ import Foundation
 import SwiftUI
 import Firebase
 
-class CourseItem: Hashable, Identifiable, ObservableObject {
+class CourseModel: Hashable, Identifiable, ObservableObject {
     let name: String
     let university: String
     let department: String
@@ -19,7 +19,7 @@ class CourseItem: Hashable, Identifiable, ObservableObject {
     var students: Array<User.ID> = []
     @Published var msgs: Array<Message> = []
     
-    static func == (lhs: CourseItem, rhs: CourseItem) -> Bool {
+    static func == (lhs: CourseModel, rhs: CourseModel) -> Bool {
         return lhs.id == rhs.id
     }
     
@@ -67,34 +67,34 @@ class CourseItem: Hashable, Identifiable, ObservableObject {
     }
 }
 
-extension CourseItem {
-    static let all: [CourseItem] = [cscc10, csc369, csc373, sta301, mat301]
+extension CourseModel {
+    static let all: [CourseModel] = [cscc10, csc369, csc373, sta301, mat301]
     
-    static let cscc10 = CourseItem(
+    static let cscc10 = CourseModel(
         university: "UofT",
         department: "CSC",
         courseCode: "C10"
     )
     
-    static let csc369 = CourseItem(
+    static let csc369 = CourseModel(
         university: "UofT",
         department: "CSC",
         courseCode: "369"
     )
     
-    static let csc373 = CourseItem(
+    static let csc373 = CourseModel(
         university: "UofT",
         department: "CSC",
         courseCode: "373"
     )
     
-    static let sta301 = CourseItem(
+    static let sta301 = CourseModel(
         university: "UofT",
         department: "STA",
         courseCode: "301"
     )
     
-    static let mat301 = CourseItem(
+    static let mat301 = CourseModel(
         university: "UofT",
         department: "MAT",
         courseCode: "301"

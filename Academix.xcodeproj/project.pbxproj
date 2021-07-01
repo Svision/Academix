@@ -24,11 +24,12 @@
 		4680290226843049000ADC22 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4680290126843049000ADC22 /* HomeView.swift */; };
 		4680290426843061000ADC22 /* FriendsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4680290326843061000ADC22 /* FriendsView.swift */; };
 		4680290626843070000ADC22 /* MeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4680290526843070000ADC22 /* MeView.swift */; };
-		46802908268449B4000ADC22 /* CourseItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46802907268449B4000ADC22 /* CourseItem.swift */; };
+		46802908268449B4000ADC22 /* CourseModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46802907268449B4000ADC22 /* CourseModel.swift */; };
 		46969C3826804CD000A82666 /* AcademixApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46969C3726804CD000A82666 /* AcademixApp.swift */; };
 		46969C3A26804CD000A82666 /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46969C3926804CD000A82666 /* MainView.swift */; };
 		46969C3C26804CD100A82666 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 46969C3B26804CD100A82666 /* Assets.xcassets */; };
 		46969C3F26804CD100A82666 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 46969C3E26804CD100A82666 /* Preview Assets.xcassets */; };
+		46A0CEE1268E59270017F2D6 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46A0CEE0268E59270017F2D6 /* AppDelegate.swift */; };
 		46B2CED62684D9B8009A006B /* CourseChatView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46B2CED52684D9B8009A006B /* CourseChatView.swift */; };
 		46B2CED92684F87F009A006B /* UserCourses.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 46B2CED72684F87F009A006B /* UserCourses.xcdatamodeld */; };
 		46C77643268BCBF500264401 /* FirebaseFirestoreSwift-Beta in Frameworks */ = {isa = PBXBuildFile; productRef = 46C77642268BCBF500264401 /* FirebaseFirestoreSwift-Beta */; };
@@ -70,13 +71,15 @@
 		4680290126843049000ADC22 /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
 		4680290326843061000ADC22 /* FriendsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendsView.swift; sourceTree = "<group>"; };
 		4680290526843070000ADC22 /* MeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MeView.swift; sourceTree = "<group>"; };
-		46802907268449B4000ADC22 /* CourseItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CourseItem.swift; sourceTree = "<group>"; };
+		46802907268449B4000ADC22 /* CourseModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CourseModel.swift; sourceTree = "<group>"; };
 		46969C3426804CD000A82666 /* Academix.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Academix.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		46969C3726804CD000A82666 /* AcademixApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AcademixApp.swift; sourceTree = "<group>"; };
 		46969C3926804CD000A82666 /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
 		46969C3B26804CD100A82666 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		46969C3E26804CD100A82666 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		46969C4026804CD100A82666 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		46A0CEE0268E59270017F2D6 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		46A0CEE2268E5AC80017F2D6 /* Academix.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Academix.entitlements; sourceTree = "<group>"; };
 		46B2CED52684D9B8009A006B /* CourseChatView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CourseChatView.swift; sourceTree = "<group>"; };
 		46B2CED82684F87F009A006B /* UserCourses.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = UserCourses.xcdatamodel; sourceTree = "<group>"; };
 		46C7764C268BCCFB00264401 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
@@ -126,7 +129,7 @@
 		461718B626863B80005F12F7 /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				46802907268449B4000ADC22 /* CourseItem.swift */,
+				46802907268449B4000ADC22 /* CourseModel.swift */,
 				46330FFC2685500600E63D68 /* User.swift */,
 				46330FFF2685502800E63D68 /* Message.swift */,
 				46E2E0402687CE210071649B /* Chat.swift */,
@@ -242,7 +245,9 @@
 		46969C3626804CD000A82666 /* Academix */ = {
 			isa = PBXGroup;
 			children = (
+				46A0CEE2268E5AC80017F2D6 /* Academix.entitlements */,
 				46969C3726804CD000A82666 /* AcademixApp.swift */,
+				46A0CEE0268E59270017F2D6 /* AppDelegate.swift */,
 				46969C3B26804CD100A82666 /* Assets.xcassets */,
 				461718C0268673B7005F12F7 /* Components */,
 				461718B726863B8F005F12F7 /* Module */,
@@ -370,7 +375,7 @@
 				4680290426843061000ADC22 /* FriendsView.swift in Sources */,
 				46E2E0492687D90F0071649B /* FriendsChatView.swift in Sources */,
 				46969C3A26804CD000A82666 /* MainView.swift in Sources */,
-				46802908268449B4000ADC22 /* CourseItem.swift in Sources */,
+				46802908268449B4000ADC22 /* CourseModel.swift in Sources */,
 				46F2E47226883AE5002DDE18 /* CourseChatMoreInfoView.swift in Sources */,
 				4680290226843049000ADC22 /* HomeView.swift in Sources */,
 				463A0CDA2689389A0028C55A /* String++.swift in Sources */,
@@ -389,6 +394,7 @@
 				46330FFD2685500600E63D68 /* User.swift in Sources */,
 				463A0CDC26893F0A0028C55A /* View++.swift in Sources */,
 				4680290026843000000ADC22 /* PlanView.swift in Sources */,
+				46A0CEE1268E59270017F2D6 /* AppDelegate.swift in Sources */,
 				46E2E0472687D8590071649B /* FriendsChatList.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -529,6 +535,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = Academix/Academix.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 8;
 				DEVELOPMENT_ASSET_PATHS = "\"Academix/Preview Content\"";
@@ -553,6 +560,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = Academix/Academix.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 8;
 				DEVELOPMENT_ASSET_PATHS = "\"Academix/Preview Content\"";

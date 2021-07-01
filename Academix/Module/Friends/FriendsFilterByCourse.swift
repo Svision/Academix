@@ -15,7 +15,7 @@ struct FriendsFilterByCourse: View {
         VStack {
             ScrollView(.horizontal, showsIndicators: false) {
                 HStack(spacing: spacing) {
-                    ForEach(CourseItem.all) { course in
+                    ForEach(CourseModel.all) { course in
                         Button(action: {
                             if selected == course.name {
                                 selected = ""

@@ -14,7 +14,7 @@ class User: Identifiable {
     var avatar: String
     var university: String
     let id: String // email == id
-    var courses: Array<CourseItem.ID>
+    var courses: Array<CourseModel.ID>
     
     // setting
     var major: String = ""
@@ -23,7 +23,7 @@ class User: Identifiable {
     // relation
     var friends: Array<User> = []
     
-    init(name: String, avatar: String, university: String, email: String, courses: Array<CourseItem.ID> = []) {
+    init(name: String, avatar: String, university: String, email: String, courses: Array<CourseModel.ID> = []) {
         self.name = name
         self.avatar = avatar
         self.university = university
@@ -104,7 +104,7 @@ extension User {
         avatar: "data_avatar1",
         university: "UofT",
         email: "changhao@academix.com",
-        courses: [CourseItem.cscc10.id, CourseItem.csc373.id, CourseItem.csc369.id]
+        courses: [CourseModel.cscc10.id, CourseModel.csc373.id, CourseModel.csc369.id]
     )
     
     static let amanda = User(
@@ -112,7 +112,7 @@ extension User {
         avatar: "data_avatar2",
         university: "UofT",
         email: "wenqing@academix.com",
-        courses: [CourseItem.csc373.id, CourseItem.sta301.id, CourseItem.mat301.id]
+        courses: [CourseModel.csc373.id, CourseModel.sta301.id, CourseModel.mat301.id]
     )
     
     static let sky = User(
@@ -120,7 +120,7 @@ extension User {
         avatar: "data_avatar3",
         university: "UofT",
         email: "sky@academix.com",
-        courses: [CourseItem.csc369.id, CourseItem.csc373.id]
+        courses: [CourseModel.csc369.id, CourseModel.csc373.id]
     )
     
     static let yuhong = User(
@@ -128,7 +128,7 @@ extension User {
         avatar: "data_avatar4",
         university: "UofT",
         email: "yuhong@academix.com",
-        courses: [CourseItem.cscc10.id]
+        courses: [CourseModel.cscc10.id]
     )
     
     static let meixuan = User(
@@ -136,7 +136,7 @@ extension User {
         avatar: "data_avatar5",
         university: "UofT",
         email: "meixuan@academix.com",
-        courses: [CourseItem.csc369.id, CourseItem.cscc10.id]
+        courses: [CourseModel.csc369.id, CourseModel.cscc10.id]
     )
     
     static let xiaoning = User(
@@ -144,7 +144,7 @@ extension User {
         avatar: "data_avatar6",
         university: "UofT",
         email: "xiaoning@academix.com",
-        courses: [CourseItem.cscc10.id]
+        courses: [CourseModel.cscc10.id]
     )
     
     static let yitong = User(
@@ -152,7 +152,7 @@ extension User {
         avatar: "data_avatar7",
         university: "UofT",
         email: "yitong@academix.com",
-        courses: [CourseItem.csc369.id]
+        courses: [CourseModel.csc369.id]
     )
     
     static let owen = User(
