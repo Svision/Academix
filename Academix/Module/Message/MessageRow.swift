@@ -15,7 +15,7 @@ struct MessageRow: View {
         HStack(alignment: .top, spacing: 8) {
             if isMe { Spacer() } else { Avatar(icon: User.findUser(id: message.sender).avatar) }
             
-            TextMessage(isMe: isMe, text: message.text ?? "")
+            TextMessage(isMe: isMe, text: message.text)
             
             if isMe {  Avatar(icon: User.findUser(id: message.sender).avatar) } else { Spacer() }
         }

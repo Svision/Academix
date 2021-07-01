@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct MessageList: View {
-    @State private var messages: [Message] = []
+    @Binding var messages: Array<Message>
     
     var body: some View {
         ScrollView {
@@ -21,7 +21,7 @@ struct MessageList: View {
                         
                         MessageRow(
                             message: message,
-                            isMe: message.sender == User.me.id
+                            isMe: message.sender == UserDefaults.standard.string(forKey: defaultsKeys.email)!
                         )
                         .id(message.id)
                     }
@@ -29,17 +29,11 @@ struct MessageList: View {
                 .background(Color("light_gray"))
                 .onChange(of: messages) { messages in
                     if let lastId = messages.last?.id {
-                        proxy.scrollTo(lastId) // scoll to last message onChange
+                        proxy.scrollTo(lastId, anchor: .bottom)// scoll to last message onChange
                     }
                 }
             }
         }
-        .onAppear(perform: load)
-    }
-    
-    func load() {
-        guard messages.isEmpty else { return }
-        messages = Message.all
     }
     
     struct Time: View {
@@ -55,8 +49,8 @@ struct MessageList: View {
     }
 }
 
-struct MessageView_Previews: PreviewProvider {
-    static var previews: some View {
-        MessageList()
-    }
-}
+//struct MessageView_Previews: PreviewProvider {
+//    static var previews: some View {
+//        MessageList()
+//    }
+//}

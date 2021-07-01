@@ -6,7 +6,6 @@
 //
 
 import Foundation
-import Firebase
 
 struct Message: Identifiable, Equatable, Hashable {
     static func == (lhs: Message, rhs: Message) -> Bool {
@@ -16,7 +15,7 @@ struct Message: Identifiable, Equatable, Hashable {
     var id = UUID().uuidString
     let timestamp: Date
     let sender: User.ID
-    let text: String?
+    var text: String = ""
     
     enum CodingKeys: String, CodingKey {
         case id
@@ -28,12 +27,6 @@ struct Message: Identifiable, Equatable, Hashable {
     func hash(into hasher: inout Hasher) {
         hasher.combine(id)
     }
-    
-//    func send() {
-//        let db = Firestore.firestore()
-//        let uid = Auth.auth().currentUser?.uid
-//
-//    }
 }
 
 extension Message {

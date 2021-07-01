@@ -9,7 +9,7 @@ import SwiftUI
 import Combine
 
 struct CourseChatView: View {
-    let course: CourseItem
+    @ObservedObject var course: CourseItem
     @State private var isMoreInfoViewActive: Bool = false
     
     var moreInfoView : some View {
@@ -31,7 +31,8 @@ struct CourseChatView: View {
         GeometryReader { proxy in
             VStack(spacing: 0) {
                 Separator(color: Color("navigation_separator"))
-                MessageList()
+                MessageList(messages: $course.msgs)
+                    .onAppear(perform: loadMessages)
                 ChatSendBar(proxy: proxy)
             }
             .edgesIgnoringSafeArea(.bottom)
@@ -44,10 +45,18 @@ struct CourseChatView: View {
             self.endTextEditing()
         }
     }
-}
-
-struct CourseDiscussionView_Previews: PreviewProvider {
-    static var previews: some View {
-        NavigationView { CourseChatView(course: .cscc10) }
+    
+    init(course: CourseItem) {
+        self.course = course
+    }
+    
+    func loadMessages() {
+        course.readAllMsgs()
     }
 }
+
+//struct CourseDiscussionView_Previews: PreviewProvider {
+//    static var previews: some View {
+//        NavigationView { CourseChatView(course: .cscc10) }
+//    }
+//}

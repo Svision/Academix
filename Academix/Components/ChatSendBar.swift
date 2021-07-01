@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import Firebase
 
 struct ChatSendBar: View {
     let proxy: GeometryProxy
@@ -32,7 +33,7 @@ struct ChatSendBar: View {
                 }
                 else {
                     Button(action: {
-                        // TODO: send
+                        sendMsg(message: Message(timestamp: Date(), sender: UserDefaults.standard.string(forKey: defaultsKeys.email)!, text: text))
                         text = ""
                     }, label: {
                         Text("Send")
@@ -72,6 +73,23 @@ struct ChatSendBar: View {
                 }
             }
             .frame(height: proxy.safeAreaInsets.bottom + 56)
+        }
+    }
+}
+
+func sendMsg(message: Message) {
+    let db = Firestore.firestore()
+//        let uid = Auth.auth().currentUser?.uid
+    db.collection("Msgs").document().setData([
+        "sender": message.sender,
+        "text": message.text,
+        "timestamp": Timestamp(date: message.timestamp)
+    ]) { err in
+        if err != nil {
+            print(err!.localizedDescription)
+            return
+        } else {
+            print("successfully send")
         }
     }
 }

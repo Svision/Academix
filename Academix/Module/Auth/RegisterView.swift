@@ -58,6 +58,7 @@ struct RegisterView: View {
                         .foregroundColor(.primary)
                         .keyboardType(.emailAddress)
                         .autocapitalization(.none)
+                        .disableAutocorrection(true)
                 }
                 .padding()
                 .overlay(

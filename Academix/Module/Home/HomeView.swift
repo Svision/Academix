@@ -20,10 +20,7 @@ struct HomeView: View {
                     Text("Courses")
                         .font(.title2)
                         .bold()
-                        .background(RoundedRectangle(cornerRadius: 25.0)
-                                        .stroke()
-                                        .frame(width: 150, height: 50)
-                        )
+                        .foregroundColor(Color(red: 71/255, green: 192/255, blue: 231/255))
                         .frame(width: 150, height: 60)
                         .padding(.top, geometry.size.height / 12)
                     

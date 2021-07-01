@@ -9,7 +9,7 @@ import Foundation
 import SwiftUI
 import Firebase
 
-struct CourseItem: Hashable, Identifiable {
+class CourseItem: Hashable, Identifiable, ObservableObject {
     let name: String
     let university: String
     let department: String
@@ -17,13 +17,11 @@ struct CourseItem: Hashable, Identifiable {
     let courseDesc: String
     var id: String
     var students: Array<User.ID> = []
-    let ref = Firestore.firestore()
-    @State var msgs: Array<Message> = []
+    @Published var msgs: Array<Message> = []
     
     static func == (lhs: CourseItem, rhs: CourseItem) -> Bool {
         return lhs.id == rhs.id
     }
-    
     
     init(university: String, department: String, courseCode: String) {
         self.name = department + courseCode
@@ -38,7 +36,8 @@ struct CourseItem: Hashable, Identifiable {
         hasher.combine(name)
     }
     
-    func readAll() {
+    func readAllMsgs() {
+        let ref = Firestore.firestore()
         ref.collection("Msgs").addSnapshotListener { snap, err in
             if err != nil {
                 print(err!.localizedDescription)
@@ -51,11 +50,16 @@ struct CourseItem: Hashable, Identifiable {
                 if doc.type == .added {
                     let id = doc.document.documentID
                     let text = doc.document.get("text") as! String
-                    let sender = doc.document.get("user") as! String
-                    let timestamp = doc.document.get("timestamp") as! Date
+                    let sender = doc.document.get("sender") as! String
+                    let timestamp: Timestamp = doc.document.get("timestamp") as! Timestamp
 
                     DispatchQueue.main.async {
-                        self.msgs.append(Message(id: id, timestamp: timestamp, sender: sender, text: text))
+                        let msg = Message(id: id, timestamp: timestamp.dateValue(), sender: sender, text: text)
+                        if !self.msgs.contains(msg) {
+                            self.msgs.append(msg)
+                        }
+                        // TODO: tmp solution
+                        self.msgs.sort(by: {$0.timestamp < $1.timestamp} )
                     }
                 }
             }
