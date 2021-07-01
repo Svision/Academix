@@ -13,11 +13,12 @@
 		461807462686C0830001252C /* UIViewController++.swift in Sources */ = {isa = PBXBuildFile; fileRef = 461807452686C0830001252C /* UIViewController++.swift */; };
 		46330FFD2685500600E63D68 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46330FFC2685500600E63D68 /* User.swift */; };
 		463310002685502800E63D68 /* Message.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46330FFF2685502800E63D68 /* Message.swift */; };
-		463310022685508F00E63D68 /* MessageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 463310012685508F00E63D68 /* MessageView.swift */; };
+		463310022685508F00E63D68 /* MessageList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 463310012685508F00E63D68 /* MessageList.swift */; };
 		4633100726855C2F00E63D68 /* UINavigationController++.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4633100626855C2F00E63D68 /* UINavigationController++.swift */; };
 		463A0CD826884F5F0028C55A /* AddNewFriendView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 463A0CD726884F5F0028C55A /* AddNewFriendView.swift */; };
 		463A0CDA2689389A0028C55A /* String++.swift in Sources */ = {isa = PBXBuildFile; fileRef = 463A0CD92689389A0028C55A /* String++.swift */; };
 		463A0CDC26893F0A0028C55A /* View++.swift in Sources */ = {isa = PBXBuildFile; fileRef = 463A0CDB26893F0A0028C55A /* View++.swift */; };
+		464F368D268D150D00C32FC2 /* MessageRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 464F368C268D150D00C32FC2 /* MessageRow.swift */; };
 		4663D5CD268A81F3008C0256 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 4663D5CF268A81F3008C0256 /* Localizable.strings */; };
 		4680290026843000000ADC22 /* PlanView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 468028FF26843000000ADC22 /* PlanView.swift */; };
 		4680290226843049000ADC22 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4680290126843049000ADC22 /* HomeView.swift */; };
@@ -57,11 +58,12 @@
 		461807452686C0830001252C /* UIViewController++.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController++.swift"; sourceTree = "<group>"; };
 		46330FFC2685500600E63D68 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		46330FFF2685502800E63D68 /* Message.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Message.swift; sourceTree = "<group>"; };
-		463310012685508F00E63D68 /* MessageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageView.swift; sourceTree = "<group>"; };
+		463310012685508F00E63D68 /* MessageList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageList.swift; sourceTree = "<group>"; };
 		4633100626855C2F00E63D68 /* UINavigationController++.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UINavigationController++.swift"; sourceTree = "<group>"; };
 		463A0CD726884F5F0028C55A /* AddNewFriendView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddNewFriendView.swift; sourceTree = "<group>"; };
 		463A0CD92689389A0028C55A /* String++.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String++.swift"; sourceTree = "<group>"; };
 		463A0CDB26893F0A0028C55A /* View++.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "View++.swift"; sourceTree = "<group>"; };
+		464F368C268D150D00C32FC2 /* MessageRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageRow.swift; sourceTree = "<group>"; };
 		4663D5CE268A81F3008C0256 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		4663D5D0268A81F9008C0256 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/Localizable.strings"; sourceTree = "<group>"; };
 		468028FF26843000000ADC22 /* PlanView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlanView.swift; sourceTree = "<group>"; };
@@ -215,7 +217,8 @@
 		463310032685509900E63D68 /* Message */ = {
 			isa = PBXGroup;
 			children = (
-				463310012685508F00E63D68 /* MessageView.swift */,
+				463310012685508F00E63D68 /* MessageList.swift */,
+				464F368C268D150D00C32FC2 /* MessageRow.swift */,
 			);
 			path = Message;
 			sourceTree = "<group>";
@@ -354,7 +357,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				463310022685508F00E63D68 /* MessageView.swift in Sources */,
+				463310022685508F00E63D68 /* MessageList.swift in Sources */,
 				46C77653268C1D6C00264401 /* defaultsKeys.swift in Sources */,
 				461718C5268676D9005F12F7 /* UIImage++.swift in Sources */,
 				46C77651268C119F00264401 /* RegisterView.swift in Sources */,
@@ -377,6 +380,7 @@
 				46C7764F268BD1CE00264401 /* SignInView.swift in Sources */,
 				46F2E4702688353A002DDE18 /* FriendsMoreInfoView.swift in Sources */,
 				463A0CD826884F5F0028C55A /* AddNewFriendView.swift in Sources */,
+				464F368D268D150D00C32FC2 /* MessageRow.swift in Sources */,
 				461718BF26867391005F12F7 /* ChatSendBar.swift in Sources */,
 				463310002685502800E63D68 /* Message.swift in Sources */,
 				46969C3826804CD000A82666 /* AcademixApp.swift in Sources */,

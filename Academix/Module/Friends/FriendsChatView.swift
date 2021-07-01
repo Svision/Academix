@@ -31,7 +31,7 @@ struct FriendsChatView: View {
             VStack(spacing: 0) {
                 Separator(color: Color("navigation_separator"))
                 Spacer()
-                Text(chat.desc)
+                MessageList()
                 Spacer()
                 ChatSendBar(proxy: proxy)
             }

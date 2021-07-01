@@ -6,14 +6,15 @@
 //
 
 import Foundation
+import Firebase
 
-class User: ObservableObject, Identifiable {
+class User: Identifiable {
     // basic info
-    @Published var name: String
+    var name: String
     var avatar: String
     var university: String
     let id: String // email == id
-    var courses: Array<CourseItem>
+    var courses: Array<CourseItem.ID>
     
     // setting
     var major: String = ""
@@ -22,7 +23,7 @@ class User: ObservableObject, Identifiable {
     // relation
     var friends: Array<User> = []
     
-    init(name: String, avatar: String, university: String, email: String, courses: Array<CourseItem> = []) {
+    init(name: String, avatar: String, university: String, email: String, courses: Array<CourseItem.ID> = []) {
         self.name = name
         self.avatar = avatar
         self.university = university
@@ -33,75 +34,132 @@ class User: ObservableObject, Identifiable {
     func getCoursesString() -> String {
         if courses.count == 0 { return "" }
         var coursesString: String = ""
-        for course in courses {
-            coursesString += "\(course.name), "
+        for courseId in courses {
+            let courseIdArr = courseId.components(separatedBy: ".")
+            coursesString += "\(courseIdArr[1])\(courseIdArr[2]), "
         }
         return coursesString.subString(to: coursesString.count - 2)
+    }
+    
+    static func getById(id: String, completion: @escaping (User) -> Void) {
+        let db = Firestore.firestore()
+        
+        db.collection("Users").getDocuments { snap, err in
+            if err != nil {
+                print((err?.localizedDescription)!)
+                return
+            }
+            if (snap?.documents.isEmpty)! {
+                return
+            }
+            for user in snap!.documents {
+                if id == user.documentID {
+                    let name = user.get("name") as! String
+                    let university = user.get("university") as! String
+                    let avatar = user.get("avatar") as! String
+                    let courses = user.get("courses") as! Array<String>
+                    completion(User(name: name, avatar: avatar, university: university, email: id, courses: courses))
+                }
+                else {
+                    return
+                }
+            }
+        }
     }
 }
 
 extension User {
+    static let all: Array<User> = [
+        .me,
+        .amanda,
+        .sky,
+        .yuhong,
+        .meixuan,
+        .xiaoning,
+        .yitong,
+        .owen,
+        .leon,
+        .bill
+    ]
+    
+    static func findUser(id: String) -> User {
+        for user in User.all {
+            if user.id == id {
+                return user
+            }
+        }
+        return .guest
+    }
+    
+    static let guest = User(
+        name: "Guest",
+        avatar: "data_avatar1",
+        university: "undefined",
+        email: "guest@academix.com",
+        courses: []
+    )
+    
     static let me = User(
         name: "Changhao",
         avatar: "data_avatar1",
         university: "UofT",
-        email: "changhao.song@mail.utoronto.ca",
-        courses: CourseItem.all
+        email: "changhao@academix.com",
+        courses: [CourseItem.cscc10.id, CourseItem.csc373.id, CourseItem.csc369.id]
     )
     
     static let amanda = User(
         name: "Sweety🍬",
         avatar: "data_avatar2",
         university: "UofT",
-        email: "@mail.utoronto.ca",
-        courses: [.csc373, .sta301, .mat301]
+        email: "wenqing@academix.com",
+        courses: [CourseItem.csc373.id, CourseItem.sta301.id, CourseItem.mat301.id]
     )
     
     static let sky = User(
         name: "sky",
         avatar: "data_avatar3",
         university: "UofT",
-        email: "@mail.utoronto.ca",
-        courses: [.csc369, .csc373]
+        email: "sky@academix.com",
+        courses: [CourseItem.csc369.id, CourseItem.csc373.id]
     )
     
     static let yuhong = User(
         name: "Yuhong",
         avatar: "data_avatar4",
         university: "UofT",
-        email: "@mail.utoronto.ca",
-        courses: [.cscc10]
+        email: "yuhong@academix.com",
+        courses: [CourseItem.cscc10.id]
     )
     
     static let meixuan = User(
         name: "Meixuan",
         avatar: "data_avatar5",
         university: "UofT",
-        email: "@mail.utoronto.ca",
-        courses: [.csc369, .cscc10]
+        email: "meixuan@academix.com",
+        courses: [CourseItem.csc369.id, CourseItem.cscc10.id]
     )
     
     static let xiaoning = User(
         name: "Xiaoning",
         avatar: "data_avatar6",
         university: "UofT",
-        email: "@mail.utoronto.ca",
-        courses: [.cscc10]
+        email: "xiaoning@academix.com",
+        courses: [CourseItem.cscc10.id]
     )
     
     static let yitong = User(
         name: "Yitong",
         avatar: "data_avatar7",
         university: "UofT",
-        email: "@mail.utoronto.ca",
-        courses: [.cscc10]
+        email: "yitong@academix.com",
+        courses: [CourseItem.csc369.id]
     )
     
     static let owen = User(
         name: "Owen",
         avatar: "data_avatar8",
         university: "McMaster",
-        email: "@mcmaster.ca"
+        email: "owen@academix.com"
     )
     
 
@@ -109,13 +167,13 @@ extension User {
         name: "Leon",
         avatar: "data_avatar10",
         university: "UofT",
-        email: "@mail.utoronto.ca"
+        email: "leon@academix.com"
     )
     
     static let bill = User(
         name: "Bill",
         avatar: "data_avatar9",
         university: "University of Melbourne",
-        email: "@melbourne.au"
+        email: "bill@academix.com"
     )
 }

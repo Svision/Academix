@@ -6,25 +6,42 @@
 //
 
 import Foundation
+import Firebase
 
-struct Message: Identifiable, Equatable  {
-    var id = UUID()
-    let createdAt: Double?
-    let image: Media?
-    let user: User
-    let text: String?
-    let type: MessageType
-    let voice: String?
-    let video: Media?
-    
+struct Message: Identifiable, Equatable, Hashable {
     static func == (lhs: Message, rhs: Message) -> Bool {
         lhs.id == rhs.id
     }
+
+    var id = UUID().uuidString
+    let timestamp: Date
+    let sender: User.ID
+    let text: String?
     
-    enum MessageType: String, Codable, Equatable {
+    enum CodingKeys: String, CodingKey {
+        case id
         case text
-        case image
-        case voice
-        case video
+        case sender
+        case timestamp
     }
+    
+    func hash(into hasher: inout Hasher) {
+        hasher.combine(id)
+    }
+    
+//    func send() {
+//        let db = Firestore.firestore()
+//        let uid = Auth.auth().currentUser?.uid
+//
+//    }
+}
+
+extension Message {
+    static let all: [Message] = [
+        Message(
+            timestamp: Date(),
+            sender: User.guest.id,
+            text: Chat.me.desc
+        )
+    ]
 }
