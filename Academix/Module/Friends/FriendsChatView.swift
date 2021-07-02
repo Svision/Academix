@@ -33,7 +33,7 @@ struct FriendsChatView: View {
                 Spacer()
 //                MessageList()
                 Spacer()
-                ChatSendBar(proxy: proxy)
+                ChatSendBar(proxy: proxy, toCourses: false, receiver: chat.sender.id)
             }
             .edgesIgnoringSafeArea(.bottom)
         }

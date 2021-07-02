@@ -32,8 +32,8 @@ struct CourseChatView: View {
             VStack(spacing: 0) {
                 Separator(color: Color("navigation_separator"))
                 MessageList(messages: $course.msgs)
-                    .onAppear(perform: loadMessages)
-                ChatSendBar(proxy: proxy)
+                    .onAppear(perform: { course.readAllMsgs() })
+                ChatSendBar(proxy: proxy, toCourses: true, receiver: course.id)
             }
             .edgesIgnoringSafeArea(.bottom)
         }
@@ -50,9 +50,6 @@ struct CourseChatView: View {
         self.course = course
     }
     
-    func loadMessages() {
-        course.readAllMsgs()
-    }
 }
 
 //struct CourseDiscussionView_Previews: PreviewProvider {

@@ -38,7 +38,8 @@ class CourseModel: Hashable, Identifiable, ObservableObject {
     
     func readAllMsgs() {
         let ref = Firestore.firestore()
-        ref.collection("Msgs").addSnapshotListener { snap, err in
+        ref.collection("Messages").document("Messages").collection("Courses")
+            .document(id).collection(id).order(by: "timestamp").addSnapshotListener { snap, err in
             if err != nil {
                 print(err!.localizedDescription)
                 return
@@ -58,8 +59,6 @@ class CourseModel: Hashable, Identifiable, ObservableObject {
                         if !self.msgs.contains(msg) {
                             self.msgs.append(msg)
                         }
-                        // TODO: tmp solution
-                        self.msgs.sort(by: {$0.timestamp < $1.timestamp} )
                     }
                 }
             }

@@ -93,7 +93,7 @@ extension User {
     
     static let guest = User(
         name: "Guest",
-        avatar: "data_avatar1",
+        avatar: "data_avatar0",
         university: "undefined",
         email: "guest@academix.com",
         courses: []

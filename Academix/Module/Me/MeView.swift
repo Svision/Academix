@@ -18,8 +18,14 @@ struct MeView: View {
                 VStack(spacing: 0) {
                     Separator(color: Color("navigation_separator"))
                     Spacer()
+                    Image(User.findUser(id: defaults.string(forKey: defaultsKeys.email)!).avatar)
+                        .resizable()
+                        .clipShape(Circle())
+                        .frame(width: 100, height: 100)
+                        .overlay(Circle().stroke())
+                        .padding()
                     Text("My email: \(defaults.string(forKey: defaultsKeys.email)!)")
-                    Spacer()
+                        .padding()
                     Button(action: {
                         viewModel.signOut()
                     }) {
@@ -30,6 +36,7 @@ struct MeView: View {
                     .foregroundColor(.red)
                     .cornerRadius(10)
                     .padding()
+                    Spacer()
                 }
             }
         }

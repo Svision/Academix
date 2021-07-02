@@ -10,6 +10,8 @@ import Firebase
 
 struct ChatSendBar: View {
     let proxy: GeometryProxy
+    let toCourses: Bool
+    let receiver: String
     
     @State private var text: String = ""
     
@@ -75,32 +77,38 @@ struct ChatSendBar: View {
             .frame(height: proxy.safeAreaInsets.bottom + 56)
         }
     }
-}
-
-func sendMsg(message: Message) {
-    let db = Firestore.firestore()
-//        let uid = Auth.auth().currentUser?.uid
-    db.collection("Msgs").document().setData([
-        "sender": message.sender,
-        "text": message.text,
-        "timestamp": Timestamp(date: message.timestamp)
-    ]) { err in
-        if err != nil {
-            print(err!.localizedDescription)
+    
+    func sendMsg(message: Message) {
+        let db = Firestore.firestore()
+        let to = toCourses ? "Courses" : "DMs"
+        if !toCourses {
+            // TODO: send to user
             return
-        } else {
-            print("successfully send")
         }
-    }
-}
-
-struct ChatSendBar_Previews: PreviewProvider {
-    static var previews: some View {
-        GeometryReader {geometry in
-            VStack {
-                Spacer()
-                ChatSendBar(proxy: geometry)
+        db.collection("Messages").document("Messages").collection(to).document(receiver).collection(receiver).document().setData([
+            "sender": message.sender,
+            "text": message.text,
+            "timestamp": Timestamp(date: message.timestamp)
+        ]) { err in
+            if err != nil {
+                print(err!.localizedDescription)
+                return
+            } else {
+                print("successfully send")
             }
         }
     }
 }
+
+
+
+//struct ChatSendBar_Previews: PreviewProvider {
+//    static var previews: some View {
+//        GeometryReader {geometry in
+//            VStack {
+//                Spacer()
+//                ChatSendBar(proxy: geometry)
+//            }
+//        }
+//    }
+//}

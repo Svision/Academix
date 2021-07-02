@@ -15,21 +15,30 @@ struct MessageList: View {
             ScrollViewReader { proxy in
                 LazyVStack(spacing: 0) {
                     ForEach(messages) { message in
-                        if let createdAt = message.timestamp {
-                            Time(date: createdAt)
+                        VStack(spacing: 0){
+                            if firstTime(message: message) {
+                                Time(date: message.timestamp)
+                            }
+                            
+                            MessageRow(
+                                message: message,
+                                isMe: message.sender == UserDefaults.standard.string(forKey: defaultsKeys.email)!
+                            )
                         }
-                        
-                        MessageRow(
-                            message: message,
-                            isMe: message.sender == UserDefaults.standard.string(forKey: defaultsKeys.email)!
-                        )
                         .id(message.id)
                     }
                 }
                 .background(Color("light_gray"))
+                .onAppear {
+                    withAnimation {
+                        proxy.scrollTo(messages.last?.id, anchor: .bottom)
+                    }
+                }
                 .onChange(of: messages) { messages in
                     if let lastId = messages.last?.id {
-                        proxy.scrollTo(lastId, anchor: .bottom)// scoll to last message onChange
+                        withAnimation {
+                            proxy.scrollTo(lastId, anchor: .bottom)// scoll to last message onChange
+                        }
                     }
                 }
             }
@@ -47,6 +56,16 @@ struct MessageList: View {
                 .padding(.vertical, 4)
         }
     }
+    
+    func firstTime(message: Message) -> Bool {
+        for msg in messages {
+            if msg.timestamp.formatString == message.timestamp.formatString && msg.timestamp >= message.timestamp && msg.id != message.id {
+                return false
+            }
+        }
+        return true
+    }
+    
 }
 
 //struct MessageView_Previews: PreviewProvider {
