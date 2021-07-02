@@ -19,6 +19,9 @@
 		463A0CDA2689389A0028C55A /* String++.swift in Sources */ = {isa = PBXBuildFile; fileRef = 463A0CD92689389A0028C55A /* String++.swift */; };
 		463A0CDC26893F0A0028C55A /* View++.swift in Sources */ = {isa = PBXBuildFile; fileRef = 463A0CDB26893F0A0028C55A /* View++.swift */; };
 		464F368D268D150D00C32FC2 /* MessageRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 464F368C268D150D00C32FC2 /* MessageRow.swift */; };
+		465E61EC268F6EDC00AC2D47 /* NotificationNumLable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 465E61EB268F6EDC00AC2D47 /* NotificationNumLable.swift */; };
+		465E61EE268F6FF900AC2D47 /* CoursesContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 465E61ED268F6FF900AC2D47 /* CoursesContainer.swift */; };
+		465E61F0268F925700AC2D47 /* CourseEntry.swift in Sources */ = {isa = PBXBuildFile; fileRef = 465E61EF268F925700AC2D47 /* CourseEntry.swift */; };
 		4663D5CD268A81F3008C0256 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 4663D5CF268A81F3008C0256 /* Localizable.strings */; };
 		4680290026843000000ADC22 /* PlanView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 468028FF26843000000ADC22 /* PlanView.swift */; };
 		4680290226843049000ADC22 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4680290126843049000ADC22 /* HomeView.swift */; };
@@ -40,7 +43,7 @@
 		46C77651268C119F00264401 /* RegisterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46C77650268C119F00264401 /* RegisterView.swift */; };
 		46C77653268C1D6C00264401 /* defaultsKeys.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46C77652268C1D6C00264401 /* defaultsKeys.swift */; };
 		46E2E03F2687CCA70071649B /* FriendsChatRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46E2E03E2687CCA70071649B /* FriendsChatRow.swift */; };
-		46E2E0412687CE210071649B /* Chat.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46E2E0402687CE210071649B /* Chat.swift */; };
+		46E2E0412687CE210071649B /* FriendChat.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46E2E0402687CE210071649B /* FriendChat.swift */; };
 		46E2E0432687CF680071649B /* FriendsFilterByCourse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46E2E0422687CF680071649B /* FriendsFilterByCourse.swift */; };
 		46E2E0452687D3C40071649B /* Date++.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46E2E0442687D3C40071649B /* Date++.swift */; };
 		46E2E0472687D8590071649B /* FriendsChatList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46E2E0462687D8590071649B /* FriendsChatList.swift */; };
@@ -63,6 +66,9 @@
 		463A0CD92689389A0028C55A /* String++.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String++.swift"; sourceTree = "<group>"; };
 		463A0CDB26893F0A0028C55A /* View++.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "View++.swift"; sourceTree = "<group>"; };
 		464F368C268D150D00C32FC2 /* MessageRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageRow.swift; sourceTree = "<group>"; };
+		465E61EB268F6EDC00AC2D47 /* NotificationNumLable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationNumLable.swift; sourceTree = "<group>"; };
+		465E61ED268F6FF900AC2D47 /* CoursesContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoursesContainer.swift; sourceTree = "<group>"; };
+		465E61EF268F925700AC2D47 /* CourseEntry.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CourseEntry.swift; sourceTree = "<group>"; };
 		4663D5CE268A81F3008C0256 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		4663D5D0268A81F9008C0256 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/Localizable.strings"; sourceTree = "<group>"; };
 		468028FF26843000000ADC22 /* PlanView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlanView.swift; sourceTree = "<group>"; };
@@ -85,7 +91,7 @@
 		46C77650268C119F00264401 /* RegisterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterView.swift; sourceTree = "<group>"; };
 		46C77652268C1D6C00264401 /* defaultsKeys.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = defaultsKeys.swift; sourceTree = "<group>"; };
 		46E2E03E2687CCA70071649B /* FriendsChatRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendsChatRow.swift; sourceTree = "<group>"; };
-		46E2E0402687CE210071649B /* Chat.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Chat.swift; sourceTree = "<group>"; };
+		46E2E0402687CE210071649B /* FriendChat.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendChat.swift; sourceTree = "<group>"; };
 		46E2E0422687CF680071649B /* FriendsFilterByCourse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendsFilterByCourse.swift; sourceTree = "<group>"; };
 		46E2E0442687D3C40071649B /* Date++.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date++.swift"; sourceTree = "<group>"; };
 		46E2E0462687D8590071649B /* FriendsChatList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendsChatList.swift; sourceTree = "<group>"; };
@@ -126,9 +132,10 @@
 			isa = PBXGroup;
 			children = (
 				46802907268449B4000ADC22 /* CourseModel.swift */,
+				465E61ED268F6FF900AC2D47 /* CoursesContainer.swift */,
 				46330FFC2685500600E63D68 /* User.swift */,
 				46330FFF2685502800E63D68 /* Message.swift */,
-				46E2E0402687CE210071649B /* Chat.swift */,
+				46E2E0402687CE210071649B /* FriendChat.swift */,
 				46E2E04A2687DE030071649B /* Media.swift */,
 			);
 			path = Model;
@@ -184,6 +191,7 @@
 			children = (
 				46B2CED52684D9B8009A006B /* CourseChatView.swift */,
 				46F2E47126883AE5002DDE18 /* CourseChatMoreInfoView.swift */,
+				465E61EF268F925700AC2D47 /* CourseEntry.swift */,
 			);
 			path = CourseChat;
 			sourceTree = "<group>";
@@ -209,6 +217,7 @@
 			children = (
 				461718BE26867391005F12F7 /* ChatSendBar.swift */,
 				461718C1268673D2005F12F7 /* Separator.swift */,
+				465E61EB268F6EDC00AC2D47 /* NotificationNumLable.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -368,10 +377,12 @@
 				46C77653268C1D6C00264401 /* defaultsKeys.swift in Sources */,
 				461718C5268676D9005F12F7 /* UIImage++.swift in Sources */,
 				46C77651268C119F00264401 /* RegisterView.swift in Sources */,
-				46E2E0412687CE210071649B /* Chat.swift in Sources */,
+				46E2E0412687CE210071649B /* FriendChat.swift in Sources */,
 				4680290626843070000ADC22 /* MeView.swift in Sources */,
 				46E2E0452687D3C40071649B /* Date++.swift in Sources */,
 				461718C2268673D2005F12F7 /* Separator.swift in Sources */,
+				465E61EC268F6EDC00AC2D47 /* NotificationNumLable.swift in Sources */,
+				465E61F0268F925700AC2D47 /* CourseEntry.swift in Sources */,
 				46E2E03F2687CCA70071649B /* FriendsChatRow.swift in Sources */,
 				46E2E0432687CF680071649B /* FriendsFilterByCourse.swift in Sources */,
 				4680290426843061000ADC22 /* FriendsView.swift in Sources */,
@@ -395,6 +406,7 @@
 				46B2CED92684F87F009A006B /* UserCourses.xcdatamodeld in Sources */,
 				46330FFD2685500600E63D68 /* User.swift in Sources */,
 				463A0CDC26893F0A0028C55A /* View++.swift in Sources */,
+				465E61EE268F6FF900AC2D47 /* CoursesContainer.swift in Sources */,
 				4680290026843000000ADC22 /* PlanView.swift in Sources */,
 				46A0CEE1268E59270017F2D6 /* AppDelegate.swift in Sources */,
 				46E2E0472687D8590071649B /* FriendsChatList.swift in Sources */,

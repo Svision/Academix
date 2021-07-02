@@ -82,7 +82,7 @@ struct ChatSendBar: View {
         let to = toCourses ? "Courses" : "DMs"
         let dbMsg = Firestore.firestore().collection("Messages").document("Messages").collection(to)
         let dest = toCourses ? receiver : (message.sender < receiver ? "\(message.sender)&\(receiver)" : "\(receiver)&\(message.sender)")
-        
+                
         dbMsg.document(dest).collection(dest).document().setData([
             "sender": message.sender,
             "text": message.text,
@@ -93,6 +93,9 @@ struct ChatSendBar: View {
                 return
             } else {
                 print("successfully send")
+                if to == "DMs" {
+                    // notification
+                }
             }
         }
 

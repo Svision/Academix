@@ -34,7 +34,7 @@ extension Message {
         Message(
             timestamp: Date(),
             sender: User.guest.id,
-            text: Chat.me.desc
+            text: FriendChat.me.lastMessage().text
         )
     ]
 }

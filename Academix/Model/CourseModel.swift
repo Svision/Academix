@@ -18,6 +18,7 @@ class CourseModel: Hashable, Identifiable, ObservableObject {
     var id: String
     var students: Array<User.ID> = []
     @Published var msgs: Array<Message> = []
+    @Published var unreadMessages: Int = 0
     
     static func == (lhs: CourseModel, rhs: CourseModel) -> Bool {
         return lhs.id == rhs.id
@@ -58,6 +59,7 @@ class CourseModel: Hashable, Identifiable, ObservableObject {
                         let msg = Message(id: id, timestamp: timestamp.dateValue(), sender: sender, text: text)
                         if !self.msgs.contains(msg) {
                             self.msgs.append(msg)
+                            self.unreadMessages += 1
                         }
                     }
                 }
@@ -67,7 +69,7 @@ class CourseModel: Hashable, Identifiable, ObservableObject {
 }
 
 extension CourseModel {
-    static let all: [CourseModel] = [cscc10, csc369, csc373, sta301, mat301]
+    static var all: [CourseModel] = [cscc10, csc369, csc373, sta301, mat301]
     
     static let cscc10 = CourseModel(
         university: "UofT",

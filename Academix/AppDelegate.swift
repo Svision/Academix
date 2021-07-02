@@ -33,8 +33,7 @@ extension AppDelegate: UNUserNotificationCenterDelegate {
         _ center: UNUserNotificationCenter,
         willPresent notification: UNNotification,
         withCompletionHandler completionHandler:
-        @escaping (UNNotificationPresentationOptions) -> Void
-    ) {
+        @escaping (UNNotificationPresentationOptions) -> Void) {
 //        process(notification)
         completionHandler([[.banner, .sound]])
     }
@@ -42,18 +41,16 @@ extension AppDelegate: UNUserNotificationCenterDelegate {
     func userNotificationCenter(
         _ center: UNUserNotificationCenter,
         didReceive response: UNNotificationResponse,
-        withCompletionHandler completionHandler: @escaping () -> Void
-    ) {
+        withCompletionHandler completionHandler: @escaping () -> Void) {
 //        process(response.notification)
         completionHandler()
     }
     
     func application(
         _ application: UIApplication,
-        didRegisterForRemoteNotificationsWithDeviceToken deviceToken: Data
-    ) {
-        Messaging.messaging().apnsToken = deviceToken
-    }
+        didRegisterForRemoteNotificationsWithDeviceToken deviceToken: Data) {
+            Messaging.messaging().apnsToken = deviceToken
+        }
     
 //    private func process(_ notification: UNNotification) {
 //      let userInfo = notification.request.content.userInfo

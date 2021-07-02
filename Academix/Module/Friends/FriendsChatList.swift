@@ -8,20 +8,19 @@
 import SwiftUI
 
 struct FriendsChatList: View {
-    @State private var chats: [Chat] = []
+    @State private var chats: [FriendChat] = []
     @Binding var selected: String
     
-    @ViewBuilder
     var body: some View {
         ScrollView {
             LazyVStack(spacing: 0) {
                 ForEach(chats) { chat in
-                    NavigationLink(destination: FriendsChatView(chat: chat)) {
+                    NavigationLink(destination: FriendsChatView(chat: chat).onAppear { chat.unreadMessages = 0 }) {
                         VStack(spacing: 0) {
                             FriendsChatRow(chat: chat)
                             Separator()
                         }
-                        .isHidden(!(selected == "" || chat.sender.getCoursesString().contains(selected)), remove: true)
+                        .isHidden(!(selected == "" || chat.friend.getCoursesString().contains(selected)), remove: true)
                     }
                 }
             }
@@ -32,7 +31,10 @@ struct FriendsChatList: View {
     
     func load() {
         guard chats.isEmpty else { return }
-        chats = Chat.all
+        chats = FriendChat.all
+        for chat in chats {
+            chat.getThisDM()
+        }
     }
 }
 

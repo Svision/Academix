@@ -8,33 +8,32 @@
 import SwiftUI
 
 struct FriendsChatRow: View {
-    let chat: Chat
+    @ObservedObject var chat: FriendChat
     
     var body: some View {
         HStack(spacing: 12) {
-            Image(chat.sender.avatar)
+            Image(chat.friend.avatar)
                 .renderingMode(.original)
                 .resizable()
                 .frame(width: 48, height: 48)
                 .cornerRadius(25)
-
+                .overlay(NotificationNumLabel(number: $chat.unreadMessages))
+            
             VStack(alignment: .leading, spacing: 5) {
                 HStack(alignment: .top) {
                     HStack {
-                        let senderExtention = chat.sender.courses.count == 0 ? Text("") : Text(" - \(chat.sender.getCoursesString())").foregroundColor(.gray)
+                        let senderExtention = chat.friend.courses.count == 0 ? Text("") : Text(" - \(chat.friend.getCoursesString())").foregroundColor(.gray)
                         
-                        Text("\(chat.sender.name)\(senderExtention)")
+                        Text("\(chat.friend.name)\(senderExtention)")
                             .lineLimit(1)
                             .font(.system(size: 16, weight: .regular))
                             .foregroundColor(.primary)
                     }
                     Spacer()
-                    Text(chat.time.formatString)
-                        .font(.system(size: 10))
-                        .foregroundColor(.secondary)
+                    lastChatTimestamp()
                 }
-
-                Text(chat.desc)
+                
+                Text(chat.lastMessage().text)
                     .lineLimit(1)
                     .font(.system(size: 15))
                     .foregroundColor(.secondary)
@@ -42,8 +41,20 @@ struct FriendsChatRow: View {
         }
         .padding(EdgeInsets(top: 12, leading: 16, bottom: 12, trailing: 16))
     }
+    
+    func lastChatTimestamp() -> Text? {
+        let lastTime = chat.lastMessage().timestamp
+        if lastTime == Date(timeIntervalSince1970: 0) {
+            return nil
+        }
+        else {
+            return Text(lastTime.formatString)
+                    .font(.system(size: 10))
+                    .foregroundColor(.secondary)
+        }
+    }
 }
-
+    
 struct FriendsChatRow_Previews: PreviewProvider {
     static var previews: some View {
         FriendsChatRow(chat: .amanda)

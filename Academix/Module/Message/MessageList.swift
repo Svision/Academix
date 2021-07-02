@@ -30,9 +30,7 @@ struct MessageList: View {
                 }
                 .background(Color("light_gray"))
                 .onAppear {
-                    withAnimation {
-                        proxy.scrollTo(messages.last?.id, anchor: .bottom)
-                    }
+                    proxy.scrollTo(messages.last?.id, anchor: .bottom)
                 }
                 .onChange(of: messages) { messages in
                     if let lastId = messages.last?.id {

@@ -31,7 +31,7 @@ struct HomeView: View {
                 // Add button
                 Button(action: {
                     print("Add clicked!")
-                    if getCourses().count >= 6 {
+                    if CoursesContainer().courses.count >= 6 {
                         showingAlert = true
                     } else {
                         // TODO: add a course
@@ -55,39 +55,29 @@ struct HomeView: View {
 let layout = [GridItem(.adaptive(minimum: 150))]
 
 struct CoursesView: View {
-    let courses = getCourses()
+    @State private var courses: [CourseModel] = []
     let metrics: GeometryProxy
 
     var body: some View {
         LazyVGrid(columns: layout, spacing: metrics.size.height / 8) {
-                ForEach(courses, id: \.self) { course in
-                    NavigationLink(destination: CourseChatView(course: course)){
-                        Text(course.name)
-                            .foregroundColor(.primary)
-                            .font(.title2)
-                            .background(RoundedRectangle(cornerRadius: 10)
-                                            .stroke(Color.primary)
-                                            .frame(width: 150, height: 60)
-                            )
-                    }
-                    .padding()
+            ForEach(courses, id: \.self) { course in
+                NavigationLink(destination: CourseChatView(course: course).onAppear { course.unreadMessages = 0 }){
+                    CourseEntry(course: course)
                 }
+                .padding()
             }
+        }
+        .onAppear(perform: load)
+    }
+    
+    func load() {
+        guard courses.isEmpty else { return }
+        courses = CourseModel.all
+        for course in courses {
+            course.readAllMsgs()
+        }
     }
 }
-
-//private func addCourse(course: CourseItem) {
-//    courses.append(course)
-//}
-
-private func getCourses() -> Array<CourseModel> {
-    return CourseModel.all
-}
-
-//private func fetchCourses() -> Array<CourseItem> {
-//    // TODO: hard code
-//    return courses
-//}
 
 struct HomeView_Previews: PreviewProvider {
     static var previews: some View {
