@@ -55,6 +55,8 @@ class AppViewModel: ObservableObject {
 
 struct MainView: View {
     @State private var tabSelection: Int = 0
+    @State var friendChats: [FriendChat] = FriendChat.all
+    @State var courses: [CourseModel] = CourseModel.all
     @EnvironmentObject var viewModel: AppViewModel
     init() {
         let defaults = UserDefaults.standard
@@ -79,15 +81,14 @@ struct MainView: View {
         }
     }
     
-    
     var body: some View {
         NavigationView {
             if viewModel.signedIn {
                 TabView(selection: $tabSelection) {
-                    HomeView()
+                    HomeView(courses: $courses)
                         .tabItem { Item(type: .home, selection: tabSelection) }
                         .tag(ItemType.home.rawValue)
-                    FriendsView()
+                    FriendsView(chats: $friendChats)
                         .tabItem { Item(type: .friends, selection: tabSelection) }
                         .tag(ItemType.friends.rawValue)
                     PlanView()
@@ -100,6 +101,7 @@ struct MainView: View {
                 .navigationBarTitle(itemType.title, displayMode: .inline)
                 .navigationBarItems(leading: itemType.navigationBarLeadingItems(selection: tabSelection),
                                     trailing: itemType.navigationBarTrailingItems(selection: tabSelection))
+                .onAppear(perform: load)
             }
             else {
                 SignInView()
@@ -108,6 +110,16 @@ struct MainView: View {
         .onAppear {
             viewModel.signedIn = viewModel.isSignedIn
         }
+    }
+    
+    func load() {
+        for chat in friendChats {
+            chat.getThisDM()
+        }
+        for course in courses {
+            course.readAllMsgs()
+        }
+        guard friendChats.isEmpty, courses.isEmpty else { return }
     }
     
     enum ItemType: Int {

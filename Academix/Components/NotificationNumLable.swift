@@ -23,10 +23,15 @@ struct NotificationNumLabel: View {
         }
         else {
             ZStack {
-                Capsule().fill(Color.red).frame(width: capsuleWidth * CGFloat(numOfDigits()), height: capsuleHeight, alignment: .topTrailing).position(forCourse ? coursePosition : chatPosition)
-                Text("\(number)")
-                    .foregroundColor(Color.white)
-                    .font(Font.system(size: fontSize).bold()).position(forCourse ? coursePosition : chatPosition)
+                if !forCourse {
+                    Capsule().fill(Color.red).frame(width: capsuleWidth * CGFloat(numOfDigits()), height: capsuleHeight, alignment: .topTrailing).position(forCourse ? coursePosition : chatPosition)
+                    Text("\(number)")
+                        .foregroundColor(Color.white)
+                        .font(Font.system(size: fontSize).bold()).position(forCourse ? coursePosition : chatPosition)
+                }
+                else {
+                    Capsule().fill(Color.red).frame(width: capsuleWidth * CGFloat(1.5), height: capsuleHeight, alignment: .topTrailing).position(forCourse ? coursePosition : chatPosition)
+                }
             }
         }
     }

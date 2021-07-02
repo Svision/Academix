@@ -8,11 +8,15 @@
 import Foundation
 import Firebase
 
-class FriendChat: Identifiable, ObservableObject {
+class FriendChat: Identifiable, ObservableObject, Equatable {
     var id = UUID()
     @Published var messages: Array<Message> = []
     let friend: User
     @Published var unreadMessages: Int = 0
+    @Published var haveNewMessages: Bool = false
+    static func == (lhs: FriendChat, rhs: FriendChat) -> Bool {
+        lhs.id == rhs.id
+    }
     
     init(sender: User) {
         self.friend = sender
@@ -51,6 +55,7 @@ class FriendChat: Identifiable, ObservableObject {
                         if !self.messages.contains(msg) {
                             self.messages.append(msg)
                             self.unreadMessages += 1
+                            self.haveNewMessages = true
                         }
                     }
                 }

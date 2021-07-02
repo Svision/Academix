@@ -153,7 +153,7 @@ extension User {
         avatar: "data_avatar7",
         university: "UofT",
         email: "yitong@academix.com",
-        courses: [CourseModel.csc369.id]
+        courses: [CourseModel.cscc10.id]
     )
     
     static let owen = User(

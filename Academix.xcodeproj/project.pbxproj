@@ -33,6 +33,7 @@
 		46969C3A26804CD000A82666 /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46969C3926804CD000A82666 /* MainView.swift */; };
 		46969C3C26804CD100A82666 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 46969C3B26804CD100A82666 /* Assets.xcassets */; };
 		46969C3F26804CD100A82666 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 46969C3E26804CD100A82666 /* Preview Assets.xcassets */; };
+		4697E5D5268FBA74005AE2E8 /* FriendsContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4697E5D4268FBA74005AE2E8 /* FriendsContainer.swift */; };
 		46A0CEE1268E59270017F2D6 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46A0CEE0268E59270017F2D6 /* AppDelegate.swift */; };
 		46B2CED62684D9B8009A006B /* CourseChatView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46B2CED52684D9B8009A006B /* CourseChatView.swift */; };
 		46B2CED92684F87F009A006B /* UserCourses.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 46B2CED72684F87F009A006B /* UserCourses.xcdatamodeld */; };
@@ -82,6 +83,7 @@
 		46969C3B26804CD100A82666 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		46969C3E26804CD100A82666 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		46969C4026804CD100A82666 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		4697E5D4268FBA74005AE2E8 /* FriendsContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendsContainer.swift; sourceTree = "<group>"; };
 		46A0CEE0268E59270017F2D6 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		46A0CEE2268E5AC80017F2D6 /* Academix.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Academix.entitlements; sourceTree = "<group>"; };
 		46B2CED52684D9B8009A006B /* CourseChatView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CourseChatView.swift; sourceTree = "<group>"; };
@@ -136,6 +138,7 @@
 				46330FFC2685500600E63D68 /* User.swift */,
 				46330FFF2685502800E63D68 /* Message.swift */,
 				46E2E0402687CE210071649B /* FriendChat.swift */,
+				4697E5D4268FBA74005AE2E8 /* FriendsContainer.swift */,
 				46E2E04A2687DE030071649B /* Media.swift */,
 			);
 			path = Model;
@@ -408,6 +411,7 @@
 				463A0CDC26893F0A0028C55A /* View++.swift in Sources */,
 				465E61EE268F6FF900AC2D47 /* CoursesContainer.swift in Sources */,
 				4680290026843000000ADC22 /* PlanView.swift in Sources */,
+				4697E5D5268FBA74005AE2E8 /* FriendsContainer.swift in Sources */,
 				46A0CEE1268E59270017F2D6 /* AppDelegate.swift in Sources */,
 				46E2E0472687D8590071649B /* FriendsChatList.swift in Sources */,
 			);

@@ -8,13 +8,13 @@
 import SwiftUI
 
 struct FriendsChatList: View {
-    @State private var chats: [FriendChat] = []
+    @Binding var chats: [FriendChat]
     @Binding var selected: String
     
     var body: some View {
         ScrollView {
             LazyVStack(spacing: 0) {
-                ForEach(chats) { chat in
+                ForEach(chats.sorted(by: {$0.lastMessage().timestamp > $1.lastMessage().timestamp})) { chat in
                     NavigationLink(destination: FriendsChatView(chat: chat).onAppear { chat.unreadMessages = 0 }) {
                         VStack(spacing: 0) {
                             FriendsChatRow(chat: chat)
@@ -26,21 +26,21 @@ struct FriendsChatList: View {
             }
             .background(Color("cell"))
         }
-        .onAppear(perform: load)
+        .onAppear { sort() }
     }
     
-    func load() {
-        guard chats.isEmpty else { return }
-        chats = FriendChat.all
-        for chat in chats {
-            chat.getThisDM()
+    func sort() {
+        guard !self.chats.isEmpty else {
+            print("no friends chat")
+            return
         }
+        self.chats.sort(by: { $0.lastMessage().timestamp > $1.lastMessage().timestamp })
     }
 }
 
-struct FriendsChatList_Previews: PreviewProvider {
-    @State static var selected = ""
-    static var previews: some View {
-        FriendsChatList(selected: $selected)
-    }
-}
+//struct FriendsChatList_Previews: PreviewProvider {
+//    @State static var selected = ""
+//    static var previews: some View {
+//        FriendsChatList(selected: $selected)
+//    }
+//}
