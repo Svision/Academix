@@ -79,13 +79,11 @@ struct ChatSendBar: View {
     }
     
     func sendMsg(message: Message) {
-        let db = Firestore.firestore()
         let to = toCourses ? "Courses" : "DMs"
-        if !toCourses {
-            // TODO: send to user
-            return
-        }
-        db.collection("Messages").document("Messages").collection(to).document(receiver).collection(receiver).document().setData([
+        let dbMsg = Firestore.firestore().collection("Messages").document("Messages").collection(to)
+        let dest = toCourses ? receiver : (message.sender < receiver ? "\(message.sender)&\(receiver)" : "\(receiver)&\(message.sender)")
+        
+        dbMsg.document(dest).collection(dest).document().setData([
             "sender": message.sender,
             "text": message.text,
             "timestamp": Timestamp(date: message.timestamp)
@@ -97,8 +95,11 @@ struct ChatSendBar: View {
                 print("successfully send")
             }
         }
+
     }
 }
+
+
 
 
 

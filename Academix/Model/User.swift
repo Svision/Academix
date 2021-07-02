@@ -8,7 +8,7 @@
 import Foundation
 import Firebase
 
-class User: Identifiable {
+class User: Identifiable, ObservableObject {
     // basic info
     var name: String
     var avatar: String
@@ -41,31 +41,31 @@ class User: Identifiable {
         return coursesString.subString(to: coursesString.count - 2)
     }
     
-    static func getById(id: String, completion: @escaping (User) -> Void) {
-        let db = Firestore.firestore()
-        
-        db.collection("Users").getDocuments { snap, err in
-            if err != nil {
-                print((err?.localizedDescription)!)
-                return
-            }
-            if (snap?.documents.isEmpty)! {
-                return
-            }
-            for user in snap!.documents {
-                if id == user.documentID {
-                    let name = user.get("name") as! String
-                    let university = user.get("university") as! String
-                    let avatar = user.get("avatar") as! String
-                    let courses = user.get("courses") as! Array<String>
-                    completion(User(name: name, avatar: avatar, university: university, email: id, courses: courses))
-                }
-                else {
-                    return
-                }
-            }
-        }
-    }
+//    static func getById(id: String, completion: @escaping (User) -> Void) {
+//        let db = Firestore.firestore()
+//
+//        db.collection("Users").getDocuments { snap, err in
+//            if err != nil {
+//                print((err?.localizedDescription)!)
+//                return
+//            }
+//            if (snap?.documents.isEmpty)! {
+//                return
+//            }
+//            for user in snap!.documents {
+//                if id == user.documentID {
+//                    let name = user.get("name") as! String
+//                    let university = user.get("university") as! String
+//                    let avatar = user.get("avatar") as! String
+//                    let courses = user.get("courses") as! Array<String>
+//                    completion(User(name: name, avatar: avatar, university: university, email: id, courses: courses))
+//                }
+//                else {
+//                    return
+//                }
+//            }
+//        }
+//    }
 }
 
 extension User {
@@ -79,7 +79,8 @@ extension User {
         .yitong,
         .owen,
         .leon,
-        .bill
+        .bill,
+        .ruizi
     ]
     
     static func findUser(id: String) -> User {
@@ -175,5 +176,12 @@ extension User {
         avatar: "data_avatar9",
         university: "University of Melbourne",
         email: "bill@academix.com"
+    )
+    
+    static let ruizi = User(
+        name: "Ruizi",
+        avatar: "data_avatar11",
+        university: "University of Toronto",
+        email: "ruizi@academix.com"
     )
 }

@@ -26,6 +26,8 @@ struct MeView: View {
                         .padding()
                     Text("My email: \(defaults.string(forKey: defaultsKeys.email)!)")
                         .padding()
+                    Text("University: \(User.findUser(id: defaults.string(forKey: defaultsKeys.email)!).university)")
+                        .padding()
                     Button(action: {
                         viewModel.signOut()
                     }) {

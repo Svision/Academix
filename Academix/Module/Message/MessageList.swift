@@ -59,7 +59,7 @@ struct MessageList: View {
     
     func firstTime(message: Message) -> Bool {
         for msg in messages {
-            if msg.timestamp.formatString == message.timestamp.formatString && msg.timestamp >= message.timestamp && msg.id != message.id {
+            if msg.timestamp.formatString == message.timestamp.formatString && msg.timestamp <= message.timestamp && msg.id != message.id {
                 return false
             }
         }

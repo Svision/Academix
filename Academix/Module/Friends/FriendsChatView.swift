@@ -6,10 +6,13 @@
 //
 
 import SwiftUI
+import Firebase
 
 struct FriendsChatView: View {
     let chat: Chat
+    @State var thisDM: Array<Message> = []
     @State var isMoreInfoViewActive: Bool = false
+    let defaults = UserDefaults.standard
     
     var moreInfoView : some View {
         NavigationLink(destination: FriendsMoreInfoView(friend: chat.sender), isActive: $isMoreInfoViewActive) {
@@ -31,7 +34,8 @@ struct FriendsChatView: View {
             VStack(spacing: 0) {
                 Separator(color: Color("navigation_separator"))
                 Spacer()
-//                MessageList()
+                MessageList(messages: $thisDM)
+                    .onAppear { getTwoDMs(sender: defaults.string(forKey: defaultsKeys.email)!, receiver: chat.sender.id) }
                 Spacer()
                 ChatSendBar(proxy: proxy, toCourses: false, receiver: chat.sender.id)
             }
@@ -43,6 +47,36 @@ struct FriendsChatView: View {
         .navigationBarItems(trailing: btnMore)
         .onTapGesture {
             self.endTextEditing()
+        }
+    }
+    
+    func getTwoDMs(sender: String, receiver: String) {
+        let ref = Firestore.firestore()
+        let dest = sender < receiver ? "\(sender)&\(receiver)" : "\(receiver)&\(sender)"
+        ref.collection("Messages").document("Messages").collection("DMs")
+            .document(dest).collection(dest).order(by: "timestamp").addSnapshotListener { snap, err in
+            if err != nil {
+                print(err!.localizedDescription)
+                return
+            }
+            
+            guard let data = snap else {return}
+            
+            data.documentChanges.forEach { doc in
+                if doc.type == .added {
+                    let id = doc.document.documentID
+                    let text = doc.document.get("text") as! String
+                    let sender = doc.document.get("sender") as! String
+                    let timestamp: Timestamp = doc.document.get("timestamp") as! Timestamp
+
+                    DispatchQueue.main.async {
+                        let msg = Message(id: id, timestamp: timestamp.dateValue(), sender: sender, text: text)
+                        if !thisDM.contains(msg) {
+                            thisDM.append(msg)
+                        }
+                    }
+                }
+            }
         }
     }
 }
