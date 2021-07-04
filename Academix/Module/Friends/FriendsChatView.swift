@@ -12,7 +12,7 @@ import CoreHaptics
 struct FriendsChatView: View {
     @ObservedObject var chat: FriendChat
     @State var isMoreInfoViewActive: Bool = false
-    @State private var engine: CHHapticEngine?
+    @State var engine: CHHapticEngine?
     
     var moreInfoView : some View {
         NavigationLink(destination: FriendsMoreInfoView(friend: chat.friend), isActive: $isMoreInfoViewActive) {

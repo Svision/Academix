@@ -6,9 +6,11 @@
 //
 
 import SwiftUI
+import CoreHaptics
 
 struct FriendsView: View {
     @Binding var friendChats: [FriendChat]
+    @State var engine: CHHapticEngine?
     @State var selected: String = ""
 
     var body: some View {
@@ -18,9 +20,21 @@ struct FriendsView: View {
                 VStack(spacing: 0) {
                     Separator(color: Color("navigation_separator"))
                     FriendsFilterByCourse(selected: $selected)
-                    FriendsChatList(friendChats: $friendChats, selected: $selected)
+                    FriendsChatList(friendChats: $friendChats, selected: $selected, engine: $engine)
+                        .onAppear(perform: prepareHaptics)
                 }
             }
+        }
+    }
+    
+    func prepareHaptics() {
+        guard CHHapticEngine.capabilitiesForHardware().supportsHaptics else { return }
+
+        do {
+            self.engine = try CHHapticEngine()
+            try engine?.start()
+        } catch {
+            print("There was an error creating the engine: \(error.localizedDescription)")
         }
     }
 }

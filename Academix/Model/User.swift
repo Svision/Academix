@@ -81,13 +81,15 @@ extension User {
     static let all: Array<User> = [
         .changhao,
         .amanda,
+        .wayne,
+        .liuchang,
         .sky,
+        .leon,
+        .xiaoning,
         .yuhong,
         .meixuan,
-        .xiaoning,
         .yitong,
         .owen,
-        .leon,
         .bill,
         .ruizi
     ]
@@ -192,5 +194,21 @@ extension User {
         avatar: "data_avatar11",
         university: "University of Toronto",
         email: "ruizi@academix.com"
+    )
+    
+    static let wayne = User(
+        name: "Wayne",
+        avatar: "data_avatar12",
+        university: "McMaster",
+        email: "wayne@academix.com",
+        courses: []
+    )
+    
+    static let liuchang = User(
+        name: "Liuchang",
+        avatar: "data_avatar13",
+        university: "McMaster",
+        email: "liuchang@academix.com",
+        courses: []
     )
 }

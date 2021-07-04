@@ -6,10 +6,12 @@
 //
 
 import SwiftUI
+import CoreHaptics
 
 struct FriendsChatList: View {
     @Binding var friendChats: [FriendChat]
     @Binding var selected: String
+    @Binding var engine: CHHapticEngine?
     
     var body: some View {
         ScrollView {
@@ -20,7 +22,7 @@ struct FriendsChatList: View {
                         chat.saveSelf(forKey: chat.id)
                     }) {
                         VStack(spacing: 0) {
-                            FriendsChatRow(chat: chat)
+                            FriendsChatRow(chat: chat, engine: $engine)
                             Separator()
                         }
                         .isHidden(!(selected == "" || chat.friend.getCoursesString().contains(selected)), remove: true)

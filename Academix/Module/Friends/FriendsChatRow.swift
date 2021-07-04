@@ -10,7 +10,7 @@ import CoreHaptics
 
 struct FriendsChatRow: View {
     @ObservedObject var chat: FriendChat
-    @State private var engine: CHHapticEngine?
+    @Binding var engine: CHHapticEngine?
     
     var body: some View {
         HStack(spacing: 12) {
@@ -42,7 +42,6 @@ struct FriendsChatRow: View {
             }
         }
         .padding(EdgeInsets(top: 12, leading: 16, bottom: 12, trailing: 16))
-        .onAppear(perform: prepareHaptics)
         .onChange(of: chat.haveNewMessages, perform: { haveNewMessages in
             if haveNewMessages { complexSuccess() }
         })
@@ -57,17 +56,6 @@ struct FriendsChatRow: View {
             return Text(lastTime.formatString)
                     .font(.system(size: 10))
                     .foregroundColor(.secondary)
-        }
-    }
-    
-    func prepareHaptics() {
-        guard CHHapticEngine.capabilitiesForHardware().supportsHaptics else { return }
-
-        do {
-            self.engine = try CHHapticEngine()
-            try engine?.start()
-        } catch {
-            print("There was an error creating the engine: \(error.localizedDescription)")
         }
     }
     
