@@ -7,10 +7,12 @@
 
 import SwiftUI
 import Firebase
+import CoreHaptics
 
 struct FriendsChatView: View {
     @ObservedObject var chat: FriendChat
     @State var isMoreInfoViewActive: Bool = false
+    @State private var engine: CHHapticEngine?
     
     var moreInfoView : some View {
         NavigationLink(destination: FriendsMoreInfoView(friend: chat.friend), isActive: $isMoreInfoViewActive) {
@@ -43,8 +45,46 @@ struct FriendsChatView: View {
         .background(moreInfoView)
         .navigationBarTitle(chat.friend.name, displayMode: .inline)
         .navigationBarItems(trailing: btnMore)
+        .onAppear(perform: prepareHaptics)
+        .onChange(of: chat.haveNewMessages, perform: { haveNewMessages in
+            if haveNewMessages { complexSuccess() }
+            chat.readed()
+            chat.saveSelf(forKey: chat.id)
+        })
         .onTapGesture {
             self.endTextEditing()
+        }
+    }
+    
+    func prepareHaptics() {
+        guard CHHapticEngine.capabilitiesForHardware().supportsHaptics else { return }
+
+        do {
+            self.engine = try CHHapticEngine()
+            try engine?.start()
+        } catch {
+            print("There was an error creating the engine: \(error.localizedDescription)")
+        }
+    }
+    
+    func complexSuccess() {
+        // make sure that the device supports haptics
+        guard CHHapticEngine.capabilitiesForHardware().supportsHaptics else { return }
+        var events = [CHHapticEvent]()
+
+        // create one hapticContinuous
+        let intensity = CHHapticEventParameter(parameterID: .hapticIntensity, value: 1)
+        let sharpness = CHHapticEventParameter(parameterID: .hapticSharpness, value: 1)
+        let event = CHHapticEvent(eventType: .hapticContinuous, parameters: [intensity, sharpness], relativeTime: 0, duration: 0.4)
+        events.append(event)
+
+        // convert those events into a pattern and play it immediately
+        do {
+            let pattern = try CHHapticPattern(events: events, parameters: [])
+            let player = try engine?.makePlayer(with: pattern)
+            try player?.start(atTime: 0)
+        } catch {
+            print("Failed to play pattern: \(error.localizedDescription).")
         }
     }
 }

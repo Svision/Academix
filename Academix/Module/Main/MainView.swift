@@ -88,14 +88,7 @@ struct MainView: View {
     }
     
     func load() {
-        // MARK: add all
         if !firstLoad { return }
-        for user in User.all {
-            let chat = FriendChat(myId: viewModel.currUser.id, friend: user)
-            if !viewModel.friendChats.contains(chat) {
-                viewModel.friendChats.append(chat)
-            }
-        }
         
         DispatchQueue.main.async {
             for course in courses {
@@ -107,6 +100,7 @@ struct MainView: View {
             for chat in viewModel.friendChats {
                 chat.getThisDM()
                 chat.saveSelf(forKey: chat.id)
+                print("saved chat id: \(chat.id)")
             }
         }
         firstLoad = false

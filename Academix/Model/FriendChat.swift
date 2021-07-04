@@ -10,11 +10,11 @@ import Firebase
 
 class FriendChat: Identifiable, ObservableObject, Equatable, Codable  {
     var id: String
-    var messages: Array<Message> = []
+    @Published var messages: Array<Message> = []
     let friend: User
     let myId: String
-    var unreadMessages: Int = 0
-    var haveNewMessages: Bool = false
+    @Published var unreadMessages: Int = 0
+    @Published var haveNewMessages: Bool = false
     static func == (lhs: FriendChat, rhs: FriendChat) -> Bool {
         lhs.id == rhs.id
     }
@@ -43,6 +43,7 @@ class FriendChat: Identifiable, ObservableObject, Equatable, Codable  {
     
     func readed() {
         self.unreadMessages = 0
+        self.haveNewMessages = false
     }
     
     func getThisDM() {

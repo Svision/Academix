@@ -16,7 +16,7 @@ struct FriendsChatList: View {
             LazyVStack(spacing: 0) {
                 ForEach(friendChats, id: \.id) { chat in
                     NavigationLink(destination: FriendsChatView(chat: chat).onAppear {
-                        chat.unreadMessages = 0
+                        chat.readed()
                         chat.saveSelf(forKey: chat.id)
                     }) {
                         VStack(spacing: 0) {

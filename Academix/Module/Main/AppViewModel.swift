@@ -14,11 +14,23 @@ class AppViewModel: ObservableObject {
     let defaults = UserDefaults.standard
     @Published var currUser: User = User(id: "unknown")
     @Published var friendChats: [FriendChat] = []
+    @Published var haveNewMessages: Bool = false
     
     init() {
         if isSignedIn {
             if let getUser = defaults.getObject(forKey: defaultsKeys.currUser, castTo: User.self) {
                 self.currUser = getUser
+                // MARK: add all
+                for user in User.all {
+                    let chat = FriendChat(myId: currUser.id, friend: user)
+                    // MARK: try read saved message
+                    if let savedChat = defaults.getObject(forKey: chat.id, castTo: FriendChat.self) {
+                        friendChats.append(savedChat)
+                    }
+                    else {
+                        friendChats.append(chat)
+                    }
+                }
             }
             print("current user: \(self.currUser.id)")
         }
