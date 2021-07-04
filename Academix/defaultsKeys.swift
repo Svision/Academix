@@ -10,6 +10,8 @@ import SwiftUI
 
 struct defaultsKeys {
     static let hasRunbefore = false
-    static let email = "NONE"
     static let darkMode = true
+    static let friendsChat = "friendsChat"
+    static let courses = "courses"
+    static let currUser = "currUser"
 }

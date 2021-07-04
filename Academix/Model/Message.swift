@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct Message: Identifiable, Equatable, Hashable {
+struct Message: Identifiable, Equatable, Hashable, Codable {
     static func == (lhs: Message, rhs: Message) -> Bool {
         lhs.id == rhs.id
     }
@@ -31,10 +31,5 @@ struct Message: Identifiable, Equatable, Hashable {
 
 extension Message {
     static let all: [Message] = [
-        Message(
-            timestamp: Date(),
-            sender: User.guest.id,
-            text: FriendChat.me.lastMessage().text
-        )
     ]
 }

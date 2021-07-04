@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct CourseEntry: View {
-    @ObservedObject var course: CourseModel
+    @ObservedObject var course: Course
     
     var body: some View {
         Text(course.name)

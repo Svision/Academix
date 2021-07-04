@@ -7,7 +7,8 @@
 
 import Foundation
 
-class FriendsContainer : ObservableObject {
-    @Published var all: [FriendChat] = FriendChat.all
+class FriendsContainer : ObservableObject, Codable {
+    @Published var allChats: [FriendChat] = []
+    @Published var allFriends: [User] = []
     @Published var haveNewMessage = false
 }

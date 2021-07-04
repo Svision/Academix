@@ -8,8 +8,8 @@
 import SwiftUI
 
 struct FriendsView: View {
+    @Binding var friendChats: [FriendChat]
     @State var selected: String = ""
-    @Binding var chats: [FriendChat]
 
     var body: some View {
         GeometryReader { proxy in
@@ -18,7 +18,7 @@ struct FriendsView: View {
                 VStack(spacing: 0) {
                     Separator(color: Color("navigation_separator"))
                     FriendsFilterByCourse(selected: $selected)
-                    FriendsChatList(chats: $chats, selected: $selected)
+                    FriendsChatList(friendChats: $friendChats, selected: $selected)
                 }
             }
         }

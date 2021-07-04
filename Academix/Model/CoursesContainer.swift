@@ -8,6 +8,6 @@
 import Foundation
 
 class CoursesContainer : ObservableObject {
-    @Published var all = CourseModel.all
+    @Published var all = Course.all
     
 }

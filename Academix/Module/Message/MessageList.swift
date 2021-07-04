@@ -9,6 +9,7 @@ import SwiftUI
 
 struct MessageList: View {
     @Binding var messages: Array<Message>
+    @EnvironmentObject var viewModel: AppViewModel
     
     var body: some View {
         ScrollView {
@@ -22,7 +23,7 @@ struct MessageList: View {
                             
                             MessageRow(
                                 message: message,
-                                isMe: message.sender == UserDefaults.standard.string(forKey: defaultsKeys.email)!
+                                isMe: message.sender == viewModel.currUser.id
                             )
                         }
                         .id(message.id)

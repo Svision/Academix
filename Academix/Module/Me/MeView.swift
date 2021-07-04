@@ -18,15 +18,15 @@ struct MeView: View {
                 VStack(spacing: 0) {
                     Separator(color: Color("navigation_separator"))
                     Spacer()
-                    Image(User.findUser(id: defaults.string(forKey: defaultsKeys.email)!).avatar)
+                    Image(User.findUser(id: viewModel.currUser.id).avatar)
                         .resizable()
                         .clipShape(Circle())
                         .frame(width: 100, height: 100)
                         .overlay(Circle().stroke())
                         .padding()
-                    Text("My email: \(defaults.string(forKey: defaultsKeys.email)!)")
+                    Text("My email: \(viewModel.currUser.id)")
                         .padding()
-                    Text("University: \(User.findUser(id: defaults.string(forKey: defaultsKeys.email)!).university)")
+                    Text("University: \(User.findUser(id: viewModel.currUser.id).university)")
                         .padding()
                     Button(action: {
                         viewModel.signOut()
@@ -45,8 +45,8 @@ struct MeView: View {
     }
 }
 
-struct MeView_Previews: PreviewProvider {
-    static var previews: some View {
-        MeView()
-    }
-}
+//struct MeView_Previews: PreviewProvider {
+//    static var previews: some View {
+//        MeView()
+//    }
+//}

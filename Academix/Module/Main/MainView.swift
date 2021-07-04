@@ -8,58 +8,14 @@
 import SwiftUI
 import Firebase
 
-class AppViewModel: ObservableObject {
-    let auth = Auth.auth()
-    let defaults = UserDefaults.standard
-    
-    @Published var signedIn = false
-    @Published var errorMessage: String?
-    
-    var isSignedIn: Bool {
-        return auth.currentUser != nil
-    }
-    
-    func signIn(email: String, password: String) {
-        Auth.auth().signIn(withEmail: email, password: password) { [weak self] result, error in
-            if error != nil {
-                self?.errorMessage = error?.localizedDescription ?? ""
-            } else {
-                DispatchQueue.main.async {
-                    self?.signedIn = true
-                    self?.defaults.set(email, forKey: defaultsKeys.email)
-                }
-            }
-        }
-    }
-    
-    func signUp(email: String, password: String) {
-        Auth.auth().createUser(withEmail: email, password: password) { [weak self] result, error in
-            if error != nil {
-                self?.errorMessage = error?.localizedDescription ?? ""
-            } else {
-                DispatchQueue.main.async {
-                    self?.signedIn = true
-                    self?.defaults.set(email, forKey: defaultsKeys.email)
-                }
-            }
-        }
-    }
-    
-    func signOut() {
-        try? auth.signOut()
-        
-        self.signedIn = false
-        self.defaults.set("NONE", forKey: defaultsKeys.email)
-    }
-}
-
 struct MainView: View {
+    let defaults = UserDefaults.standard
     @State private var tabSelection: Int = 0
-    @State var friendChats: [FriendChat] = FriendChat.all
-    @State var courses: [CourseModel] = CourseModel.all
+    @State var courses: [Course]
+    @State var firstLoad: Bool = true
     @EnvironmentObject var viewModel: AppViewModel
+    
     init() {
-        let defaults = UserDefaults.standard
         if (!defaults.bool(forKey: "hasRunBefore")) {
             print("The app is launching for the first time. Setting UserDefaults...")
             
@@ -74,10 +30,29 @@ struct MainView: View {
             defaults.synchronize() // This forces the app to update userDefaults
 
             // Run code here for the first launch
-
+            courses = Course.all
+            
+            for course in courses {
+                course.saveSelf(forKey: course.id)
+                print("Saved course: \(course.id)")
+            }
         } else {
             print("The app has been launched before. Loading UserDefaults...")
             // Run code here for every other launch but the first
+            var cachedCourses: [Course] = []
+
+            // load courses and chats
+            for course in Course.all {
+                let getCourse = defaults.getObject(forKey: course.id, castTo: Course.self)
+                if getCourse != nil {
+                    cachedCourses.append(getCourse!)
+                    print("Get course: \(course.id)")
+                }
+                else {
+                    print("Get course error: \(course.id)")
+                }
+            }
+            courses = cachedCourses
         }
     }
     
@@ -88,7 +63,7 @@ struct MainView: View {
                     HomeView(courses: $courses)
                         .tabItem { Item(type: .home, selection: tabSelection) }
                         .tag(ItemType.home.rawValue)
-                    FriendsView(chats: $friendChats)
+                    FriendsView(friendChats: $viewModel.friendChats)
                         .tabItem { Item(type: .friends, selection: tabSelection) }
                         .tag(ItemType.friends.rawValue)
                     PlanView()
@@ -113,13 +88,28 @@ struct MainView: View {
     }
     
     func load() {
-        for chat in friendChats {
-            chat.getThisDM()
+        // MARK: add all
+        if !firstLoad { return }
+        for user in User.all {
+            let chat = FriendChat(myId: viewModel.currUser.id, friend: user)
+            if !viewModel.friendChats.contains(chat) {
+                viewModel.friendChats.append(chat)
+            }
         }
-        for course in courses {
-            course.readAllMsgs()
+        
+        DispatchQueue.main.async {
+            for course in courses {
+                course.fetchAllMessages()
+                course.saveSelf(forKey: course.id)
+            }
         }
-        guard friendChats.isEmpty, courses.isEmpty else { return }
+        DispatchQueue.main.async {
+            for chat in viewModel.friendChats {
+                chat.getThisDM()
+                chat.saveSelf(forKey: chat.id)
+            }
+        }
+        firstLoad = false
     }
     
     enum ItemType: Int {

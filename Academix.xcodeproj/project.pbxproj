@@ -27,13 +27,17 @@
 		4680290226843049000ADC22 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4680290126843049000ADC22 /* HomeView.swift */; };
 		4680290426843061000ADC22 /* FriendsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4680290326843061000ADC22 /* FriendsView.swift */; };
 		4680290626843070000ADC22 /* MeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4680290526843070000ADC22 /* MeView.swift */; };
-		46802908268449B4000ADC22 /* CourseModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46802907268449B4000ADC22 /* CourseModel.swift */; };
+		46802908268449B4000ADC22 /* Course.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46802907268449B4000ADC22 /* Course.swift */; };
 		468DAE32268E9EE100A270E4 /* FirebaseMessaging in Frameworks */ = {isa = PBXBuildFile; productRef = 468DAE31268E9EE100A270E4 /* FirebaseMessaging */; };
 		46969C3826804CD000A82666 /* AcademixApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46969C3726804CD000A82666 /* AcademixApp.swift */; };
 		46969C3A26804CD000A82666 /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46969C3926804CD000A82666 /* MainView.swift */; };
 		46969C3C26804CD100A82666 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 46969C3B26804CD100A82666 /* Assets.xcassets */; };
 		46969C3F26804CD100A82666 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 46969C3E26804CD100A82666 /* Preview Assets.xcassets */; };
 		4697E5D5268FBA74005AE2E8 /* FriendsContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4697E5D4268FBA74005AE2E8 /* FriendsContainer.swift */; };
+		4697E5D726900E2C005AE2E8 /* UserDefaults++.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4697E5D626900E2C005AE2E8 /* UserDefaults++.swift */; };
+		4697E5D926901B8A005AE2E8 /* Codable++.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4697E5D826901B8A005AE2E8 /* Codable++.swift */; };
+		4697E5DB2690C00F005AE2E8 /* Published++.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4697E5DA2690C00F005AE2E8 /* Published++.swift */; };
+		4697E5DD2690F030005AE2E8 /* AppViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4697E5DC2690F030005AE2E8 /* AppViewModel.swift */; };
 		46A0CEE1268E59270017F2D6 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46A0CEE0268E59270017F2D6 /* AppDelegate.swift */; };
 		46B2CED62684D9B8009A006B /* CourseChatView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46B2CED52684D9B8009A006B /* CourseChatView.swift */; };
 		46B2CED92684F87F009A006B /* UserCourses.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 46B2CED72684F87F009A006B /* UserCourses.xcdatamodeld */; };
@@ -76,7 +80,7 @@
 		4680290126843049000ADC22 /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
 		4680290326843061000ADC22 /* FriendsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendsView.swift; sourceTree = "<group>"; };
 		4680290526843070000ADC22 /* MeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MeView.swift; sourceTree = "<group>"; };
-		46802907268449B4000ADC22 /* CourseModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CourseModel.swift; sourceTree = "<group>"; };
+		46802907268449B4000ADC22 /* Course.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Course.swift; sourceTree = "<group>"; };
 		46969C3426804CD000A82666 /* Academix.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Academix.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		46969C3726804CD000A82666 /* AcademixApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AcademixApp.swift; sourceTree = "<group>"; };
 		46969C3926804CD000A82666 /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
@@ -84,6 +88,10 @@
 		46969C3E26804CD100A82666 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		46969C4026804CD100A82666 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		4697E5D4268FBA74005AE2E8 /* FriendsContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendsContainer.swift; sourceTree = "<group>"; };
+		4697E5D626900E2C005AE2E8 /* UserDefaults++.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UserDefaults++.swift"; sourceTree = "<group>"; };
+		4697E5D826901B8A005AE2E8 /* Codable++.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Codable++.swift"; sourceTree = "<group>"; };
+		4697E5DA2690C00F005AE2E8 /* Published++.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Published++.swift"; sourceTree = "<group>"; };
+		4697E5DC2690F030005AE2E8 /* AppViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppViewModel.swift; sourceTree = "<group>"; };
 		46A0CEE0268E59270017F2D6 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		46A0CEE2268E5AC80017F2D6 /* Academix.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Academix.entitlements; sourceTree = "<group>"; };
 		46B2CED52684D9B8009A006B /* CourseChatView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CourseChatView.swift; sourceTree = "<group>"; };
@@ -126,6 +134,9 @@
 				46E2E0442687D3C40071649B /* Date++.swift */,
 				463A0CD92689389A0028C55A /* String++.swift */,
 				463A0CDB26893F0A0028C55A /* View++.swift */,
+				4697E5D626900E2C005AE2E8 /* UserDefaults++.swift */,
+				4697E5D826901B8A005AE2E8 /* Codable++.swift */,
+				4697E5DA2690C00F005AE2E8 /* Published++.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -133,7 +144,7 @@
 		461718B626863B80005F12F7 /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				46802907268449B4000ADC22 /* CourseModel.swift */,
+				46802907268449B4000ADC22 /* Course.swift */,
 				465E61ED268F6FF900AC2D47 /* CoursesContainer.swift */,
 				46330FFC2685500600E63D68 /* User.swift */,
 				46330FFF2685502800E63D68 /* Message.swift */,
@@ -211,6 +222,7 @@
 			isa = PBXGroup;
 			children = (
 				46969C3926804CD000A82666 /* MainView.swift */,
+				4697E5DC2690F030005AE2E8 /* AppViewModel.swift */,
 			);
 			path = Main;
 			sourceTree = "<group>";
@@ -378,6 +390,7 @@
 			files = (
 				463310022685508F00E63D68 /* MessageList.swift in Sources */,
 				46C77653268C1D6C00264401 /* defaultsKeys.swift in Sources */,
+				4697E5DD2690F030005AE2E8 /* AppViewModel.swift in Sources */,
 				461718C5268676D9005F12F7 /* UIImage++.swift in Sources */,
 				46C77651268C119F00264401 /* RegisterView.swift in Sources */,
 				46E2E0412687CE210071649B /* FriendChat.swift in Sources */,
@@ -386,12 +399,13 @@
 				461718C2268673D2005F12F7 /* Separator.swift in Sources */,
 				465E61EC268F6EDC00AC2D47 /* NotificationNumLable.swift in Sources */,
 				465E61F0268F925700AC2D47 /* CourseEntry.swift in Sources */,
+				4697E5D926901B8A005AE2E8 /* Codable++.swift in Sources */,
 				46E2E03F2687CCA70071649B /* FriendsChatRow.swift in Sources */,
 				46E2E0432687CF680071649B /* FriendsFilterByCourse.swift in Sources */,
 				4680290426843061000ADC22 /* FriendsView.swift in Sources */,
 				46E2E0492687D90F0071649B /* FriendsChatView.swift in Sources */,
 				46969C3A26804CD000A82666 /* MainView.swift in Sources */,
-				46802908268449B4000ADC22 /* CourseModel.swift in Sources */,
+				46802908268449B4000ADC22 /* Course.swift in Sources */,
 				46F2E47226883AE5002DDE18 /* CourseChatMoreInfoView.swift in Sources */,
 				4680290226843049000ADC22 /* HomeView.swift in Sources */,
 				463A0CDA2689389A0028C55A /* String++.swift in Sources */,
@@ -405,6 +419,7 @@
 				461718BF26867391005F12F7 /* ChatSendBar.swift in Sources */,
 				463310002685502800E63D68 /* Message.swift in Sources */,
 				46969C3826804CD000A82666 /* AcademixApp.swift in Sources */,
+				4697E5D726900E2C005AE2E8 /* UserDefaults++.swift in Sources */,
 				4633100726855C2F00E63D68 /* UINavigationController++.swift in Sources */,
 				46B2CED92684F87F009A006B /* UserCourses.xcdatamodeld in Sources */,
 				46330FFD2685500600E63D68 /* User.swift in Sources */,
@@ -412,6 +427,7 @@
 				465E61EE268F6FF900AC2D47 /* CoursesContainer.swift in Sources */,
 				4680290026843000000ADC22 /* PlanView.swift in Sources */,
 				4697E5D5268FBA74005AE2E8 /* FriendsContainer.swift in Sources */,
+				4697E5DB2690C00F005AE2E8 /* Published++.swift in Sources */,
 				46A0CEE1268E59270017F2D6 /* AppDelegate.swift in Sources */,
 				46E2E0472687D8590071649B /* FriendsChatList.swift in Sources */,
 			);

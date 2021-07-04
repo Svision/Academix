@@ -9,7 +9,7 @@ import SwiftUI
 
 struct HomeView: View {
     @State private var showingAlert = false
-    @Binding var courses: [CourseModel]
+    @Binding var courses: [Course]
     
     var body: some View {
         ZStack {
@@ -52,14 +52,17 @@ struct HomeView: View {
     }
     
     struct CoursesView: View {
-        @Binding var courses: [CourseModel]
+        @Binding var courses: [Course]
         let metrics: GeometryProxy
         let layout = [GridItem(.adaptive(minimum: 150))]
 
         var body: some View {
             LazyVGrid(columns: layout, spacing: metrics.size.height / 8) {
-                ForEach(courses, id: \.self) { course in
-                    NavigationLink(destination: CourseChatView(course: course).onAppear { course.unreadMessages = 0 }){
+                ForEach(courses, id: \.id) { course in
+                    NavigationLink(destination: CourseChatView(course: course).onAppear {
+                        course.unreadMessages = 0
+                        course.saveSelf(forKey: course.id)
+                    }){
                         CourseEntry(course: course)
                     }
                     .padding()
@@ -72,7 +75,7 @@ struct HomeView: View {
             guard courses.isEmpty else { return }
     //        courses = CourseModel.all
     //        for course in courses {
-    //            course.readAllMsgs()
+    //            course.fetchAllMessages()
     //        }
         }
     }

@@ -49,8 +49,8 @@ struct FriendsChatView: View {
     }
 }
 
-struct FriendsChatView_Previews: PreviewProvider {
-    static var previews: some View {
-        FriendsChatView(chat: .amanda)
-    }
-}
+//struct FriendsChatView_Previews: PreviewProvider {
+//    static var previews: some View {
+//        FriendsChatView(chat: .amanda)
+//    }
+//}

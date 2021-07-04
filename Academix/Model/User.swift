@@ -7,23 +7,24 @@
 
 import Foundation
 import Firebase
+import Combine
 
-class User: Identifiable, ObservableObject {
+class User: Identifiable, ObservableObject, Codable, Equatable  {
     // basic info
-    var name: String
-    var avatar: String
-    var university: String
-    let id: String // email == id
-    var courses: Array<CourseModel.ID>
+    var name: String = ""
+    var avatar: String = ""
+    var university: String = ""
+    let id: String
+    var courses: Array<Course> = []
     
     // setting
     var major: String = ""
     var url: String = ""
     
     // relation
-    var friends: Array<User> = []
+    var friends: [User] = []
     
-    init(name: String, avatar: String, university: String, email: String, courses: Array<CourseModel.ID> = []) {
+    init(name: String, avatar: String, university: String, email: String, courses: Array<Course> = []) {
         self.name = name
         self.avatar = avatar
         self.university = university
@@ -31,11 +32,19 @@ class User: Identifiable, ObservableObject {
         self.courses = courses
     }
     
+    init(id: String) {
+        self.id = id
+    }
+    
+    static func == (lhs: User, rhs: User) -> Bool {
+        lhs.id == rhs.id
+    }
+    
     func getCoursesString() -> String {
         if courses.count == 0 { return "" }
         var coursesString: String = ""
-        for courseId in courses {
-            let courseIdArr = courseId.components(separatedBy: ".")
+        for course in courses {
+            let courseIdArr = course.id.components(separatedBy: ".")
             coursesString += "\(courseIdArr[1])\(courseIdArr[2]), "
         }
         return coursesString.subString(to: coursesString.count - 2)
@@ -70,7 +79,7 @@ class User: Identifiable, ObservableObject {
 
 extension User {
     static let all: Array<User> = [
-        .me,
+        .changhao,
         .amanda,
         .sky,
         .yuhong,
@@ -100,12 +109,12 @@ extension User {
         courses: []
     )
     
-    static let me = User(
+    static let changhao = User(
         name: "Changhao",
         avatar: "data_avatar1",
         university: "UofT",
         email: "changhao@academix.com",
-        courses: [CourseModel.cscc10.id, CourseModel.csc373.id, CourseModel.csc369.id]
+        courses: [Course.cscc10, Course.csc373, Course.csc369]
     )
     
     static let amanda = User(
@@ -113,7 +122,7 @@ extension User {
         avatar: "data_avatar2",
         university: "UofT",
         email: "wenqing@academix.com",
-        courses: [CourseModel.csc373.id, CourseModel.sta301.id, CourseModel.mat301.id]
+        courses: [Course.csc373, Course.sta301, Course.mat301]
     )
     
     static let sky = User(
@@ -121,7 +130,7 @@ extension User {
         avatar: "data_avatar3",
         university: "UofT",
         email: "sky@academix.com",
-        courses: [CourseModel.csc369.id, CourseModel.csc373.id]
+        courses: [Course.csc369, Course.csc373]
     )
     
     static let yuhong = User(
@@ -129,7 +138,7 @@ extension User {
         avatar: "data_avatar4",
         university: "UofT",
         email: "yuhong@academix.com",
-        courses: [CourseModel.cscc10.id]
+        courses: [Course.cscc10]
     )
     
     static let meixuan = User(
@@ -137,7 +146,7 @@ extension User {
         avatar: "data_avatar5",
         university: "UofT",
         email: "meixuan@academix.com",
-        courses: [CourseModel.csc369.id, CourseModel.cscc10.id]
+        courses: [Course.csc369, Course.cscc10]
     )
     
     static let xiaoning = User(
@@ -145,7 +154,7 @@ extension User {
         avatar: "data_avatar6",
         university: "UofT",
         email: "xiaoning@academix.com",
-        courses: [CourseModel.cscc10.id]
+        courses: [Course.cscc10]
     )
     
     static let yitong = User(
@@ -153,7 +162,7 @@ extension User {
         avatar: "data_avatar7",
         university: "UofT",
         email: "yitong@academix.com",
-        courses: [CourseModel.cscc10.id]
+        courses: [Course.cscc10]
     )
     
     static let owen = User(

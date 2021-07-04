@@ -9,6 +9,7 @@ import SwiftUI
 import Firebase
 
 struct ChatSendBar: View {
+    @EnvironmentObject var viewModel: AppViewModel
     let proxy: GeometryProxy
     let toCourses: Bool
     let receiver: String
@@ -35,7 +36,7 @@ struct ChatSendBar: View {
                 }
                 else {
                     Button(action: {
-                        sendMsg(message: Message(timestamp: Date(), sender: UserDefaults.standard.string(forKey: defaultsKeys.email)!, text: text))
+                        sendMsg(message: Message(timestamp: Date(), sender: viewModel.currUser.id, text: text))
                         text = ""
                     }, label: {
                         Text("Send")
