@@ -94,6 +94,11 @@ class AppViewModel: ObservableObject {
     func signOut() {
         try? auth.signOut()
         
+        // remove cache upon signedOut
+        for chat in self.friendChats {
+            defaults.removeObject(forKey: chat.id)
+        }
+        
         self.signedIn = false
         self.currUser = User(id: "unknown")
         self.currUser.saveSelf(forKey: defaultsKeys.currUser)
