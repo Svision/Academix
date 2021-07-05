@@ -40,7 +40,6 @@
 		4697E5DD2690F030005AE2E8 /* AppViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4697E5DC2690F030005AE2E8 /* AppViewModel.swift */; };
 		46A0CEE1268E59270017F2D6 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46A0CEE0268E59270017F2D6 /* AppDelegate.swift */; };
 		46B2CED62684D9B8009A006B /* CourseChatView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46B2CED52684D9B8009A006B /* CourseChatView.swift */; };
-		46B2CED92684F87F009A006B /* UserCourses.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 46B2CED72684F87F009A006B /* UserCourses.xcdatamodeld */; };
 		46C77643268BCBF500264401 /* FirebaseFirestoreSwift-Beta in Frameworks */ = {isa = PBXBuildFile; productRef = 46C77642268BCBF500264401 /* FirebaseFirestoreSwift-Beta */; };
 		46C77647268BCBF500264401 /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = 46C77646268BCBF500264401 /* FirebaseAuth */; };
 		46C7764D268BCCFB00264401 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 46C7764C268BCCFB00264401 /* GoogleService-Info.plist */; };
@@ -56,6 +55,8 @@
 		46E2E04B2687DE030071649B /* Media.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46E2E04A2687DE030071649B /* Media.swift */; };
 		46F2E4702688353A002DDE18 /* FriendsMoreInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46F2E46F2688353A002DDE18 /* FriendsMoreInfoView.swift */; };
 		46F2E47226883AE5002DDE18 /* CourseChatMoreInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46F2E47126883AE5002DDE18 /* CourseChatMoreInfoView.swift */; };
+		46FD122026928D19005965B0 /* PushNotificaiotnSender.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46FD121F26928D19005965B0 /* PushNotificaiotnSender.swift */; };
+		46FD122226928F02005965B0 /* PushNotificationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46FD122126928F02005965B0 /* PushNotificationManager.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -95,7 +96,6 @@
 		46A0CEE0268E59270017F2D6 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		46A0CEE2268E5AC80017F2D6 /* Academix.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Academix.entitlements; sourceTree = "<group>"; };
 		46B2CED52684D9B8009A006B /* CourseChatView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CourseChatView.swift; sourceTree = "<group>"; };
-		46B2CED82684F87F009A006B /* UserCourses.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = UserCourses.xcdatamodel; sourceTree = "<group>"; };
 		46C7764C268BCCFB00264401 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		46C7764E268BD1CE00264401 /* SignInView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInView.swift; sourceTree = "<group>"; };
 		46C77650268C119F00264401 /* RegisterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterView.swift; sourceTree = "<group>"; };
@@ -109,6 +109,8 @@
 		46E2E04A2687DE030071649B /* Media.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Media.swift; sourceTree = "<group>"; };
 		46F2E46F2688353A002DDE18 /* FriendsMoreInfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendsMoreInfoView.swift; sourceTree = "<group>"; };
 		46F2E47126883AE5002DDE18 /* CourseChatMoreInfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CourseChatMoreInfoView.swift; sourceTree = "<group>"; };
+		46FD121F26928D19005965B0 /* PushNotificaiotnSender.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PushNotificaiotnSender.swift; sourceTree = "<group>"; };
+		46FD122126928F02005965B0 /* PushNotificationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PushNotificationManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -161,7 +163,7 @@
 				461718BD26863E4C005F12F7 /* Main */,
 				46C77640268BC88600264401 /* Auth */,
 				461718B826863BBB005F12F7 /* Home */,
-				461718BB26863BEC005F12F7 /* CourseChat */,
+				461718BB26863BEC005F12F7 /* Course */,
 				461718B926863BCD005F12F7 /* Friends */,
 				461718BA26863BDE005F12F7 /* Plan */,
 				461718BC26863C0A005F12F7 /* Me */,
@@ -200,14 +202,14 @@
 			path = Plan;
 			sourceTree = "<group>";
 		};
-		461718BB26863BEC005F12F7 /* CourseChat */ = {
+		461718BB26863BEC005F12F7 /* Course */ = {
 			isa = PBXGroup;
 			children = (
 				46B2CED52684D9B8009A006B /* CourseChatView.swift */,
 				46F2E47126883AE5002DDE18 /* CourseChatMoreInfoView.swift */,
 				465E61EF268F925700AC2D47 /* CourseEntry.swift */,
 			);
-			path = CourseChat;
+			path = Course;
 			sourceTree = "<group>";
 		};
 		461718BC26863C0A005F12F7 /* Me */ = {
@@ -276,14 +278,13 @@
 				46A0CEE2268E5AC80017F2D6 /* Academix.entitlements */,
 				46969C3726804CD000A82666 /* AcademixApp.swift */,
 				46A0CEE0268E59270017F2D6 /* AppDelegate.swift */,
-				46C77652268C1D6C00264401 /* defaultsKeys.swift */,
 				46969C3B26804CD100A82666 /* Assets.xcassets */,
 				461718C0268673B7005F12F7 /* Components */,
 				461718B726863B8F005F12F7 /* Module */,
 				461718B626863B80005F12F7 /* Model */,
 				461718B526863B2B005F12F7 /* Extensions */,
+				46FD121E26928CE4005965B0 /* Supporting files */,
 				46969C3D26804CD100A82666 /* Preview Content */,
-				46B2CED72684F87F009A006B /* UserCourses.xcdatamodeld */,
 				46969C4026804CD100A82666 /* Info.plist */,
 				46C7764C268BCCFB00264401 /* GoogleService-Info.plist */,
 				4663D5CF268A81F3008C0256 /* Localizable.strings */,
@@ -306,6 +307,16 @@
 				46C77650268C119F00264401 /* RegisterView.swift */,
 			);
 			path = Auth;
+			sourceTree = "<group>";
+		};
+		46FD121E26928CE4005965B0 /* Supporting files */ = {
+			isa = PBXGroup;
+			children = (
+				46C77652268C1D6C00264401 /* defaultsKeys.swift */,
+				46FD121F26928D19005965B0 /* PushNotificaiotnSender.swift */,
+				46FD122126928F02005965B0 /* PushNotificationManager.swift */,
+			);
+			path = "Supporting files";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -412,6 +423,7 @@
 				46B2CED62684D9B8009A006B /* CourseChatView.swift in Sources */,
 				46E2E04B2687DE030071649B /* Media.swift in Sources */,
 				461807462686C0830001252C /* UIViewController++.swift in Sources */,
+				46FD122226928F02005965B0 /* PushNotificationManager.swift in Sources */,
 				46C7764F268BD1CE00264401 /* SignInView.swift in Sources */,
 				46F2E4702688353A002DDE18 /* FriendsMoreInfoView.swift in Sources */,
 				463A0CD826884F5F0028C55A /* AddNewFriendView.swift in Sources */,
@@ -421,13 +433,13 @@
 				46969C3826804CD000A82666 /* AcademixApp.swift in Sources */,
 				4697E5D726900E2C005AE2E8 /* UserDefaults++.swift in Sources */,
 				4633100726855C2F00E63D68 /* UINavigationController++.swift in Sources */,
-				46B2CED92684F87F009A006B /* UserCourses.xcdatamodeld in Sources */,
 				46330FFD2685500600E63D68 /* User.swift in Sources */,
 				463A0CDC26893F0A0028C55A /* View++.swift in Sources */,
 				465E61EE268F6FF900AC2D47 /* CoursesContainer.swift in Sources */,
 				4680290026843000000ADC22 /* PlanView.swift in Sources */,
 				4697E5D5268FBA74005AE2E8 /* FriendsContainer.swift in Sources */,
 				4697E5DB2690C00F005AE2E8 /* Published++.swift in Sources */,
+				46FD122026928D19005965B0 /* PushNotificaiotnSender.swift in Sources */,
 				46A0CEE1268E59270017F2D6 /* AppDelegate.swift in Sources */,
 				46E2E0472687D8590071649B /* FriendsChatList.swift in Sources */,
 			);
@@ -665,19 +677,6 @@
 			productName = FirebaseAuth;
 		};
 /* End XCSwiftPackageProductDependency section */
-
-/* Begin XCVersionGroup section */
-		46B2CED72684F87F009A006B /* UserCourses.xcdatamodeld */ = {
-			isa = XCVersionGroup;
-			children = (
-				46B2CED82684F87F009A006B /* UserCourses.xcdatamodel */,
-			);
-			currentVersion = 46B2CED82684F87F009A006B /* UserCourses.xcdatamodel */;
-			path = UserCourses.xcdatamodeld;
-			sourceTree = "<group>";
-			versionGroupType = wrapper.xcdatamodel;
-		};
-/* End XCVersionGroup section */
 	};
 	rootObject = 46969C2C26804CD000A82666 /* Project object */;
 }

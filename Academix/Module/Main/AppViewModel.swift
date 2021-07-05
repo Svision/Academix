@@ -52,6 +52,16 @@ class AppViewModel: ObservableObject {
                     self?.signedIn = true
                     self?.currUser = User(id: email)
                     self?.currUser.saveSelf(forKey: defaultsKeys.currUser)
+                    for user in User.all {
+                        let chat = FriendChat(myId: self!.currUser.id, friend: user)
+                        // MARK: try read saved message
+                        if let savedChat = self?.defaults.getObject(forKey: chat.id, castTo: FriendChat.self) {
+                            self!.friendChats.append(savedChat)
+                        }
+                        else {
+                            self!.friendChats.append(chat)
+                        }
+                    }
                 }
             }
         }
@@ -66,6 +76,16 @@ class AppViewModel: ObservableObject {
                     self?.signedIn = true
                     self?.currUser = User(id: email)
                     self?.currUser.saveSelf(forKey: defaultsKeys.currUser)
+                    for user in User.all {
+                        let chat = FriendChat(myId: self!.currUser.id, friend: user)
+                        // MARK: try read saved message
+                        if let savedChat = self?.defaults.getObject(forKey: chat.id, castTo: FriendChat.self) {
+                            self!.friendChats.append(savedChat)
+                        }
+                        else {
+                            self!.friendChats.append(chat)
+                        }
+                    }
                 }
             }
         }

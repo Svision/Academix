@@ -13,8 +13,8 @@
 "Implementing..." = "开发中...";
 "Sign In" = "登陆";
 "Register" = "注册";
-"Enter Email" = "输入邮箱";
-"Enter Password" = "输入密码";
+"University Email" = "学校邮箱";
+"Password" = "密码";
 "Enter Password Again" = "再次输入密码";
 "Sign Out" = "登出";
 "Send" = "发送";

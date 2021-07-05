@@ -47,14 +47,20 @@ struct RegisterView: View {
     
     var body: some View {
         Background {
-            VStack(spacing: CGFloat(verticalPaddingForForm)) {
-                Text("Academix")
+            VStack {
+                Spacer()
+                Image("Academix")
+                    .resizable()
+                    .frame(width: 120, height: 120)
+                    .padding(.bottom)
+                Text("Welcome!")
                     .font(.title)
+                    .bold()
                     .foregroundColor(.primary)
                 HStack {
                     Image(systemName: "envelope")
                         .foregroundColor(.secondary)
-                    TextField("Enter Email", text: $email)
+                    TextField("University Email", text: $email)
                         .foregroundColor(.primary)
                         .keyboardType(.emailAddress)
                         .autocapitalization(.none)
@@ -65,12 +71,13 @@ struct RegisterView: View {
                     RoundedRectangle(cornerRadius: 16)
                         .stroke(Color.primary, lineWidth: 2)
                 )
+                .padding(.vertical)
                 
                 VStack(spacing: 10){
                     HStack {
                         Image(systemName: "key")
                             .foregroundColor(.secondary)
-                        SecureField("Enter Password", text: $password)
+                        SecureField("Password", text: $password)
                             .foregroundColor(.primary)
                     }
                     .padding()
@@ -91,18 +98,18 @@ struct RegisterView: View {
                             .stroke(Color.primary, lineWidth: 2)
                     )
                 }
+                .padding(.vertical)
 
-                
-                Button(action: {
-                    register()
-                }) {
+                Button(action: {register()}) {
                     Text("Register")
-                        .padding()
+                        .foregroundColor(.white)
+                        .font(.title2)
+                        .background(RoundedRectangle(cornerRadius: 10)
+                                        .foregroundColor(Color("theme_blue"))
+                                        .frame(width: 200, height: 50))
                 }
-                .frame(width: 100, height: 50)
-                .background(Color.primary)
-                .foregroundColor(Color(UIColor.systemBackground))
-                .cornerRadius(10)
+                .padding()
+                Spacer()
             }.padding(.horizontal, CGFloat(verticalPaddingForForm))
             
         }

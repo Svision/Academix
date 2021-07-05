@@ -21,7 +21,7 @@ struct HomeView: View {
                     Text("Courses")
                         .font(.title2)
                         .bold()
-                        .foregroundColor(Color(red: 71/255, green: 192/255, blue: 231/255))
+                        .foregroundColor(Color("theme_blue"))
                         .frame(width: 150, height: 60)
                         .padding(.top, geometry.size.height / 12)
                     
