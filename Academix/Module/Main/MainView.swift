@@ -90,6 +90,8 @@ struct MainView: View {
     func load() {
         if !firstLoad { return }
         
+        UIApplication.shared.applicationIconBadgeNumber = 0
+        
         DispatchQueue.main.async {
             for course in courses {
                 course.fetchAllMessages()
