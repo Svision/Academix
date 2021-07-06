@@ -13,4 +13,16 @@ extension String {
        let endIndex = self.index(self.startIndex, offsetBy: to)
        return String(self[startIndex..<endIndex])
     }
+    
+    var isAlphanumeric: Bool {
+        return !isEmpty && range(of: "[^a-zA-Z0-9]", options: .regularExpression) == nil
+    }
+    
+    var isAlpha: Bool {
+        return !isEmpty && range(of: "[^a-zA-Z]", options: .regularExpression) == nil
+    }
+    
+    var isNumeric: Bool {
+        return !isEmpty && range(of: "[^0-9]", options: .regularExpression) == nil
+    }
 }

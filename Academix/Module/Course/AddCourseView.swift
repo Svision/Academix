@@ -80,9 +80,19 @@ struct AddCourseView: View {
     }
     
     func addCourse() {
-        if department.count != 3 && courseCode.count != 3 {
+        if department.count != 3 || courseCode.count != 3 {
             showingAlert = true
-            alertMessage = "Department and course code should be exactly three letters"
+            alertMessage = "Both Department and Course code should be exactly three letters"
+            return
+        }
+        if !department.isAlpha {
+            showingAlert = true
+            alertMessage = "Department should only contain letters"
+            return
+        }
+        if !courseCode.isAlphanumeric {
+            showingAlert = true
+            alertMessage = "Course code should only contain letters and numbers"
             return
         }
         let newCourse = Course(
