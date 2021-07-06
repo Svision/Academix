@@ -15,14 +15,15 @@ class User: Identifiable, ObservableObject, Codable, Equatable  {
     var avatar: String = ""
     var university: String = ""
     let id: String
-    var courses: Array<Course> = []
+    @Published var courses: Array<Course> = []
     
     // setting
     var major: String = ""
     var url: String = ""
     
     // relation
-    var friends: [User] = []
+    @Published var friends: [User] = []
+    @Published var friendChats: [FriendChat] = []
     
     init(name: String, avatar: String, university: String, email: String, courses: Array<Course> = []) {
         self.name = name
@@ -49,32 +50,6 @@ class User: Identifiable, ObservableObject, Codable, Equatable  {
         }
         return coursesString.subString(to: coursesString.count - 2)
     }
-    
-//    static func getById(id: String, completion: @escaping (User) -> Void) {
-//        let db = Firestore.firestore()
-//
-//        db.collection("Users").getDocuments { snap, err in
-//            if err != nil {
-//                print((err?.localizedDescription)!)
-//                return
-//            }
-//            if (snap?.documents.isEmpty)! {
-//                return
-//            }
-//            for user in snap!.documents {
-//                if id == user.documentID {
-//                    let name = user.get("name") as! String
-//                    let university = user.get("university") as! String
-//                    let avatar = user.get("avatar") as! String
-//                    let courses = user.get("courses") as! Array<String>
-//                    completion(User(name: name, avatar: avatar, university: university, email: id, courses: courses))
-//                }
-//                else {
-//                    return
-//                }
-//            }
-//        }
-//    }
 }
 
 extension User {

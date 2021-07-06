@@ -11,7 +11,6 @@ import Firebase
 struct MainView: View {
     let defaults = UserDefaults.standard
     @State private var tabSelection: Int = 0
-    @State var courses: [Course]
     @State var firstLoad: Bool = true
     @EnvironmentObject var viewModel: AppViewModel
     
@@ -21,38 +20,19 @@ struct MainView: View {
             
             do {
                 try Auth.auth().signOut()
+                defaults.removeObject(forKey: defaultsKeys.currUser)
             } catch {
                 print("Error info: \(error)")
             }
-
+            
             // Update the flag indicator
             defaults.set(true, forKey: "hasRunBefore")
             defaults.synchronize() // This forces the app to update userDefaults
-
-            // Run code here for the first launch
-            courses = Course.all
             
-            for course in courses {
-                course.saveSelf(forKey: course.id)
-                print("Saved course: \(course.id)")
-            }
+            // Run code here for the first launch
         } else {
             print("The app has been launched before. Loading UserDefaults...")
             // Run code here for every other launch but the first
-            var cachedCourses: [Course] = []
-
-            // load courses and chats
-            for course in Course.all {
-                let getCourse = defaults.getObject(forKey: course.id, castTo: Course.self)
-                if getCourse != nil {
-                    cachedCourses.append(getCourse!)
-                    print("Get course: \(course.id)")
-                }
-                else {
-                    print("Get course error: \(course.id)")
-                }
-            }
-            courses = cachedCourses
         }
     }
     
@@ -60,10 +40,10 @@ struct MainView: View {
         NavigationView {
             if viewModel.signedIn {
                 TabView(selection: $tabSelection) {
-                    HomeView(courses: $courses)
+                    HomeView(courses: $viewModel.currUser.courses)
                         .tabItem { Item(type: .home, selection: tabSelection) }
                         .tag(ItemType.home.rawValue)
-                    FriendsView(friendChats: $viewModel.friendChats)
+                    FriendsView(friendChats: $viewModel.currUser.friendChats)
                         .tabItem { Item(type: .friends, selection: tabSelection) }
                         .tag(ItemType.friends.rawValue)
                     PlanView()
@@ -93,17 +73,9 @@ struct MainView: View {
         UIApplication.shared.applicationIconBadgeNumber = 0
         
         DispatchQueue.main.async {
-            for course in courses {
-                course.fetchAllMessages()
-                course.saveSelf(forKey: course.id)
-            }
-        }
-        DispatchQueue.main.async {
-            for chat in viewModel.friendChats {
-                chat.getThisDM()
-                chat.saveSelf(forKey: chat.id)
-                print("saved chat id: \(chat.id)")
-            }
+            for course in viewModel.currUser.courses { course.fetchAllMessages() }
+            for chat in viewModel.currUser.friendChats { chat.getThisDM() }
+            viewModel.currUser.saveSelf(forKey: defaultsKeys.currUser)
         }
         firstLoad = false
     }
@@ -150,7 +122,9 @@ struct MainView: View {
             case .home:
                 return AnyView(EmptyView())
             case .friends:
-                return AnyView(Image(systemName: "person.badge.plus"))
+                return AnyView(NavigationLink(destination: AddNewFriendView()) {
+                    Image(systemName: "person.badge.plus")
+                })
             case .plan:
                 return AnyView(Image(systemName: "arrow.up.arrow.down"))
             case .me:
@@ -163,7 +137,9 @@ struct MainView: View {
             case .home:
                 return AnyView(EmptyView())
             case .friends:
-                return AnyView(Image(systemName: "magnifyingglass"))
+                return AnyView(NavigationLink(destination: SearchFriendsView()) {
+                    Image(systemName: "magnifyingglass")
+                })
             case .plan:
                 return AnyView(EmptyView())
             case .me:

@@ -10,12 +10,15 @@ import Firebase
 import CoreHaptics
 
 struct FriendsChatView: View {
+    @EnvironmentObject var viewModel: AppViewModel
     @ObservedObject var chat: FriendChat
     @State var isMoreInfoViewActive: Bool = false
     @State var engine: CHHapticEngine?
+    @State var deleted: Bool = false
+    @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
     
     var moreInfoView : some View {
-        NavigationLink(destination: FriendsMoreInfoView(friend: chat.friend), isActive: $isMoreInfoViewActive) {
+        NavigationLink(destination: FriendsMoreInfoView(friend: chat.friend, deleted: $deleted), isActive: $isMoreInfoViewActive) {
             EmptyView()
         }
     }
@@ -49,7 +52,12 @@ struct FriendsChatView: View {
         .onChange(of: chat.haveNewMessages, perform: { haveNewMessages in
             if haveNewMessages { complexSuccess() }
             chat.readed()
-            chat.saveSelf(forKey: chat.id)
+            viewModel.currUser.saveSelf(forKey: defaultsKeys.currUser)
+        })
+        .onChange(of: deleted, perform: { value in
+            if deleted {
+                self.presentationMode.wrappedValue.dismiss()
+            }
         })
         .onTapGesture {
             self.endTextEditing()

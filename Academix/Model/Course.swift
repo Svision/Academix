@@ -91,7 +91,13 @@ class Course: Hashable, Identifiable, ObservableObject, Codable  {
 }
 
 extension Course {
-    static var all: [Course] = [cscc10, csc369, csc373, sta301, mat301]
+    static var all: [Course] = [general, cscc10, csc369, csc373, sta301, mat301]
+    
+    static var general = Course(
+        university: "Academix",
+        department: "General",
+        courseCode: ""
+    )
     
     static let cscc10 = Course(
         university: "UofT",

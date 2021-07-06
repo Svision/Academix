@@ -9,6 +9,7 @@ import SwiftUI
 import CoreHaptics
 
 struct FriendsChatList: View {
+    @EnvironmentObject var viewModel: AppViewModel
     @Binding var friendChats: [FriendChat]
     @Binding var selected: String
     @Binding var engine: CHHapticEngine?
@@ -19,7 +20,7 @@ struct FriendsChatList: View {
                 ForEach(friendChats, id: \.id) { chat in
                     NavigationLink(destination: FriendsChatView(chat: chat).onAppear {
                         chat.readed()
-                        chat.saveSelf(forKey: chat.id)
+                        viewModel.currUser.saveSelf(forKey: defaultsKeys.currUser)
                     }) {
                         VStack(spacing: 0) {
                             FriendsChatRow(chat: chat, engine: $engine)

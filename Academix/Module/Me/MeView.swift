@@ -24,6 +24,8 @@ struct MeView: View {
                         .frame(width: 100, height: 100)
                         .overlay(Circle().stroke())
                         .padding()
+                    Text("Name: \(User.findUser(id: viewModel.currUser.id).name)")
+                        .padding()
                     Text("My email: \(viewModel.currUser.id)")
                         .padding()
                     Text("University: \(User.findUser(id: viewModel.currUser.id).university)")

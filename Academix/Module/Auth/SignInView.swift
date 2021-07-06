@@ -96,10 +96,17 @@ struct SignInView: View {
                 }
                 .padding()
                 Spacer()
-                NavigationLink(destination: RegisterView()) {
-                    Text("Not on Academix yet? Register")
-                        .foregroundColor(.blue)
-                        .padding()
+                VStack{
+                    NavigationLink(destination: RegisterView()) {
+                        Text("Not on Academix yet? Register")
+                            .foregroundColor(.blue)
+                            .padding()
+                    }
+                    NavigationLink(destination: ForgotPasswordView()) {
+                        Text("Forgot password?")
+                            .foregroundColor(.gray)
+                            .padding()
+                    }
                 }
                 Spacer()
             }.padding(.horizontal, CGFloat(verticalPaddingForForm))

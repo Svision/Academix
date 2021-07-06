@@ -11,9 +11,11 @@ import Combine
 struct CourseChatView: View {
     @ObservedObject var course: Course
     @State private var isMoreInfoViewActive: Bool = false
+    @State var deleted: Bool = false
+    @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
     
     var moreInfoView : some View {
-        NavigationLink(destination: CourseChatMoreInfoView(course: course), isActive: $isMoreInfoViewActive) {
+        NavigationLink(destination: CourseChatMoreInfoView(course: course, deleted: $deleted), isActive: $isMoreInfoViewActive) {
             EmptyView()
         }
     }
@@ -44,6 +46,11 @@ struct CourseChatView: View {
         .onTapGesture {
             self.endTextEditing()
         }
+        .onChange(of: deleted, perform: { value in
+            if deleted {
+                self.presentationMode.wrappedValue.dismiss()
+            }
+        })
     }
     
     init(course: Course) {

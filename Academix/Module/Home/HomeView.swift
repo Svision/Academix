@@ -30,28 +30,34 @@ struct HomeView: View {
                         .position(x: geometry.size.width / 2, y: geometry.size.height / 3)
                 }
                 // Add button
-                Button(action: {
-                    print("Add clicked!")
-                    if CoursesContainer().all.count >= 6 {
+                if courses.count >= 6 {
+                    Button(action: {
                         showingAlert = true
-                    } else {
-                        // TODO: add a course
+                    }, label: {
+                        Image(systemName: "plus.circle")
+                            .font(.system(size: 60))
+                            .foregroundColor(.primary)
+                    })
+                    .alert(isPresented: $showingAlert) {
+                        Alert(title: Text("Exceed Maximum Courses"),
+                              message: Text("Currently do not support adding more than 6 courses"), dismissButton: .default(Text("OK")))
                     }
-                }, label: {
-                    Image(systemName: "plus.circle")
-                        .font(.system(size: 60))
-                        .foregroundColor(.primary)
-                })
-                .alert(isPresented: $showingAlert) {
-                    Alert(title: Text("Exceed Maximum Courses"),
-                          message: Text("Currently do not support adding more than 6 courses"), dismissButton: .default(Text("OK")))
+                    .position(x: geometry.size.width - 60, y: geometry.size.height - 60)
                 }
-                .position(x: geometry.size.width - 60, y: geometry.size.height - 60)
+                else {
+                    NavigationLink(destination: AddCourseView()) {
+                        Image(systemName: "plus.circle")
+                            .font(.system(size: 60))
+                            .foregroundColor(.primary)
+                    }
+                    .position(x: geometry.size.width - 60, y: geometry.size.height - 60)
+                }
             }
         }
     }
     
     struct CoursesView: View {
+        @EnvironmentObject var viewModel: AppViewModel
         @Binding var courses: [Course]
         let metrics: GeometryProxy
         let layout = [GridItem(.adaptive(minimum: 150))]
@@ -61,7 +67,7 @@ struct HomeView: View {
                 ForEach(courses, id: \.id) { course in
                     NavigationLink(destination: CourseChatView(course: course).onAppear {
                         course.unreadMessages = 0
-                        course.saveSelf(forKey: course.id)
+                        viewModel.currUser.saveSelf(forKey: defaultsKeys.currUser)
                     }){
                         CourseEntry(course: course)
                     }

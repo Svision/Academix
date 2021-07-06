@@ -13,24 +13,13 @@ class AppViewModel: ObservableObject {
     let auth = Auth.auth()
     let defaults = UserDefaults.standard
     @Published var currUser: User = User(id: "unknown")
-    @Published var friendChats: [FriendChat] = []
-    @Published var haveNewMessages: Bool = false
+    @Published var haveNewFriendChatMessages: Bool = false
+    @Published var haveNewCourseChatMessages: Bool = false
     
     init() {
         if isSignedIn {
             if let getUser = defaults.getObject(forKey: defaultsKeys.currUser, castTo: User.self) {
-                self.currUser = getUser
-                // MARK: add all
-                for user in User.all {
-                    let chat = FriendChat(myId: currUser.id, friend: user)
-                    // MARK: try read saved message
-                    if let savedChat = defaults.getObject(forKey: chat.id, castTo: FriendChat.self) {
-                        friendChats.append(savedChat)
-                    }
-                    else {
-                        friendChats.append(chat)
-                    }
-                }
+                    self.currUser = getUser
             }
             print("current user: \(self.currUser.id)")
         }
@@ -52,16 +41,7 @@ class AppViewModel: ObservableObject {
                     self?.signedIn = true
                     self?.currUser = User(id: email)
                     self?.currUser.saveSelf(forKey: defaultsKeys.currUser)
-                    for user in User.all {
-                        let chat = FriendChat(myId: self!.currUser.id, friend: user)
-                        // MARK: try read saved message
-                        if let savedChat = self?.defaults.getObject(forKey: chat.id, castTo: FriendChat.self) {
-                            self!.friendChats.append(savedChat)
-                        }
-                        else {
-                            self!.friendChats.append(chat)
-                        }
-                    }
+                    if !self!.currUser.courses.contains(.general) { self!.currUser.courses.append(.general) }
                 }
             }
         }
@@ -76,16 +56,7 @@ class AppViewModel: ObservableObject {
                     self?.signedIn = true
                     self?.currUser = User(id: email)
                     self?.currUser.saveSelf(forKey: defaultsKeys.currUser)
-                    for user in User.all {
-                        let chat = FriendChat(myId: self!.currUser.id, friend: user)
-                        // MARK: try read saved message
-                        if let savedChat = self?.defaults.getObject(forKey: chat.id, castTo: FriendChat.self) {
-                            self!.friendChats.append(savedChat)
-                        }
-                        else {
-                            self!.friendChats.append(chat)
-                        }
-                    }
+                    if !self!.currUser.courses.contains(.general) { self!.currUser.courses.append(.general) }
                 }
             }
         }
@@ -95,12 +66,56 @@ class AppViewModel: ObservableObject {
         try? auth.signOut()
         
         // remove cache upon signedOut
-        for chat in self.friendChats {
-            defaults.removeObject(forKey: chat.id)
-        }
-        
         self.signedIn = false
         self.currUser = User(id: "unknown")
         self.currUser.saveSelf(forKey: defaultsKeys.currUser)
+    }
+    
+    func addNewCourse(_ course: Course) {
+        if !self.currUser.courses.contains(course) {
+            self.currUser.courses.append(course)
+            self.currUser.saveSelf(forKey: defaultsKeys.currUser)
+        }
+    }
+    
+    func removeCourse(_ course: Course) {
+        if let index = self.currUser.courses.firstIndex(of: course) {
+            self.currUser.courses.remove(at: index)
+            self.currUser.saveSelf(forKey: defaultsKeys.currUser)
+        }
+    }
+    
+    func addNewFriend(_ email: String) -> Bool {
+        let friend = fetchUser(email: email)
+        if friend == User.guest {
+            return false
+        }
+        if !self.currUser.friends.contains(friend) {
+            self.currUser.friends.append(friend)
+            self.currUser.friendChats.append(FriendChat(myId: self.currUser.id, friend: friend))
+            self.currUser.saveSelf(forKey: defaultsKeys.currUser)
+            return true
+        }
+        else {
+            return false
+        }
+    }
+    
+    func removeFriend(_ friend: User) {
+        if let index = self.currUser.friends.firstIndex(of: friend) {
+            self.currUser.friends.remove(at: index)
+            self.currUser.saveSelf(forKey: defaultsKeys.currUser)
+        }
+        for (index, chat) in self.currUser.friendChats.enumerated() {
+            if chat.friend == friend {
+                self.currUser.friendChats.remove(at: index)
+                break
+            }
+        }
+    }
+    
+    func fetchUser(email: String) -> User {
+        // tmp
+        return User.findUser(id: email)
     }
 }
