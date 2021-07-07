@@ -41,6 +41,7 @@ class AppViewModel: ObservableObject {
                     self?.signedIn = true
                     self?.currUser = User.findUser(id: email)
                     self?.currUser.saveSelf(forKey: defaultsKeys.currUser)
+                    self?.setUserInDB()
                 }
             }
         }
@@ -55,7 +56,39 @@ class AppViewModel: ObservableObject {
                     self?.signedIn = true
                     self?.currUser = User.findUser(id: email)
                     self?.currUser.saveSelf(forKey: defaultsKeys.currUser)
+                    self?.setUserInDB()
                 }
+            }
+        }
+    }
+    
+    func setUserInDB() {
+        let me = self.currUser
+        let fcmToken = Messaging.messaging().fcmToken
+        let db = Firestore.firestore().collection("Users").document(me.id)
+        var coursesId: [Course.ID] = []
+        var friendsId: [User.ID] = []
+        for course in me.courses {
+            coursesId.append(course.id)
+        }
+        for friend in me.friends {
+            friendsId.append(friend.id)
+        }
+        db.setData([
+            "avatar": me.avatar,
+            "courses": coursesId,
+            "name": me.name,
+            "university": me.university,
+            "friendsId": friendsId,
+            "fcmToken": fcmToken!
+        ]) {
+            err in
+            if err != nil {
+                print(err!.localizedDescription)
+                return
+            }
+            else {
+                print("successfully set user")
             }
         }
     }
@@ -85,7 +118,7 @@ class AppViewModel: ObservableObject {
     
     func addNewFriend(_ email: String) -> Bool {
         let friend = fetchUser(email: email)
-        if friend == User.guest {
+        if friend == User.unknown {
             return false
         }
         if !self.currUser.friends.contains(friend) {

@@ -15,6 +15,26 @@ struct MainView: View {
     @EnvironmentObject var viewModel: AppViewModel
     
     init() {
+        let currentAppVersion = Bundle.main.object(forInfoDictionaryKey: "CFBundleShortVersionString") as! String
+        let previousVersion = defaults.string(forKey: "appVersion")
+        if previousVersion == nil {
+            // first launch
+            defaults.set(currentAppVersion, forKey: "appVersion")
+            defaults.synchronize()
+            do {
+                try Auth.auth().signOut()
+                defaults.removeObject(forKey: defaultsKeys.currUser)
+            } catch {
+                print("Error info: \(error)")
+            }
+            exit(-1)
+        } else if previousVersion == currentAppVersion {
+            // same version
+        } else {
+            // other version
+            defaults.set(currentAppVersion, forKey: "appVersion")
+            defaults.synchronize()
+        }
         if (!defaults.bool(forKey: "hasRunBefore")) {
             print("The app is launching for the first time. Setting UserDefaults...")
             

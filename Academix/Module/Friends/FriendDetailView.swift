@@ -20,24 +20,26 @@ struct FriendDetailView: View {
             Text("university: \(friend.university)")
             Text("courses: \(friend.getCoursesString())")
             Spacer()
-            if !viewModel.currUser.friends.contains(friend) {
-                Button(action: {
-                    addFriend()
-                }) {
-                    Text("Add Friend")
-                        .foregroundColor(.white)
-                        .font(.title2)
-                        .background(RoundedRectangle(cornerRadius: 10)
-                                        .foregroundColor(Color("theme_blue"))
-                                        .frame(width: 200, height: 50))
-                }
-                .padding(.vertical, 30)
-            }
-            else {
-                Text("Friend Added")
-                    .foregroundColor(.primary)
-                    .font(.title2)
+            if User.findUser(id: friend.id).id != "unknown@academix.com" {
+                if !viewModel.currUser.friends.contains(friend) {
+                    Button(action: {
+                        addFriend()
+                    }) {
+                        Text("Add Friend")
+                            .foregroundColor(.white)
+                            .font(.title2)
+                            .background(RoundedRectangle(cornerRadius: 10)
+                                            .foregroundColor(Color("theme_blue"))
+                                            .frame(width: 200, height: 50))
+                    }
                     .padding(.vertical, 30)
+                }
+                else {
+                    Text("Friend Added")
+                        .foregroundColor(.primary)
+                        .font(.title2)
+                        .padding(.vertical, 30)
+                }
             }
         }
     }

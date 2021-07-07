@@ -76,14 +76,14 @@ extension User {
                 return user
             }
         }
-        return .guest
+        return .unknown
     }
     
-    static let guest = User(
-        name: "Guest",
+    static let unknown = User(
+        name: "unknown",
         avatar: "data_avatar0",
         university: "undefined",
-        email: "guest@academix.com",
+        email: "unknown@academix.com",
         courses: []
     )
     

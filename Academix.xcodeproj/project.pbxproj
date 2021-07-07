@@ -17,6 +17,7 @@
 		463310002685502800E63D68 /* Message.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46330FFF2685502800E63D68 /* Message.swift */; };
 		463310022685508F00E63D68 /* MessageList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 463310012685508F00E63D68 /* MessageList.swift */; };
 		4633100726855C2F00E63D68 /* UINavigationController++.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4633100626855C2F00E63D68 /* UINavigationController++.swift */; };
+		463862CF26961B7300C85153 /* Introspect in Frameworks */ = {isa = PBXBuildFile; productRef = 463862CE26961B7300C85153 /* Introspect */; };
 		463A0CD826884F5F0028C55A /* AddNewFriendView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 463A0CD726884F5F0028C55A /* AddNewFriendView.swift */; };
 		463A0CDA2689389A0028C55A /* String++.swift in Sources */ = {isa = PBXBuildFile; fileRef = 463A0CD92689389A0028C55A /* String++.swift */; };
 		463A0CDC26893F0A0028C55A /* View++.swift in Sources */ = {isa = PBXBuildFile; fileRef = 463A0CDB26893F0A0028C55A /* View++.swift */; };
@@ -60,7 +61,6 @@
 		46F2E4702688353A002DDE18 /* FriendsMoreInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46F2E46F2688353A002DDE18 /* FriendsMoreInfoView.swift */; };
 		46F2E47226883AE5002DDE18 /* CourseChatMoreInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46F2E47126883AE5002DDE18 /* CourseChatMoreInfoView.swift */; };
 		46FD122026928D19005965B0 /* PushNotificaiotnSender.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46FD121F26928D19005965B0 /* PushNotificaiotnSender.swift */; };
-		46FD122226928F02005965B0 /* PushNotificationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46FD122126928F02005965B0 /* PushNotificationManager.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -118,7 +118,6 @@
 		46F2E46F2688353A002DDE18 /* FriendsMoreInfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendsMoreInfoView.swift; sourceTree = "<group>"; };
 		46F2E47126883AE5002DDE18 /* CourseChatMoreInfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CourseChatMoreInfoView.swift; sourceTree = "<group>"; };
 		46FD121F26928D19005965B0 /* PushNotificaiotnSender.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PushNotificaiotnSender.swift; sourceTree = "<group>"; };
-		46FD122126928F02005965B0 /* PushNotificationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PushNotificationManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -127,6 +126,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				468DAE32268E9EE100A270E4 /* FirebaseMessaging in Frameworks */,
+				463862CF26961B7300C85153 /* Introspect in Frameworks */,
 				46C77647268BCBF500264401 /* FirebaseAuth in Frameworks */,
 				46C77643268BCBF500264401 /* FirebaseFirestoreSwift-Beta in Frameworks */,
 			);
@@ -326,7 +326,6 @@
 			children = (
 				46C77652268C1D6C00264401 /* defaultsKeys.swift */,
 				46FD121F26928D19005965B0 /* PushNotificaiotnSender.swift */,
-				46FD122126928F02005965B0 /* PushNotificationManager.swift */,
 			);
 			path = "Supporting files";
 			sourceTree = "<group>";
@@ -351,6 +350,7 @@
 				46C77642268BCBF500264401 /* FirebaseFirestoreSwift-Beta */,
 				46C77646268BCBF500264401 /* FirebaseAuth */,
 				468DAE31268E9EE100A270E4 /* FirebaseMessaging */,
+				463862CE26961B7300C85153 /* Introspect */,
 			);
 			productName = Academix;
 			productReference = 46969C3426804CD000A82666 /* Academix.app */;
@@ -382,6 +382,7 @@
 			mainGroup = 46969C2B26804CD000A82666;
 			packageReferences = (
 				46C77641268BCBF500264401 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
+				463862CD26961B7300C85153 /* XCRemoteSwiftPackageReference "SwiftUI-Introspect" */,
 			);
 			productRefGroup = 46969C3526804CD000A82666 /* Products */;
 			projectDirPath = "";
@@ -437,7 +438,6 @@
 				46E2E04B2687DE030071649B /* Media.swift in Sources */,
 				4671063326934F1C0001BED7 /* AddCourseView.swift in Sources */,
 				461807462686C0830001252C /* UIViewController++.swift in Sources */,
-				46FD122226928F02005965B0 /* PushNotificationManager.swift in Sources */,
 				46C7764F268BD1CE00264401 /* SignInView.swift in Sources */,
 				46F2E4702688353A002DDE18 /* FriendsMoreInfoView.swift in Sources */,
 				463A0CD826884F5F0028C55A /* AddNewFriendView.swift in Sources */,
@@ -599,7 +599,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
-				CODE_SIGN_ENTITLEMENTS = Academix/Academix.entitlements;
+				CODE_SIGN_ENTITLEMENTS = Academix/AcademixDebug.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"Academix/Preview Content\"";
@@ -668,6 +668,14 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
+		463862CD26961B7300C85153 /* XCRemoteSwiftPackageReference "SwiftUI-Introspect" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/siteline/SwiftUI-Introspect.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 0.1.3;
+			};
+		};
 		46C77641268BCBF500264401 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/firebase/firebase-ios-sdk";
@@ -679,6 +687,11 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		463862CE26961B7300C85153 /* Introspect */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 463862CD26961B7300C85153 /* XCRemoteSwiftPackageReference "SwiftUI-Introspect" */;
+			productName = Introspect;
+		};
 		468DAE31268E9EE100A270E4 /* FirebaseMessaging */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 46C77641268BCBF500264401 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;

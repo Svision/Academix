@@ -7,6 +7,7 @@
 
 import SwiftUI
 import Firebase
+//import Introspect
 
 struct ChatSendBar: View {
     @EnvironmentObject var viewModel: AppViewModel
@@ -36,8 +37,9 @@ struct ChatSendBar: View {
                 }
                 else {
                     Button(action: {
-                        sendMsg(message: Message(timestamp: Date(), senderId: viewModel.currUser.id, text: text))
-                        text = ""
+                        if text.trimmingCharacters(in: .whitespacesAndNewlines) != "" {
+                            sendMsg(message: Message(timestamp: Date(), senderId: viewModel.currUser.id, text: text))
+                        }
                     }, label: {
                         Text("Send")
                             .frame(width: hstack.size.width, height: hstack.size.height)
@@ -63,7 +65,7 @@ struct ChatSendBar: View {
                 
                 VStack {
                     HStack(spacing: 12) {
-                        TextEditor(text: $text)
+                        TextField("", text: $text)
                             .frame(height: 40)
                             .background(Color("chat_send_text_background"))
                             .cornerRadius(4)
@@ -80,6 +82,7 @@ struct ChatSendBar: View {
     }
     
     func sendMsg(message: Message) {
+        let sender = PushNotificationSender()
         let to = toCourses ? "Courses" : "DMs"
         let dbMsg = Firestore.firestore().collection("Messages").document("Messages").collection(to)
         let dest = toCourses ? receiver : (message.senderId < receiver ? "\(message.senderId)&\(receiver)" : "\(receiver)&\(message.senderId)")
@@ -93,9 +96,24 @@ struct ChatSendBar: View {
                 print(err!.localizedDescription)
                 return
             } else {
-                print("successfully send")
+                print("successfully send message")
                 if to == "DMs" {
                     // notification
+                }
+                if !toCourses {
+                    DispatchQueue.main.async {
+                        let ref = Firestore.firestore()
+                        ref.collection("Users").document(receiver).getDocument { doc, err in
+                            if let doc = doc, doc.exists {
+                                let fcmToken = doc.get("fcmToken") as! String
+                                sender.sendPushNotification(to: fcmToken, title: viewModel.currUser.name, body: text)
+                                text = ""
+                            }
+                            else {
+                                print("No user fcmToken")
+                            }
+                        }
+                    }
                 }
             }
         }
