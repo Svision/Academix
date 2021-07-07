@@ -49,6 +49,7 @@
 		46C7764F268BD1CE00264401 /* SignInView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46C7764E268BD1CE00264401 /* SignInView.swift */; };
 		46C77651268C119F00264401 /* RegisterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46C77650268C119F00264401 /* RegisterView.swift */; };
 		46C77653268C1D6C00264401 /* defaultsKeys.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46C77652268C1D6C00264401 /* defaultsKeys.swift */; };
+		46D5C5FE2695663D006EBDB5 /* FriendDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46D5C5FD2695663D006EBDB5 /* FriendDetailView.swift */; };
 		46E2E03F2687CCA70071649B /* FriendsChatRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46E2E03E2687CCA70071649B /* FriendsChatRow.swift */; };
 		46E2E0412687CE210071649B /* FriendChat.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46E2E0402687CE210071649B /* FriendChat.swift */; };
 		46E2E0432687CF680071649B /* FriendsFilterByCourse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46E2E0422687CF680071649B /* FriendsFilterByCourse.swift */; };
@@ -106,6 +107,7 @@
 		46C7764E268BD1CE00264401 /* SignInView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInView.swift; sourceTree = "<group>"; };
 		46C77650268C119F00264401 /* RegisterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterView.swift; sourceTree = "<group>"; };
 		46C77652268C1D6C00264401 /* defaultsKeys.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = defaultsKeys.swift; sourceTree = "<group>"; };
+		46D5C5FD2695663D006EBDB5 /* FriendDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendDetailView.swift; sourceTree = "<group>"; };
 		46E2E03E2687CCA70071649B /* FriendsChatRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendsChatRow.swift; sourceTree = "<group>"; };
 		46E2E0402687CE210071649B /* FriendChat.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendChat.swift; sourceTree = "<group>"; };
 		46E2E0422687CF680071649B /* FriendsFilterByCourse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendsFilterByCourse.swift; sourceTree = "<group>"; };
@@ -197,6 +199,7 @@
 				46F2E46F2688353A002DDE18 /* FriendsMoreInfoView.swift */,
 				463A0CD726884F5F0028C55A /* AddNewFriendView.swift */,
 				463243C4269518CF00E8B392 /* SearchFriendsView.swift */,
+				46D5C5FD2695663D006EBDB5 /* FriendDetailView.swift */,
 			);
 			path = Friends;
 			sourceTree = "<group>";
@@ -411,6 +414,7 @@
 				463310022685508F00E63D68 /* MessageList.swift in Sources */,
 				46C77653268C1D6C00264401 /* defaultsKeys.swift in Sources */,
 				4697E5DD2690F030005AE2E8 /* AppViewModel.swift in Sources */,
+				46D5C5FE2695663D006EBDB5 /* FriendDetailView.swift in Sources */,
 				461718C5268676D9005F12F7 /* UIImage++.swift in Sources */,
 				46C77651268C119F00264401 /* RegisterView.swift in Sources */,
 				46E2E0412687CE210071649B /* FriendChat.swift in Sources */,

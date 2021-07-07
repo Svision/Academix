@@ -31,6 +31,7 @@ class User: Identifiable, ObservableObject, Codable, Equatable  {
         self.university = university
         self.id = email
         self.courses = courses
+        self.courses.insert(.general, at: 0) // MARK: add general for everyone
     }
     
     init(id: String) {
@@ -95,7 +96,7 @@ extension User {
     )
     
     static let amanda = User(
-        name: "Sweety🍬",
+        name: "sch的Sweety🍬",
         avatar: "data_avatar2",
         university: "UofT",
         email: "wenqing@academix.com",

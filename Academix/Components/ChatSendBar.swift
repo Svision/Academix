@@ -36,7 +36,7 @@ struct ChatSendBar: View {
                 }
                 else {
                     Button(action: {
-                        sendMsg(message: Message(timestamp: Date(), sender: viewModel.currUser.id, text: text))
+                        sendMsg(message: Message(timestamp: Date(), senderId: viewModel.currUser.id, text: text))
                         text = ""
                     }, label: {
                         Text("Send")
@@ -82,10 +82,10 @@ struct ChatSendBar: View {
     func sendMsg(message: Message) {
         let to = toCourses ? "Courses" : "DMs"
         let dbMsg = Firestore.firestore().collection("Messages").document("Messages").collection(to)
-        let dest = toCourses ? receiver : (message.sender < receiver ? "\(message.sender)&\(receiver)" : "\(receiver)&\(message.sender)")
+        let dest = toCourses ? receiver : (message.senderId < receiver ? "\(message.senderId)&\(receiver)" : "\(receiver)&\(message.senderId)")
                 
         dbMsg.document(dest).collection(dest).document().setData([
-            "sender": message.sender,
+            "sender": message.senderId,
             "text": message.text,
             "timestamp": Timestamp(date: message.timestamp)
         ]) { err in

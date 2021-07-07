@@ -71,15 +71,15 @@ class Course: Hashable, Identifiable, ObservableObject, Codable  {
                 if doc.type == .added {
                     let id = doc.document.documentID
                     let text = doc.document.get("text") as! String
-                    let sender = doc.document.get("sender") as! String
+                    let senderId = doc.document.get("sender") as! String
                     let timestamp: Timestamp = doc.document.get("timestamp") as! Timestamp
 
                     DispatchQueue.main.async {
-                        let msg = Message(id: id, timestamp: timestamp.dateValue(), sender: sender, text: text)
+                        let msg = Message(id: id, timestamp: timestamp.dateValue(), senderId: senderId, text: text)
                         if !self.messages.contains(msg) {
                             self.messages.append(msg)
                             let myId = UserDefaults.standard.getObject(forKey: defaultsKeys.currUser, castTo: User.self)!.id
-                            if msg.sender != myId {
+                            if senderId != myId {
                                 self.unreadMessages += 1
                             }
                         }

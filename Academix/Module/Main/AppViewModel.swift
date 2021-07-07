@@ -39,9 +39,8 @@ class AppViewModel: ObservableObject {
             } else {
                 DispatchQueue.main.async {
                     self?.signedIn = true
-                    self?.currUser = User(id: email)
+                    self?.currUser = User.findUser(id: email)
                     self?.currUser.saveSelf(forKey: defaultsKeys.currUser)
-                    if !self!.currUser.courses.contains(.general) { self!.currUser.courses.append(.general) }
                 }
             }
         }
@@ -54,9 +53,8 @@ class AppViewModel: ObservableObject {
             } else {
                 DispatchQueue.main.async {
                     self?.signedIn = true
-                    self?.currUser = User(id: email)
+                    self?.currUser = User.findUser(id: email)
                     self?.currUser.saveSelf(forKey: defaultsKeys.currUser)
-                    if !self!.currUser.courses.contains(.general) { self!.currUser.courses.append(.general) }
                 }
             }
         }

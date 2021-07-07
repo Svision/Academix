@@ -14,22 +14,10 @@ struct Message: Identifiable, Equatable, Hashable, Codable {
 
     var id = UUID().uuidString
     let timestamp: Date
-    let sender: User.ID
+    let senderId: User.ID
     var text: String = ""
-    
-    enum CodingKeys: String, CodingKey {
-        case id
-        case text
-        case sender
-        case timestamp
-    }
     
     func hash(into hasher: inout Hasher) {
         hasher.combine(id)
     }
-}
-
-extension Message {
-    static let all: [Message] = [
-    ]
 }

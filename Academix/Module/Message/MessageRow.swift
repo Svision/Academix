@@ -13,11 +13,17 @@ struct MessageRow: View {
     
     var body: some View {
         HStack(alignment: .top, spacing: 8) {
-            if isMe { Spacer() } else { Avatar(icon: User.findUser(id: message.sender).avatar) }
+            if isMe { Spacer() } else {
+                NavigationLink(destination: FriendDetailView(friend: User.findUser(id: message.senderId))) {
+                    Avatar(icon: User.findUser(id: message.senderId).avatar)
+                }
+            }
             
             TextMessage(isMe: isMe, text: message.text)
             
-            if isMe {  Avatar(icon: User.findUser(id: message.sender).avatar) } else { Spacer() }
+            if isMe {NavigationLink(destination: FriendDetailView(friend: User.findUser(id: message.senderId))) {
+                Avatar(icon: User.findUser(id: message.senderId).avatar)
+            } } else { Spacer() }
         }
         .padding(.init(top: 8, leading: 12, bottom: 8, trailing: 12))
     }
@@ -77,12 +83,5 @@ struct MessageRow: View {
             .fill(Color("chat_\(isMe ? "me" : "friend")_background"))
             .frame(width: 6, height: 30)
         }
-    }
-}
-
-struct MessageRow_Previews: PreviewProvider {
-    static var previews: some View {
-        MessageRow(message: Message.all[0], isMe: false)
-            .previewLayout(.sizeThatFits)
     }
 }

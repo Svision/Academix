@@ -38,7 +38,7 @@ class FriendChat: Identifiable, ObservableObject, Equatable, Codable  {
         if messages.last != nil {
             return messages.last!
         }
-        return Message(timestamp: Date(timeIntervalSince1970: 0), sender: friend.id)
+        return Message(timestamp: Date(timeIntervalSince1970: 0), senderId: friend.id)
     }
     
     func readed() {
@@ -65,7 +65,7 @@ class FriendChat: Identifiable, ObservableObject, Equatable, Codable  {
                     let timestamp: Timestamp = doc.document.get("timestamp") as! Timestamp
 
                     DispatchQueue.main.async {
-                        let msg = Message(id: id, timestamp: timestamp.dateValue(), sender: senderId, text: text)
+                        let msg = Message(id: id, timestamp: timestamp.dateValue(), senderId: senderId, text: text)
                         if !self.messages.contains(msg) {
                             self.messages.append(msg)
                             if senderId != self.myId {
