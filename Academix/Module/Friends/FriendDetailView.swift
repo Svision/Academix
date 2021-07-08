@@ -20,7 +20,7 @@ struct FriendDetailView: View {
             Text("university: \(friend.university)")
             Text("courses: \(friend.getCoursesString())")
             Spacer()
-            if User.findUser(id: friend.id).id != "unknown@academix.com" {
+            if friend.id != "unknown@academix.com" {
                 if !viewModel.currUser.friends.contains(friend) {
                     Button(action: {
                         addFriend()
@@ -45,8 +45,7 @@ struct FriendDetailView: View {
     }
     
     func addFriend() {
-        if viewModel.addNewFriend(friend.id) {
-            self.presentationMode.wrappedValue.dismiss()
-        }
+        viewModel.addNewFriend(friend.id)
+        self.presentationMode.wrappedValue.dismiss()
     }
 }

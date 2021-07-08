@@ -74,7 +74,6 @@ struct HomeView: View {
                     .padding()
                 }
             }
-            .onAppear(perform: load)
         }
         
         func load() {

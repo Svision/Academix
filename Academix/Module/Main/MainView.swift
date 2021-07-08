@@ -10,7 +10,7 @@ import Firebase
 
 struct MainView: View {
     let defaults = UserDefaults.standard
-    @State private var tabSelection: Int = 0
+    @State private var tabSelection: Int = ItemType.home.rawValue
     @State var firstLoad: Bool = true
     @EnvironmentObject var viewModel: AppViewModel
     
@@ -44,7 +44,6 @@ struct MainView: View {
             } catch {
                 print("Error info: \(error)")
             }
-            
             // Update the flag indicator
             defaults.set(true, forKey: "hasRunBefore")
             defaults.synchronize() // This forces the app to update userDefaults
@@ -53,6 +52,9 @@ struct MainView: View {
         } else {
             print("The app has been launched before. Loading UserDefaults...")
             // Run code here for every other launch but the first
+        }
+        if defaults.getObject(forKey: defaultsKeys.currUser, castTo: User.self) == nil {
+            tabSelection = ItemType.me.rawValue
         }
     }
     
@@ -88,10 +90,10 @@ struct MainView: View {
     }
     
     func load() {
-        if !firstLoad { return }
-        
         UIApplication.shared.applicationIconBadgeNumber = 0
         
+        print("loading...")
+//        if !firstLoad { return }
         DispatchQueue.main.async {
             for course in viewModel.currUser.courses { course.fetchAllMessages() }
             for chat in viewModel.currUser.friendChats { chat.getThisDM() }

@@ -62,7 +62,7 @@ struct RegisterView: View {
                         .foregroundColor(.secondary)
                     TextField("University Email", text: $email)
                         .foregroundColor(.primary)
-                        .keyboardType(.emailAddress)
+                        .keyboardType(.asciiCapable)
                         .autocapitalization(.none)
                         .disableAutocorrection(true)
                 }

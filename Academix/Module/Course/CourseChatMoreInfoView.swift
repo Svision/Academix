@@ -19,21 +19,29 @@ struct CourseChatMoreInfoView: View {
             Text("name: \(course.name)")
             Text("id: \(course.id)")
             Spacer()
-            Button(action: {
-                removeCourse()
-            }) {
-                Text("Remove \(course.name)")
-                    .foregroundColor(.white)
-                    .font(.title2)
-                    .background(RoundedRectangle(cornerRadius: 10)
-                                    .foregroundColor(.red)
-                                    .frame(width: 200, height: 50))
+            if course.id != "Academix.General." {
+                Button(action: {
+                    removeCourse()
+                }) {
+                    Text("Remove \(course.name)")
+                        .foregroundColor(.white)
+                        .font(.title2)
+                        .background(RoundedRectangle(cornerRadius: 10)
+                                        .foregroundColor(.red)
+                                        .frame(width: 200, height: 50))
+                }
+                .padding(.vertical, 30)
             }
-            .padding(.vertical, 30)
         }
     }
     
     func removeCourse() {
+        viewModel.fetchCourse(courseId: course.id) { getCourse in
+            if getCourse != nil {
+                getCourse!.removeStudent(email: viewModel.currUser.id)
+                viewModel.setCourseDB(course: getCourse!)
+            }
+        }
         viewModel.removeCourse(course)
         self.presentationMode.wrappedValue.dismiss()
         deleted = true

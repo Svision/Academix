@@ -86,6 +86,7 @@ struct ChatSendBar: View {
         let to = toCourses ? "Courses" : "DMs"
         let dbMsg = Firestore.firestore().collection("Messages").document("Messages").collection(to)
         let dest = toCourses ? receiver : (message.senderId < receiver ? "\(message.senderId)&\(receiver)" : "\(receiver)&\(message.senderId)")
+        let tmpText = text
                 
         dbMsg.document(dest).collection(dest).document().setData([
             "sender": message.senderId,
@@ -106,8 +107,7 @@ struct ChatSendBar: View {
                         ref.collection("Users").document(receiver).getDocument { doc, err in
                             if let doc = doc, doc.exists {
                                 let fcmToken = doc.get("fcmToken") as! String
-                                sender.sendPushNotification(to: fcmToken, title: viewModel.currUser.name, body: text)
-                                text = ""
+                                sender.sendPushNotification(to: fcmToken, title: viewModel.currUser.name, body: tmpText)
                             }
                             else {
                                 print("No user fcmToken")
@@ -115,6 +115,7 @@ struct ChatSendBar: View {
                         }
                     }
                 }
+                text = ""
             }
         }
 

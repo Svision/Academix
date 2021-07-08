@@ -16,7 +16,7 @@ class Course: Hashable, Identifiable, ObservableObject, Codable  {
     let courseCode: String
     let courseDesc: String
     let id: String
-    var students: Array<User> = []
+    var students: Array<User.ID> = []
     
     enum CodingKeys: String, CodingKey {
         case name
@@ -33,13 +33,14 @@ class Course: Hashable, Identifiable, ObservableObject, Codable  {
     @Published var messages: Array<Message> = []
     @Published var unreadMessages: Int = 0
     
-    init(university: String, department: String, courseCode: String, courseDesc: String = "") {
+    init(university: String, department: String, courseCode: String, courseDesc: String = "", students: Array<User.ID> = []) {
         self.name = department + courseCode
         self.university = university
         self.department = department
         self.courseCode = courseCode
         self.courseDesc = courseDesc
         self.id = "\(university).\(department).\(courseCode)"
+        self.students = students
     }
     
     static func == (lhs: Course, rhs: Course) -> Bool {
@@ -74,17 +75,23 @@ class Course: Hashable, Identifiable, ObservableObject, Codable  {
                     let senderId = doc.document.get("sender") as! String
                     let timestamp: Timestamp = doc.document.get("timestamp") as! Timestamp
 
-                    DispatchQueue.main.async {
-                        let msg = Message(id: id, timestamp: timestamp.dateValue(), senderId: senderId, text: text)
-                        if !self.messages.contains(msg) {
-                            self.messages.append(msg)
-                            let myId = UserDefaults.standard.getObject(forKey: defaultsKeys.currUser, castTo: User.self)!.id
-                            if senderId != myId {
-                                self.unreadMessages += 1
-                            }
+                    let msg = Message(id: id, timestamp: timestamp.dateValue(), senderId: senderId, text: text)
+                    if !self.messages.contains(msg) {
+                        self.messages.append(msg)
+                        let myId = UserDefaults.standard.getObject(forKey: defaultsKeys.currUser, castTo: User.self)!.id
+                        if senderId != myId {
+                            self.unreadMessages += 1
                         }
                     }
                 }
+            }
+        }
+    }
+    
+    func removeStudent(email: String) {
+        for (index, student) in self.students.enumerated() {
+            if student == email {
+                self.students.remove(at: index)
             }
         }
     }

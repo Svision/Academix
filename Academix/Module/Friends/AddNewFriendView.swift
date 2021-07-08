@@ -49,12 +49,15 @@ struct AddNewFriendView: View {
     }
     
     func addFriend() {
-        if viewModel.addNewFriend(email) {
-            email = ""
-            self.presentationMode.wrappedValue.dismiss()
-        }
-        else {
-            showingAlert = true
+        viewModel.fetchUser(email: email) { user in
+            if user != nil {
+                viewModel.addNewFriend(email)
+                email = ""
+                self.presentationMode.wrappedValue.dismiss()
+            }
+            else {
+                showingAlert = true
+            }
         }
     }
 }

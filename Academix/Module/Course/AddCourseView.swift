@@ -95,12 +95,23 @@ struct AddCourseView: View {
             alertMessage = "Course code should only contain letters and numbers"
             return
         }
+        
         let newCourse = Course(
             university: university,
             department: department,
-            courseCode: courseCode
+            courseCode: courseCode,
+            students: [viewModel.currUser.id]
         )
-        viewModel.addNewCourse(newCourse)
+        viewModel.fetchCourse(courseId: newCourse.id) { getCourse in
+            if getCourse != nil {
+                getCourse!.students.append(viewModel.currUser.id)
+                viewModel.addNewCourse(getCourse!)
+            }
+            else {
+                viewModel.setCourseDB(course: newCourse)
+                viewModel.addNewCourse(newCourse)
+            }
+        }
         self.presentationMode.wrappedValue.dismiss()
     }
 }

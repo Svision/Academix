@@ -25,13 +25,11 @@ class User: Identifiable, ObservableObject, Codable, Equatable  {
     @Published var friends: [User] = []
     @Published var friendChats: [FriendChat] = []
     
-    init(name: String, avatar: String, university: String, email: String, courses: Array<Course> = []) {
+    init(name: String, avatar: String, university: String, email: String) {
         self.name = name
         self.avatar = avatar
         self.university = university
         self.id = email
-        self.courses = courses
-        self.courses.insert(.general, at: 0) // MARK: add general for everyone
     }
     
     init(id: String) {
@@ -50,6 +48,24 @@ class User: Identifiable, ObservableObject, Codable, Equatable  {
             coursesString += "\(courseIdArr[1])\(courseIdArr[2]), "
         }
         return coursesString.subString(to: coursesString.count - 2)
+    }
+    
+    func addFriend(_ friend: User) {
+        for currfriend in self.friends {
+            if currfriend.id == friend.id {
+                return
+            }
+        }
+        self.friends.append(friend)
+    }
+    
+    func addCourse(_ course: Course) {
+        for currCourse in self.courses {
+            if currCourse.id == course.id {
+                return
+            }
+        }
+        self.courses.append(course)
     }
 }
 
@@ -83,64 +99,56 @@ extension User {
         name: "unknown",
         avatar: "data_avatar0",
         university: "undefined",
-        email: "unknown@academix.com",
-        courses: []
+        email: "unknown@academix.com"
     )
     
     static let changhao = User(
         name: "Changhao",
         avatar: "data_avatar1",
         university: "UofT",
-        email: "changhao@academix.com",
-        courses: [Course.cscc10, Course.csc373, Course.csc369]
+        email: "changhao@academix.com"
     )
     
     static let amanda = User(
         name: "sch的Sweety🍬",
         avatar: "data_avatar2",
         university: "UofT",
-        email: "wenqing@academix.com",
-        courses: [Course.csc373, Course.sta301, Course.mat301]
+        email: "wenqing@academix.com"
     )
     
     static let sky = User(
         name: "sky",
         avatar: "data_avatar3",
         university: "UofT",
-        email: "sky@academix.com",
-        courses: [Course.csc369, Course.csc373]
+        email: "sky@academix.com"
     )
     
     static let yuhong = User(
         name: "Yuhong",
         avatar: "data_avatar4",
         university: "UofT",
-        email: "yuhong@academix.com",
-        courses: [Course.cscc10]
+        email: "yuhong@academix.com"
     )
     
     static let meixuan = User(
         name: "Meixuan",
         avatar: "data_avatar5",
         university: "UofT",
-        email: "meixuan@academix.com",
-        courses: [Course.csc369, Course.cscc10]
+        email: "meixuan@academix.com"
     )
     
     static let xiaoning = User(
         name: "Xiaoning",
         avatar: "data_avatar6",
         university: "UofT",
-        email: "xiaoning@academix.com",
-        courses: [Course.cscc10]
+        email: "xiaoning@academix.com"
     )
     
     static let yitong = User(
         name: "Yitong",
         avatar: "data_avatar7",
         university: "UofT",
-        email: "yitong@academix.com",
-        courses: [Course.cscc10]
+        email: "yitong@academix.com"
     )
     
     static let owen = User(
@@ -176,15 +184,13 @@ extension User {
         name: "Wayne",
         avatar: "data_avatar12",
         university: "McMaster",
-        email: "wayne@academix.com",
-        courses: []
+        email: "wayne@academix.com"
     )
     
     static let liuchang = User(
         name: "Liuchang",
         avatar: "data_avatar13",
         university: "McMaster",
-        email: "liuchang@academix.com",
-        courses: []
+        email: "liuchang@academix.com"
     )
 }

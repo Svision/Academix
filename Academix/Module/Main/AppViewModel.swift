@@ -15,11 +15,15 @@ class AppViewModel: ObservableObject {
     @Published var currUser: User = User(id: "unknown")
     @Published var haveNewFriendChatMessages: Bool = false
     @Published var haveNewCourseChatMessages: Bool = false
+    var cancellable : AnyCancellable? = nil
     
     init() {
         if isSignedIn {
             if let getUser = defaults.getObject(forKey: defaultsKeys.currUser, castTo: User.self) {
-                    self.currUser = getUser
+                self.currUser = getUser
+                self.cancellable = self.currUser.objectWillChange.sink { [weak self] (_) in
+                    self?.objectWillChange.send()
+                }
             }
             print("current user: \(self.currUser.id)")
         }
@@ -37,11 +41,16 @@ class AppViewModel: ObservableObject {
             if error != nil {
                 self?.errorMessage = error?.localizedDescription ?? ""
             } else {
-                DispatchQueue.main.async {
-                    self?.signedIn = true
-                    self?.currUser = User.findUser(id: email)
+                self!.fetchUser(email: email) { user in
+                    if user != nil {
+                        self?.currUser = user!
+                    }
+                    else {
+                        self?.currUser = User(id: email)
+                        self?.setUserDB()
+                    }
                     self?.currUser.saveSelf(forKey: defaultsKeys.currUser)
-                    self?.setUserInDB()
+                    self?.signedIn = true
                 }
             }
         }
@@ -52,17 +61,17 @@ class AppViewModel: ObservableObject {
             if error != nil {
                 self?.errorMessage = error?.localizedDescription ?? ""
             } else {
+                self?.currUser = User(id: email)
                 DispatchQueue.main.async {
-                    self?.signedIn = true
-                    self?.currUser = User.findUser(id: email)
+                    self?.setUserDB()
                     self?.currUser.saveSelf(forKey: defaultsKeys.currUser)
-                    self?.setUserInDB()
                 }
+                self?.signedIn = true
             }
         }
     }
     
-    func setUserInDB() {
+    func setUserDB() {
         let me = self.currUser
         let fcmToken = Messaging.messaging().fcmToken
         let db = Firestore.firestore().collection("Users").document(me.id)
@@ -76,7 +85,7 @@ class AppViewModel: ObservableObject {
         }
         db.setData([
             "avatar": me.avatar,
-            "courses": coursesId,
+            "coursesId": coursesId,
             "name": me.name,
             "university": me.university,
             "friendsId": friendsId,
@@ -106,6 +115,7 @@ class AppViewModel: ObservableObject {
         if !self.currUser.courses.contains(course) {
             self.currUser.courses.append(course)
             self.currUser.saveSelf(forKey: defaultsKeys.currUser)
+            setUserDB()
         }
     }
     
@@ -113,22 +123,23 @@ class AppViewModel: ObservableObject {
         if let index = self.currUser.courses.firstIndex(of: course) {
             self.currUser.courses.remove(at: index)
             self.currUser.saveSelf(forKey: defaultsKeys.currUser)
+            setUserDB()
         }
     }
     
-    func addNewFriend(_ email: String) -> Bool {
-        let friend = fetchUser(email: email)
-        if friend == User.unknown {
-            return false
-        }
-        if !self.currUser.friends.contains(friend) {
-            self.currUser.friends.append(friend)
-            self.currUser.friendChats.append(FriendChat(myId: self.currUser.id, friend: friend))
-            self.currUser.saveSelf(forKey: defaultsKeys.currUser)
-            return true
-        }
-        else {
-            return false
+    func addNewFriend(_ email: String) {
+        fetchUser(email: email) { friend in
+            if friend != nil {
+                if friend!.id == User.unknown.id {
+                    return
+                }
+                if !self.currUser.friends.contains(friend!) {
+                    self.currUser.friends.append(friend!)
+                    self.currUser.friendChats.append(FriendChat(myId: self.currUser.id, friend: friend!))
+                    self.currUser.saveSelf(forKey: defaultsKeys.currUser)
+                    self.setUserDB()
+                }
+            }
         }
     }
     
@@ -143,10 +154,96 @@ class AppViewModel: ObservableObject {
                 break
             }
         }
+        setUserDB()
     }
     
-    func fetchUser(email: String) -> User {
-        // tmp
-        return User.findUser(id: email)
+    func fetchUser(email: String, completion: @escaping (User?) -> ()){
+        let users = Firestore.firestore().collection("Users")
+        users.document(email).getDocument { doc, err in
+            if let doc = doc, doc.exists {
+                let avatar = doc.get("avatar") as! String
+                let coursesId = doc.get("coursesId") as! Array<String>
+                let friendsId = doc.get("friendsId") as! Array<String>
+                let name = doc.get("name") as! String
+                let university = doc.get("university") as! String
+                
+                let user = User(name: name, avatar: avatar, university: university, email: email)
+                for courseId in coursesId {
+                    self.fetchCourse(courseId: courseId) { course in
+                        if course != nil {
+                            user.courses.append(course!)
+                        }
+                    }
+                }
+                
+                for friendId in friendsId {
+                    users.document(friendId).getDocument { doc, err in
+                        if let doc = doc, doc.exists {
+                            let friendAvatar = doc.get("avatar") as! String
+                            let friendCoursesId = doc.get("coursesId") as! Array<String>
+                            let friendName = doc.get("name") as! String
+                            let friendUniversity = doc.get("university") as! String
+                            
+                            let friend = User(name: friendName, avatar: friendAvatar, university: friendUniversity, email: friendId)
+                            for courseId in friendCoursesId {
+                                self.fetchCourse(courseId: courseId) { course in
+                                    if course != nil { friend.courses.append(course!) }
+                                }
+                            }
+                            
+                            user.addFriend(friend)
+                            user.friendChats.append(FriendChat(myId: email, friend: friend))
+                        }
+                    }
+                }
+                completion(user)
+            }
+            else {
+                print("No user")
+                completion(nil)
+            }
+        }
+    }
+    
+    func fetchCourse(courseId: String, completion: @escaping (Course?) -> ()) {
+        let courseInfo = courseId.components(separatedBy: ".")
+        let university = courseInfo[0]
+        let department = courseInfo[1]
+        let courseCode = courseInfo[2]
+        let db = Firestore.firestore().collection("Courses").document(courseId)
+        db.getDocument { doc, err in
+            if let doc = doc, doc.exists {
+                let courseDesc = doc.get("courseDesc") as! String
+                let students = doc.get("students") as! Array<String>
+                let course = Course(university: university,
+                                    department: department,
+                                    courseCode: courseCode,
+                                    courseDesc: courseDesc,
+                                    students: students)
+                completion(course)
+            }
+            else {
+                // no course in db
+                completion(nil)
+            }
+        }
+    }
+    
+    func setCourseDB(course: Course) {
+        let courses = Firestore.firestore().collection("Courses")
+        courses.document(course.id).setData([
+            "university": course.university,
+            "students": course.students,
+            "courseDesc": course.courseDesc
+        ]) {
+            err in
+            if err != nil {
+                print(err!.localizedDescription)
+                return
+            }
+            else {
+                print("successfully set course")
+            }
+        }
     }
 }
