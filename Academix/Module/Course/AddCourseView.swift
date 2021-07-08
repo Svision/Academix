@@ -105,6 +105,7 @@ struct AddCourseView: View {
         viewModel.fetchCourse(courseId: newCourse.id) { getCourse in
             if getCourse != nil {
                 getCourse!.students.append(viewModel.currUser.id)
+                viewModel.setCourseDB(course: getCourse!)
                 viewModel.addNewCourse(getCourse!)
             }
             else {
