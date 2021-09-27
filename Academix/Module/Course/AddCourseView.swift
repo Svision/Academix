@@ -102,15 +102,15 @@ struct AddCourseView: View {
             courseCode: courseCode,
             students: [viewModel.currUser.id]
         )
-        viewModel.fetchCourse(courseId: newCourse.id) { getCourse in
+        AppViewModel.fetchCourse(courseId: newCourse.id) { getCourse in
             if getCourse != nil {
                 getCourse!.students.append(viewModel.currUser.id)
-                viewModel.setCourseDB(course: getCourse!)
                 viewModel.addNewCourse(getCourse!)
+                viewModel.setCourseDB(course: getCourse!)
             }
             else {
-                viewModel.setCourseDB(course: newCourse)
                 viewModel.addNewCourse(newCourse)
+                viewModel.setCourseDB(course: newCourse)
             }
         }
         self.presentationMode.wrappedValue.dismiss()

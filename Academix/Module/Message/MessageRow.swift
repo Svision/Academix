@@ -6,23 +6,25 @@
 //
 
 import SwiftUI
+import Kingfisher
 
 struct MessageRow: View {
+    @EnvironmentObject var viewModel: AppViewModel
     let message: Message
     let isMe: Bool
     
     var body: some View {
         HStack(alignment: .top, spacing: 8) {
             if isMe { Spacer() } else {
-                NavigationLink(destination: FriendDetailView(friend: User.findUser(id: message.senderId))) {
-                    Avatar(icon: User.findUser(id: message.senderId).avatar)
+                NavigationLink(destination: FriendDetailView(friend: message.sender)) {
+                    Avatar(icon: message.sender.avatar)
                 }
             }
             
             TextMessage(isMe: isMe, text: message.text)
             
-            if isMe {NavigationLink(destination: FriendDetailView(friend: User.findUser(id: message.senderId))) {
-                Avatar(icon: User.findUser(id: message.senderId).avatar)
+            if isMe {NavigationLink(destination: FriendDetailView(friend: viewModel.currUser)) {
+                Avatar(icon: viewModel.currUser.avatar)
             } } else { Spacer() }
         }
         .padding(.init(top: 8, leading: 12, bottom: 8, trailing: 12))
@@ -32,10 +34,18 @@ struct MessageRow: View {
         let icon: String
         
         var body: some View {
-            Image(icon)
-                .resizable()
-                .frame(width: 40, height: 40)
-                .cornerRadius(25)
+            if icon.hasPrefix("https") {
+                KFImage(URL(string: icon))
+                    .resizable()
+                    .frame(width: 40, height: 40)
+                    .cornerRadius(25)
+            }
+            else {
+                Image(icon)
+                    .resizable()
+                    .frame(width: 40, height: 40)
+                    .cornerRadius(25)
+            }
         }
     }
     

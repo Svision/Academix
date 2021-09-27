@@ -9,13 +9,14 @@ import SwiftUI
 
 struct FriendsFilterByCourse: View {
     @Binding var selected : String
+    @Binding var courses: [Course]
     private let spacing: CGFloat = 20.0
     
     var body: some View {
         VStack {
             ScrollView(.horizontal, showsIndicators: false) {
                 HStack(spacing: spacing) {
-                    ForEach(Course.all) { course in
+                    ForEach(courses) { course in
                         Button(action: {
                             if selected == course.name {
                                 selected = ""
@@ -43,9 +44,9 @@ struct FriendsFilterByCourse: View {
     }
 }
 
-struct FriendsFilterByCourse_Previews: PreviewProvider {
-    @State static var selected = ""
-    static var previews: some View {
-        FriendsFilterByCourse(selected: $selected)
-    }
-}
+//struct FriendsFilterByCourse_Previews: PreviewProvider {
+//    @State static var selected = ""
+//    static var previews: some View {
+//        FriendsFilterByCourse(selected: $selected)
+//    }
+//}

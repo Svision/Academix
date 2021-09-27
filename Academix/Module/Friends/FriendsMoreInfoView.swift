@@ -24,7 +24,7 @@ struct FriendsMoreInfoView: View {
             Button(action: {
                 removeFriend()
             }) {
-                Text("Remove \(friend.name)")
+                Text("Remove Friend")
                     .foregroundColor(.white)
                     .font(.title2)
                     .background(RoundedRectangle(cornerRadius: 10)

@@ -67,6 +67,26 @@ class User: Identifiable, ObservableObject, Codable, Equatable  {
         }
         self.courses.append(course)
     }
+    
+    func updateFromDB() {
+        let users = Firestore.firestore().collection("Users")
+        users.document(self.id).getDocument { doc, err in
+            if let doc = doc, doc.exists {
+                self.avatar = doc.get("avatar") as! String
+                self.name = doc.get("name") as! String
+                self.university = doc.get("university") as! String
+            }
+        }
+    }
+    
+    func getFriend(by id: String) -> User {
+        for friend in friends {
+            if friend.id == id {
+                return friend
+            }
+        }
+        return .unknown
+    }
 }
 
 extension User {
@@ -158,7 +178,7 @@ extension User {
         email: "owen@academix.com"
     )
     
-
+    
     static let leon = User(
         name: "Leon",
         avatar: "data_avatar10",

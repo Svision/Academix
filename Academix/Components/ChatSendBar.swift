@@ -38,7 +38,7 @@ struct ChatSendBar: View {
                 else {
                     Button(action: {
                         if text.trimmingCharacters(in: .whitespacesAndNewlines) != "" {
-                            sendMsg(message: Message(timestamp: Date(), senderId: viewModel.currUser.id, text: text))
+                            sendMsg(message: Message(timestamp: Date(), sender: viewModel.currUser, text: text))
                         }
                     }, label: {
                         Text("Send")
@@ -85,11 +85,11 @@ struct ChatSendBar: View {
         let sender = PushNotificationSender()
         let to = toCourses ? "Courses" : "DMs"
         let dbMsg = Firestore.firestore().collection("Messages").document("Messages").collection(to)
-        let dest = toCourses ? receiver : (message.senderId < receiver ? "\(message.senderId)&\(receiver)" : "\(receiver)&\(message.senderId)")
+        let dest = toCourses ? receiver : (message.sender.id < receiver ? "\(message.sender.id)&\(receiver)" : "\(receiver)&\(message.sender.id)")
         let tmpText = text
                 
         dbMsg.document(dest).collection(dest).document().setData([
-            "sender": message.senderId,
+            "sender": message.sender.id,
             "text": message.text,
             "timestamp": Timestamp(date: message.timestamp)
         ]) { err in

@@ -10,6 +10,7 @@ import CoreHaptics
 
 struct FriendsView: View {
     @Binding var friendChats: [FriendChat]
+    @EnvironmentObject var viewModel: AppViewModel
     @State var engine: CHHapticEngine?
     @State var selected: String = ""
 
@@ -19,7 +20,7 @@ struct FriendsView: View {
                 Color("light_gray")
                 VStack(spacing: 0) {
                     Separator(color: Color("navigation_separator"))
-                    FriendsFilterByCourse(selected: $selected)
+                    FriendsFilterByCourse(selected: $selected, courses: $viewModel.currUser.courses)
                     FriendsChatList(friendChats: $friendChats, selected: $selected, engine: $engine)
                         .onAppear(perform: prepareHaptics)
                 }

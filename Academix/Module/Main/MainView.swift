@@ -93,12 +93,12 @@ struct MainView: View {
         UIApplication.shared.applicationIconBadgeNumber = 0
         
         print("loading...")
-//        if !firstLoad { return }
-        DispatchQueue.main.async {
-            for course in viewModel.currUser.courses { course.fetchAllMessages() }
-            for chat in viewModel.currUser.friendChats { chat.getThisDM() }
-            viewModel.currUser.saveSelf(forKey: defaultsKeys.currUser)
-        }
+        if !firstLoad { return }
+//        DispatchQueue.main.async {
+        for course in viewModel.currUser.courses { course.fetchAllMessages() }
+        for chat in viewModel.currUser.friendChats { chat.getThisDM() }
+        viewModel.currUser.saveSelf(forKey: defaultsKeys.currUser)
+//        }
         firstLoad = false
     }
     

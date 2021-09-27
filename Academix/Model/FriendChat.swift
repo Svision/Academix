@@ -38,7 +38,7 @@ class FriendChat: Identifiable, ObservableObject, Equatable, Codable  {
         if messages.last != nil {
             return messages.last!
         }
-        return Message(timestamp: Date(timeIntervalSince1970: 0), senderId: friend.id)
+        return Message(timestamp: Date(timeIntervalSince1970: 0), sender: friend)
     }
     
     func readed() {
@@ -64,16 +64,19 @@ class FriendChat: Identifiable, ObservableObject, Equatable, Codable  {
                     let senderId = doc.document.get("sender") as! String
                     let timestamp: Timestamp = doc.document.get("timestamp") as! Timestamp
 
-                    let msg = Message(id: id, timestamp: timestamp.dateValue(), senderId: senderId, text: text)
-                    if !self.messages.contains(msg) {
-                        self.messages.append(msg)
-                        if senderId != self.myId {
-                            self.unreadMessages += 1
-                            self.haveNewMessages = true
+                    AppViewModel.fetchUser(email: senderId) { sender in
+                        let msg = Message(id: id, timestamp: timestamp.dateValue(), sender: sender!, text: text)
+                        if !self.messages.contains(msg) {
+                            self.messages.append(msg)
+                            if senderId != self.myId {
+                                self.unreadMessages += 1
+                                self.haveNewMessages = true
+                            }
                         }
                     }
                 }
             }
         }
+        self.messages.sort(by: { $0.timestamp < $1.timestamp })
     }
 }

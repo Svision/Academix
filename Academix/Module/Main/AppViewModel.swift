@@ -7,7 +7,10 @@
 
 import Foundation
 import Firebase
+import FirebaseStorage
+import FirebaseStorageSwift
 import Combine
+import SwiftUI
 
 class AppViewModel: ObservableObject {
     let auth = Auth.auth()
@@ -41,7 +44,7 @@ class AppViewModel: ObservableObject {
             if error != nil {
                 self?.errorMessage = error?.localizedDescription ?? ""
             } else {
-                self!.fetchUser(email: email) { user in
+                AppViewModel.fetchUser(email: email) { user in
                     if user != nil {
                         self?.currUser = user!
                     }
@@ -115,7 +118,6 @@ class AppViewModel: ObservableObject {
         if !self.currUser.courses.contains(course) {
             self.currUser.courses.append(course)
             self.currUser.saveSelf(forKey: defaultsKeys.currUser)
-            setUserDB()
         }
     }
     
@@ -128,7 +130,7 @@ class AppViewModel: ObservableObject {
     }
     
     func addNewFriend(_ email: String) {
-        fetchUser(email: email) { friend in
+        AppViewModel.fetchUser(email: email) { friend in
             if friend != nil {
                 if friend!.id == User.unknown.id {
                     return
@@ -157,7 +159,7 @@ class AppViewModel: ObservableObject {
         setUserDB()
     }
     
-    func fetchUser(email: String, completion: @escaping (User?) -> ()){
+    static func fetchUser(email: String, completion: @escaping (User?) -> ()){
         let users = Firestore.firestore().collection("Users")
         users.document(email).getDocument { doc, err in
             if let doc = doc, doc.exists {
@@ -205,7 +207,7 @@ class AppViewModel: ObservableObject {
         }
     }
     
-    func fetchCourse(courseId: String, completion: @escaping (Course?) -> ()) {
+    static func fetchCourse(courseId: String, completion: @escaping (Course?) -> ()) {
         let courseInfo = courseId.components(separatedBy: ".")
         let university = courseInfo[0]
         let department = courseInfo[1]
@@ -243,6 +245,29 @@ class AppViewModel: ObservableObject {
             }
             else {
                 print("successfully set course")
+            }
+        }
+    }
+    
+    func uploadAvatar(image: UIImage, completion: @escaping (String) -> ()) {
+        guard let imageData = image.pngData() else {
+            return
+        }
+        let storage = Storage.storage()
+        storage.reference().child("Users/\(self.currUser.id)/avatar.png").putData(imageData, metadata: nil) { _, err in
+            guard err == nil else {
+                print("Failed to upload")
+                return
+            }
+            storage.reference().child("Users/\(self.currUser.id)/avatar.png").downloadURL { url, err in
+                guard let url = url, err == nil else {
+                    return
+                }
+                let avatar = url.absoluteString
+                self.currUser.avatar = avatar
+                self.currUser.saveSelf(forKey: defaultsKeys.currUser)
+                self.setUserDB()
+                completion(avatar)
             }
         }
     }

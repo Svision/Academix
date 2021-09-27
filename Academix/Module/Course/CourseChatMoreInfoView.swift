@@ -36,7 +36,7 @@ struct CourseChatMoreInfoView: View {
     }
     
     func removeCourse() {
-        viewModel.fetchCourse(courseId: course.id) { getCourse in
+        AppViewModel.fetchCourse(courseId: course.id) { getCourse in
             if getCourse != nil {
                 getCourse!.removeStudent(email: viewModel.currUser.id)
                 viewModel.setCourseDB(course: getCourse!)

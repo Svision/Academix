@@ -23,7 +23,7 @@ struct MessageList: View {
                             
                             MessageRow(
                                 message: message,
-                                isMe: message.senderId == viewModel.currUser.id
+                                isMe: message.sender.id == viewModel.currUser.id
                             )
                         }
                         .id(message.id)

@@ -49,7 +49,7 @@ struct AddNewFriendView: View {
     }
     
     func addFriend() {
-        viewModel.fetchUser(email: email) { user in
+        AppViewModel.fetchUser(email: email) { user in
             if user != nil {
                 viewModel.addNewFriend(email)
                 email = ""

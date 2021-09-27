@@ -14,7 +14,7 @@ struct Message: Identifiable, Equatable, Hashable, Codable {
 
     var id = UUID().uuidString
     let timestamp: Date
-    let senderId: User.ID
+    let sender: User
     var text: String = ""
     
     func hash(into hasher: inout Hasher) {

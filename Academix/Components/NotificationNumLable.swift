@@ -12,7 +12,7 @@ struct NotificationNumLabel: View {
     var forCourse: Bool = false
     var capsuleWidth: CGFloat = 12.0
     var capsuleHeight: CGFloat = 18.0
-    var chatPosition: CGPoint = CGPoint(x: 43, y: 3)
+    var chatPosition: CGPoint = CGPoint(x: 45, y: 3)
     var coursePosition: CGPoint = CGPoint(x: 117, y: -15)
     var fontSize: CGFloat = 14.0
     
