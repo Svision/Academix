@@ -11,6 +11,7 @@
 		461718C2268673D2005F12F7 /* Separator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 461718C1268673D2005F12F7 /* Separator.swift */; };
 		461718C5268676D9005F12F7 /* UIImage++.swift in Sources */ = {isa = PBXBuildFile; fileRef = 461718C4268676D9005F12F7 /* UIImage++.swift */; };
 		461807462686C0830001252C /* UIViewController++.swift in Sources */ = {isa = PBXBuildFile; fileRef = 461807452686C0830001252C /* UIViewController++.swift */; };
+		462B16962702A04500B0585B /* UniversityPickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 462B16952702A04500B0585B /* UniversityPickerView.swift */; };
 		463243C32694A68600E8B392 /* ForgotPasswordView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 463243C22694A68600E8B392 /* ForgotPasswordView.swift */; };
 		463243C5269518CF00E8B392 /* SearchFriendsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 463243C4269518CF00E8B392 /* SearchFriendsView.swift */; };
 		46330FFD2685500600E63D68 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46330FFC2685500600E63D68 /* User.swift */; };
@@ -71,6 +72,7 @@
 		461718C1268673D2005F12F7 /* Separator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Separator.swift; sourceTree = "<group>"; };
 		461718C4268676D9005F12F7 /* UIImage++.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage++.swift"; sourceTree = "<group>"; };
 		461807452686C0830001252C /* UIViewController++.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController++.swift"; sourceTree = "<group>"; };
+		462B16952702A04500B0585B /* UniversityPickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UniversityPickerView.swift; sourceTree = "<group>"; };
 		463243C22694A68600E8B392 /* ForgotPasswordView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForgotPasswordView.swift; sourceTree = "<group>"; };
 		463243C4269518CF00E8B392 /* SearchFriendsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchFriendsView.swift; sourceTree = "<group>"; };
 		46330FFC2685500600E63D68 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
@@ -257,6 +259,15 @@
 			path = Components;
 			sourceTree = "<group>";
 		};
+		4617911A27029FD400C55F6D /* Registration */ = {
+			isa = PBXGroup;
+			children = (
+				46C77650268C119F00264401 /* RegisterView.swift */,
+				462B16952702A04500B0585B /* UniversityPickerView.swift */,
+			);
+			path = Registration;
+			sourceTree = "<group>";
+		};
 		463310032685509900E63D68 /* Message */ = {
 			isa = PBXGroup;
 			children = (
@@ -321,8 +332,8 @@
 		46C77640268BC88600264401 /* Auth */ = {
 			isa = PBXGroup;
 			children = (
+				4617911A27029FD400C55F6D /* Registration */,
 				46C7764E268BD1CE00264401 /* SignInView.swift */,
-				46C77650268C119F00264401 /* RegisterView.swift */,
 				463243C22694A68600E8B392 /* ForgotPasswordView.swift */,
 			);
 			path = Auth;
@@ -422,6 +433,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				462B16962702A04500B0585B /* UniversityPickerView.swift in Sources */,
 				463310022685508F00E63D68 /* MessageList.swift in Sources */,
 				463D844A2698979700CEB91E /* ImagePicker.swift in Sources */,
 				46C77653268C1D6C00264401 /* defaultsKeys.swift in Sources */,
@@ -692,7 +704,7 @@
 			repositoryURL = "https://github.com/onevcat/Kingfisher.git";
 			requirement = {
 				kind = upToNextMajorVersion;
-				minimumVersion = 6.3.0;
+				minimumVersion = 7.0.0;
 			};
 		};
 		46C77641268BCBF500264401 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */ = {

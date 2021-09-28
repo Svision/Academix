@@ -139,21 +139,6 @@ struct MainView: View {
             selection == ItemType.home.rawValue
         }
         
-        func navigationBarTrailingItems(selection: Int) -> AnyView {
-            switch ItemType(rawValue: selection)! {
-            case .home:
-                return AnyView(EmptyView())
-            case .friends:
-                return AnyView(NavigationLink(destination: AddNewFriendView()) {
-                    Image(systemName: "person.badge.plus")
-                })
-            case .plan:
-                return AnyView(Image(systemName: "arrow.up.arrow.down"))
-            case .me:
-                return AnyView(Image(systemName: "gearshape"))
-            }
-        }
-        
         func navigationBarLeadingItems(selection: Int) -> AnyView {
             switch ItemType(rawValue: selection)! {
             case .home:
@@ -161,11 +146,28 @@ struct MainView: View {
             case .friends:
                 return AnyView(NavigationLink(destination: SearchFriendsView()) {
                     Image(systemName: "magnifyingglass")
+                        .foregroundColor(.primary)
                 })
             case .plan:
                 return AnyView(EmptyView())
             case .me:
                 return AnyView(EmptyView())
+            }
+        }
+        
+        func navigationBarTrailingItems(selection: Int) -> AnyView {
+            switch ItemType(rawValue: selection)! {
+            case .home:
+                return AnyView(EmptyView())
+            case .friends:
+                return AnyView(NavigationLink(destination: AddNewFriendView()) {
+                    Image(systemName: "person.badge.plus")
+                        .foregroundColor(.primary)
+                })
+            case .plan:
+                return AnyView(Image(systemName: "arrow.up.arrow.down"))
+            case .me:
+                return AnyView(Image(systemName: "gearshape"))
             }
         }
     }

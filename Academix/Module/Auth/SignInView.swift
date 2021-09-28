@@ -71,7 +71,7 @@ struct SignInView: View {
                     RoundedRectangle(cornerRadius: 16)
                         .stroke(Color.primary, lineWidth: 2)
                 )
-                .padding(.vertical)
+                .padding(.vertical, 5.0)
                 
                 HStack {
                     Image(systemName: "key")
@@ -84,7 +84,7 @@ struct SignInView: View {
                     RoundedRectangle(cornerRadius: 16)
                         .stroke(Color.primary, lineWidth: 2)
                 )
-                .padding(.vertical)
+                .padding(.vertical, 5.0)
                 
                 Button(action: {signIn()}) {
                     Text("Sign In")
@@ -94,9 +94,27 @@ struct SignInView: View {
                                         .foregroundColor(Color("theme_blue"))
                                         .frame(width: 200, height: 50))
                 }
-                .padding()
+                .padding(.top, 30.0)
                 Spacer()
                 VStack{
+                    VStack(spacing: 0) {
+                        Text("By continuing, you agree to Academix's ")
+                            .foregroundColor(.secondary)
+                            .font(.system(size: 13))
+                        Text("Terms of Service, Privacy Policy and ")
+                            .foregroundColor(.primary)
+                            .font(.system(size: 13))
+                            .bold()
+                        Text("Academic honesty code of conduct")
+                            .foregroundColor(.red)
+                            .font(.system(size: 13))
+                            .bold()
+                            .onTapGesture {
+                                let url = URL.init(string: "https://governingcouncil.utoronto.ca/secretariat/policies/code-behaviour-academic-matters-july-1-2019")
+                                guard let academicURL = url, UIApplication.shared.canOpenURL(academicURL) else { return }
+                                UIApplication.shared.open(academicURL)
+                            }
+                    }
                     NavigationLink(destination: RegisterView()) {
                         Text("Not on Academix yet? Register")
                             .foregroundColor(.blue)

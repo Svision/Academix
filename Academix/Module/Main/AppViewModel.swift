@@ -59,12 +59,13 @@ class AppViewModel: ObservableObject {
         }
     }
     
-    func signUp(email: String, password: String) {
+    func signUp(name: String, university: String, email: String, password: String) {
         Auth.auth().createUser(withEmail: email, password: password) { [weak self] result, error in
             if error != nil {
                 self?.errorMessage = error?.localizedDescription ?? ""
             } else {
-                self?.currUser = User(id: email)
+                self?.currUser = User(name: name, avatar: "data_avatar0", university: university, email: email)
+                self?.currUser.addCourse(.general)
                 DispatchQueue.main.async {
                     self?.setUserDB()
                     self?.currUser.saveSelf(forKey: defaultsKeys.currUser)
