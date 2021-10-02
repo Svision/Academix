@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import CoreMedia
 
 struct HomeView: View {
     @State private var showingAlert = false
@@ -74,14 +75,13 @@ struct HomeView: View {
                     .padding()
                 }
             }
+            .onAppear(perform: sortCourses)
         }
         
-        func load() {
-            guard courses.isEmpty else { return }
-    //        courses = CourseModel.all
-    //        for course in courses {
-    //            course.fetchAllMessages()
-    //        }
+        func sortCourses() {
+            courses.sort { (course1, course2) -> Bool in
+                return (course1.courseCode < course2.courseCode)
+            }
         }
     }
 }

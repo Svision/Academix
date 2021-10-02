@@ -23,6 +23,11 @@ struct FriendsView: View {
                     FriendsFilterByCourseView(selected: $selected, courses: $viewModel.currUser.courses)
                     FriendsChatListView(friendChats: $friendChats, selected: $selected, engine: $engine)
                         .onAppear(perform: prepareHaptics)
+                        .onAppear {
+                            for chat in friendChats {
+                                chat.getThisDM()
+                            }
+                        }
                 }
             }
         }

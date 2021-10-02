@@ -32,6 +32,7 @@ struct FriendsChatListView: View {
             }
             .background(Color("cell"))
         }
+        .padding(.bottom, 1)
         .onAppear { sort() }
     }
     
