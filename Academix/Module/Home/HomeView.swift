@@ -69,7 +69,7 @@ struct HomeView: View {
                         course.unreadMessages = 0
                         viewModel.currUser.saveSelf(forKey: defaultsKeys.currUser)
                     }){
-                        CourseEntry(course: course)
+                        CourseEntryView(course: course)
                     }
                     .padding()
                 }

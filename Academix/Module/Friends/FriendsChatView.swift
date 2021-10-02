@@ -37,7 +37,7 @@ struct FriendsChatView: View {
             VStack(spacing: 0) {
                 Separator(color: Color("navigation_separator"))
                 Spacer()
-                MessageList(messages: $chat.messages)
+                MessageListView(messages: $chat.messages)
                     .onAppear { chat.getThisDM() }
                 Spacer()
                 ChatSendBar(proxy: proxy, toCourses: false, receiver: chat.friend.id)

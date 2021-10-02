@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct MessageList: View {
+struct MessageListView: View {
     @Binding var messages: Array<Message>
     @EnvironmentObject var viewModel: AppViewModel
     
@@ -21,7 +21,7 @@ struct MessageList: View {
                                 Time(date: message.timestamp)
                             }
                             
-                            MessageRow(
+                            MessageRowView(
                                 message: message,
                                 isMe: message.sender.id == viewModel.currUser.id
                             )
@@ -69,6 +69,6 @@ struct MessageList: View {
 
 //struct MessageView_Previews: PreviewProvider {
 //    static var previews: some View {
-//        MessageList()
+//        MessageListView()
 //    }
 //}

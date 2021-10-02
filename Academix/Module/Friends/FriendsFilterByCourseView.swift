@@ -1,5 +1,5 @@
 //
-//  FriendsFilterByCourse.swift
+//  FriendsFilterByCourseView.swift
 //  Academix
 //
 //  Created by Changhao Song on 2021-06-26.
@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct FriendsFilterByCourse: View {
+struct FriendsFilterByCourseView: View {
     @Binding var selected : String
     @Binding var courses: [Course]
     private let spacing: CGFloat = 20.0

@@ -1,5 +1,5 @@
 //
-//  FriendsChatList.swift
+//  FriendsChatListView.swift
 //  Academix
 //
 //  Created by Changhao Song on 2021-06-26.
@@ -8,7 +8,7 @@
 import SwiftUI
 import CoreHaptics
 
-struct FriendsChatList: View {
+struct FriendsChatListView: View {
     @EnvironmentObject var viewModel: AppViewModel
     @Binding var friendChats: [FriendChat]
     @Binding var selected: String
@@ -23,7 +23,7 @@ struct FriendsChatList: View {
                         viewModel.currUser.saveSelf(forKey: defaultsKeys.currUser)
                     }) {
                         VStack(spacing: 0) {
-                            FriendsChatRow(chat: chat, engine: $engine)
+                            FriendsChatRowView(chat: chat, engine: $engine)
                             Separator()
                         }
                         .isHidden(!(selected == "" || chat.friend.getCoursesString().contains(selected)), remove: true)

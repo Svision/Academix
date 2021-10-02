@@ -1,5 +1,5 @@
 //
-//  CourseEntry.swift
+//  CourseEntryView.swift
 //  Academix
 //
 //  Created by Changhao Song on 2021-07-02.
@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct CourseEntry: View {
+struct CourseEntryView: View {
     @ObservedObject var course: Course
     
     var body: some View {

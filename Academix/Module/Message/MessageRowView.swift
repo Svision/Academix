@@ -1,5 +1,5 @@
 //
-//  MessageRow.swift
+//  MessageRowView.swift
 //  Academix
 //
 //  Created by Changhao Song on 2021-06-30.
@@ -8,7 +8,7 @@
 import SwiftUI
 import Kingfisher
 
-struct MessageRow: View {
+struct MessageRowView: View {
     @EnvironmentObject var viewModel: AppViewModel
     let message: Message
     let isMe: Bool

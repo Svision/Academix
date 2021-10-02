@@ -20,8 +20,8 @@ struct FriendsView: View {
                 Color("light_gray")
                 VStack(spacing: 0) {
                     Separator(color: Color("navigation_separator"))
-                    FriendsFilterByCourse(selected: $selected, courses: $viewModel.currUser.courses)
-                    FriendsChatList(friendChats: $friendChats, selected: $selected, engine: $engine)
+                    FriendsFilterByCourseView(selected: $selected, courses: $viewModel.currUser.courses)
+                    FriendsChatListView(friendChats: $friendChats, selected: $selected, engine: $engine)
                         .onAppear(perform: prepareHaptics)
                 }
             }

@@ -33,7 +33,7 @@ struct CourseChatView: View {
         GeometryReader { proxy in
             VStack(spacing: 0) {
                 Separator(color: Color("navigation_separator"))
-                MessageList(messages: $course.messages)
+                MessageListView(messages: $course.messages)
                     .onAppear(perform: { course.fetchAllMessages() })
                 ChatSendBar(proxy: proxy, toCourses: true, receiver: course.id)
             }

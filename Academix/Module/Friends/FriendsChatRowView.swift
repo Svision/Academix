@@ -1,5 +1,5 @@
 //
-//  FriendsChatRow.swift
+//  FriendsChatRowView.swift
 //  Academix
 //
 //  Created by Changhao Song on 2021-06-26.
@@ -9,7 +9,7 @@ import SwiftUI
 import Kingfisher
 import CoreHaptics
 
-struct FriendsChatRow: View {
+struct FriendsChatRowView: View {
     @ObservedObject var chat: FriendChat
     @Binding var engine: CHHapticEngine?
     
