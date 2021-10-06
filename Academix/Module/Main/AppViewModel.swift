@@ -44,7 +44,7 @@ class AppViewModel: ObservableObject {
             if error != nil {
                 self?.errorMessage = error?.localizedDescription ?? ""
             } else {
-                AppViewModel.fetchUser(email: email) { user in
+                AppViewModel.fetchUserFull(email: email) { user in
                     if user != nil {
                         self?.currUser = user!
                     }
@@ -117,8 +117,9 @@ class AppViewModel: ObservableObject {
     
     func addNewCourse(_ course: Course) {
         if !self.currUser.courses.contains(course) {
-            self.currUser.courses.append(course)
+            self.currUser.addCourse(course)
             self.currUser.saveSelf(forKey: defaultsKeys.currUser)
+            setUserDB()
         }
     }
     
@@ -131,7 +132,7 @@ class AppViewModel: ObservableObject {
     }
     
     func addNewFriend(_ email: String) {
-        AppViewModel.fetchUser(email: email) { friend in
+        AppViewModel.fetchUserFull(email: email) { friend in
             if friend != nil {
                 if friend!.id == User.unknown.id {
                     return
@@ -161,6 +162,32 @@ class AppViewModel: ObservableObject {
     }
     
     static func fetchUser(email: String, completion: @escaping (User?) -> ()){
+        let users = Firestore.firestore().collection("Users")
+        users.document(email).getDocument { doc, err in
+            if let doc = doc, doc.exists {
+                let avatar = doc.get("avatar") as! String
+                let coursesId = doc.get("coursesId") as! Array<String>
+                let name = doc.get("name") as! String
+                let university = doc.get("university") as! String
+                
+                let user = User(name: name, avatar: avatar, university: university, email: email)
+                for courseId in coursesId {
+                    self.fetchCourse(courseId: courseId) { course in
+                        if course != nil {
+                            user.courses.append(course!)
+                        }
+                    }
+                }
+                completion(user)
+            }
+            else {
+                print("No user with email: \(email)")
+                completion(nil)
+            }
+        }
+    }
+    
+    static func fetchUserFull(email: String, completion: @escaping (User?) -> ()){
         let users = Firestore.firestore().collection("Users")
         users.document(email).getDocument { doc, err in
             if let doc = doc, doc.exists {
@@ -202,7 +229,7 @@ class AppViewModel: ObservableObject {
                 completion(user)
             }
             else {
-                print("No user")
+                print("No user with email: \(email)")
                 completion(nil)
             }
         }

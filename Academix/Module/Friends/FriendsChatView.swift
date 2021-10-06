@@ -62,6 +62,21 @@ struct FriendsChatView: View {
         .onTapGesture {
             self.endTextEditing()
         }
+        .onAppear {
+            AppViewModel.fetchUser(email: chat.friend.id) { fetchedFriend in
+                DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
+                    if fetchedFriend != nil {
+                        chat.friend.avatar = fetchedFriend!.avatar
+                        chat.friend.university = fetchedFriend!.university
+                        chat.friend.courses = fetchedFriend!.courses
+                        for course in fetchedFriend!.courses {
+                            print(course.id)
+                        }
+                        viewModel.currUser.saveSelf(forKey: defaultsKeys.currUser)
+                    }
+                }
+            }
+        }
     }
     
     func prepareHaptics() {

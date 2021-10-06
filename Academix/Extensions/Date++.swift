@@ -9,7 +9,7 @@ import Foundation
 
 private let yearFormatter: DateFormatter = {
     let formatter = DateFormatter()
-    formatter.dateFormat = "yyyy/M/d"
+    formatter.dateFormat = "yyyy-MM-dd"
     return formatter
 }()
 
@@ -20,16 +20,25 @@ private let timeFormatter: DateFormatter = {
 }()
 
 extension Date {
+    static var yesterday: Date { return Date().dayBefore }
+    static var tomorrow:  Date { return Date().dayAfter }
+    var dayBefore: Date {
+        return Calendar.current.date(byAdding: .day, value: -1, to: noon)!
+    }
+    var dayAfter: Date {
+        return Calendar.current.date(byAdding: .day, value: 1, to: noon)!
+    }
+    var noon: Date {
+        return Calendar.current.date(bySettingHour: 12, minute: 0, second: 0, of: self)!
+    }
+    
     var formatString: String {
-        let date = Date()
-        let components = Calendar.current.dateComponents([.year, .month, .day], from: self, to: date)
-        
-        if components.year! >= 1 || components.month! >= 1 || components.day! > 1 {
-            return "\(yearFormatter.string(from: self)) \(timeFormatter.string(from: self))"
-        } else if components.day! >= 1 && components.day! < 2 {
-            return "yesterday \(timeFormatter.string(from: self))"
-        } else {
+        if Calendar.current.isDateInToday(self) {
             return timeFormatter.string(from: self)
+        } else if Calendar.current.isDateInYesterday(self) {
+            return NSLocalizedString("Yesterday", comment: "") + " " + "\(timeFormatter.string(from: self))"
+        } else {
+            return "\(yearFormatter.string(from: self))"
         }
     }
 }

@@ -8,7 +8,7 @@
 "Home" = "主页";
 "Plan" = "计划";
 "Me" = "我";
-"Friends" = "朋友";
+"Friends" = "好友";
 "Courses" = "课程";
 "Implementing..." = "开发中...";
 "Sign In" = "登录";
@@ -18,3 +18,13 @@
 "Enter Password Again" = "再次输入密码";
 "Sign Out" = "登出";
 "Send" = "发送";
+"Enter Friend Email" = "输入好友邮箱";
+"Add" = "添加";
+"Enter Course Info" = "输入课程信息";
+"Department (e.g. CSC, MAT)" = "系代号 (例如: CSC, MAT)";
+"Course Code (e.g. 108, C10)" = "课程代号 (例如: 108, C10)";
+"Add Course" = "添加课程";
+"Add Friend" = "添加好友";
+"Email" = "邮箱";
+"Yesterday" = "昨天";
+"Friend Added" = "已添加好友";

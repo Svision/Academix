@@ -75,6 +75,7 @@ struct MainView: View {
                         .tabItem { Item(type: .me, selection: tabSelection) }
                         .tag(ItemType.me.rawValue)
                 }
+                .navigationBarHidden(itemType.isNavigationBarHidden(selection: tabSelection))
                 .navigationBarTitle(itemType.title, displayMode: .inline)
                 .navigationBarItems(leading: itemType.navigationBarLeadingItems(selection: tabSelection),
                                     trailing: itemType.navigationBarTrailingItems(selection: tabSelection))
@@ -91,9 +92,8 @@ struct MainView: View {
     
     func load() {
         UIApplication.shared.applicationIconBadgeNumber = 0
-        
-        print("loading...")
         if !firstLoad { return }
+        print("loading...")
 //        DispatchQueue.main.async {
         for course in viewModel.currUser.courses { course.fetchAllMessages() }
         for chat in viewModel.currUser.friendChats { chat.getThisDM() }
@@ -128,7 +128,7 @@ struct MainView: View {
         
         var title: String {
             switch self {
-            case .home:     return ""
+            case .home:     return NSLocalizedString("Home", comment: "")
             case .friends:  return NSLocalizedString("Friends", comment: "")
             case .plan:     return NSLocalizedString("Plan", comment: "")
             case .me:       return NSLocalizedString("Me", comment: "")
@@ -136,7 +136,7 @@ struct MainView: View {
         }
         
         func isNavigationBarHidden(selection: Int) -> Bool {
-            selection == ItemType.home.rawValue
+            selection == ItemType.home.rawValue // || selection == ItemType.me.rawValue
         }
         
         func navigationBarLeadingItems(selection: Int) -> AnyView {
@@ -149,7 +149,10 @@ struct MainView: View {
                         .foregroundColor(.primary)
                 })
             case .plan:
-                return AnyView(EmptyView())
+                return AnyView(NavigationLink(destination: SearchCoursesView()) {
+                    Image(systemName: "magnifyingglass")
+                        .foregroundColor(.primary)
+                })
             case .me:
                 return AnyView(EmptyView())
             }
@@ -165,9 +168,15 @@ struct MainView: View {
                         .foregroundColor(.primary)
                 })
             case .plan:
-                return AnyView(Image(systemName: "arrow.up.arrow.down"))
+                return AnyView(NavigationLink(destination: EditPlanView()) {
+                    Image(systemName: "pencil")
+                                    .foregroundColor(.primary)
+                })
             case .me:
-                return AnyView(Image(systemName: "gearshape"))
+                return AnyView(NavigationLink(destination: MeSettingView()) {
+                    Image(systemName: "gearshape")
+                        .foregroundColor(.primary)
+                })
             }
         }
     }
@@ -179,7 +188,7 @@ struct MainView: View {
         var body: some View {
             VStack {
                 type.rawValue == selection ? type.selectedImage : type.image
-                type.rawValue == ItemType.home.rawValue ? Text("Home") : Text(type.title)
+                Text(type.title)
             }
         }
     }

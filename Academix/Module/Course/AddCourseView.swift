@@ -19,9 +19,9 @@ struct AddCourseView: View {
     var body: some View {
         VStack {
 //            HStack {
-            Text("Enter the course")
+            Text("Enter Course Info")
                 .font(.title)
-            TextField("Department (e.g. CSC, MAT)", text: $department)
+            TextField(NSLocalizedString("Department (e.g. CSC, MAT)", comment: ""), text: $department)
                 .foregroundColor(.primary)
                 .autocapitalization(.none)
                 .disableAutocorrection(true)
@@ -31,7 +31,7 @@ struct AddCourseView: View {
                         .stroke(Color.primary, lineWidth: 2)
                 )
                 .padding()
-            TextField("Course Code (e.g. 108, C10)", text: $courseCode)
+            TextField(NSLocalizedString("Course Code (e.g. 108, C10)", comment: ""), text: $courseCode)
                 .foregroundColor(.primary)
                 .autocapitalization(.none)
                 .disableAutocorrection(true)

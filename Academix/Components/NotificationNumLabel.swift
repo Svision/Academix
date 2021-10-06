@@ -1,5 +1,5 @@
 //
-//  NotificationNumLable.swift
+//  NotificationNumLabel.swift
 //  Academix
 //
 //  Created by Changhao Song on 2021-07-02.

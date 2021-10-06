@@ -11,9 +11,9 @@ import Combine
 
 class User: Identifiable, ObservableObject, Codable, Equatable  {
     // basic info
-    var name: String = ""
-    var avatar: String = ""
-    var university: String = ""
+    @Published var name: String = ""
+    @Published var avatar: String = ""
+    @Published var university: String = ""
     let id: String
     @Published var courses: Array<Course> = []
     
@@ -38,6 +38,10 @@ class User: Identifiable, ObservableObject, Codable, Equatable  {
     
     static func == (lhs: User, rhs: User) -> Bool {
         lhs.id == rhs.id
+    }
+    
+    func getAvatar() -> String {
+        return self.avatar
     }
     
     func getCoursesString() -> String {

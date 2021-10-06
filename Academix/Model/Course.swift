@@ -75,7 +75,7 @@ class Course: Hashable, Identifiable, ObservableObject, Codable  {
                     let senderId = doc.document.get("sender") as! String
                     let timestamp: Timestamp = doc.document.get("timestamp") as! Timestamp
 
-                    AppViewModel.fetchUser(email: senderId) { sender in
+                    AppViewModel.fetchUserFull(email: senderId) { sender in
                         guard sender != nil else { return }
                         let msg = Message(id: id, timestamp: timestamp.dateValue(), sender: sender!, text: text)
                         if !self.messages.contains(msg) {

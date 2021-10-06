@@ -10,7 +10,7 @@ import SwiftUI
 struct FriendsMoreInfoView: View {
     @EnvironmentObject var viewModel: AppViewModel
     @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
-    let friend: User
+    @ObservedObject var friend: User
     @Binding var deleted: Bool
     
     var body: some View {

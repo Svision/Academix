@@ -20,42 +20,53 @@ struct MeView: View {
         GeometryReader { proxy in
             ZStack {
                 Color("light_gray")
-                VStack(spacing: 0) {
-                    Separator(color: Color("navigation_separator"))
-                    Spacer()
-                    KFImage(URL(string: avatarURL))
-                        .placeholder { Image("data_avatar0")
+                    .edgesIgnoringSafeArea(.top)
+                ScrollView {
+                    VStack {
+                        Image("me_background")
                             .resizable()
-                            .scaledToFit()
-                            .clipShape(Circle())
-                            .frame(width: 100, height: 100) }
-                        .resizable()
-                        .scaledToFit()
-                        .clipShape(Circle())
-                        .frame(width: 100, height: 100)
-                        .overlay(Circle().stroke())
-                        .padding()
-                        .onTapGesture {
-                            self.showingImagePicker = true
-                        }
-                    Text("Name: \(viewModel.currUser.name)")
-                        .padding()
-                    Text("My email: \(viewModel.currUser.id)")
-                        .padding()
-                    Text("University: \(viewModel.currUser.university)")
-                        .padding()
-                    Button(action: {
-                        viewModel.signOut()
-                    }) {
-                        Text("Sign Out")
-                            .padding()
+                            .frame(width: proxy.size.width, height: proxy.size.height / 4)
+                            .overlay(
+                                HStack(spacing: 8) {
+                                    // avatar
+                                    KFImage(URL(string: avatarURL))
+                                        .placeholder { Image("data_avatar0")
+                                            .resizable()
+                                            .scaledToFit()
+                                            .clipShape(Circle())
+                                            .frame(width: 120, height: 120) }
+                                        .resizable()
+                                        .scaledToFit()
+                                        .clipShape(Circle())
+                                        .frame(width: 120, height: 120)
+                                        .overlay(Circle().stroke())
+                                        .padding()
+                                        .onTapGesture {
+                                            self.showingImagePicker = true
+                                        }
+                                    // info
+                                    VStack(spacing: 5){
+                                        Text(viewModel.currUser.name)
+                                            .font(.title)
+                                        if viewModel.currUser.university == "UofT" {
+                                            Text("University of Toronto")
+                                        }
+                                        else if viewModel.currUser.university == "McMaster" {
+                                            Text("McMaster University")
+                                        }
+                                        else {
+                                            Text(viewModel.currUser.university)
+                                        }
+                                    }
+                                    .padding()
+                                }
+                                    .padding(.top, proxy.size.height / 4)
+                            )
                     }
-                    .background(Color.secondary)
-                    .foregroundColor(.red)
-                    .cornerRadius(10)
-                    .padding()
-                    Spacer()
+
                 }
+                .edgesIgnoringSafeArea(.top)
+                .padding(.bottom, 1)
             }
             .onAppear {
                 self.avatarURL = viewModel.currUser.avatar

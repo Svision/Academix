@@ -17,7 +17,7 @@ struct AddNewFriendView: View {
         VStack {
             Text("Enter Friend Email")
                 .font(.title)
-            TextField("Email", text: $email)
+            TextField(NSLocalizedString("Email", comment: ""), text: $email)
                 .foregroundColor(.primary)
                 .autocapitalization(.none)
                 .disableAutocorrection(true)
@@ -49,7 +49,7 @@ struct AddNewFriendView: View {
     }
     
     func addFriend() {
-        AppViewModel.fetchUser(email: email) { user in
+        AppViewModel.fetchUserFull(email: email) { user in
             if user != nil {
                 viewModel.addNewFriend(email)
                 email = ""
