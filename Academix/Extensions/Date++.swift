@@ -33,10 +33,13 @@ extension Date {
     }
     
     var formatString: String {
+        let currDate = Date()
         if Calendar.current.isDateInToday(self) {
             return timeFormatter.string(from: self)
         } else if Calendar.current.isDateInYesterday(self) {
             return NSLocalizedString("Yesterday", comment: "") + " " + "\(timeFormatter.string(from: self))"
+        } else if Calendar.current.isDate(self, equalTo: currDate, toGranularity: .year){
+            return "\(yearFormatter.string(from: self))".subString(from: 5)
         } else {
             return "\(yearFormatter.string(from: self))"
         }

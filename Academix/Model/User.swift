@@ -14,6 +14,9 @@ class User: Identifiable, ObservableObject, Codable, Equatable  {
     @Published var name: String = ""
     @Published var avatar: String = ""
     @Published var university: String = ""
+    @Published var contributions: Int = 0
+    @Published var receivedLikes: Int = 0
+    @Published var interests = [String: Int]()
     let id: String
     @Published var courses: Array<Course> = []
     
@@ -94,127 +97,10 @@ class User: Identifiable, ObservableObject, Codable, Equatable  {
 }
 
 extension User {
-    static let all: Array<User> = [
-        .changhao,
-        .amanda,
-        .wayne,
-        .liuchang,
-        .sky,
-        .leon,
-        .xiaoning,
-        .yuhong,
-        .meixuan,
-        .yitong,
-        .owen,
-        .bill,
-        .ruizi
-    ]
-    
-    static func findUser(id: String) -> User {
-        for user in User.all {
-            if user.id == id {
-                return user
-            }
-        }
-        return .unknown
-    }
-    
     static let unknown = User(
         name: "unknown",
         avatar: "data_avatar0",
         university: "undefined",
         email: "unknown@academix.com"
-    )
-    
-    static let changhao = User(
-        name: "Changhao",
-        avatar: "data_avatar1",
-        university: "UofT",
-        email: "changhao@academix.com"
-    )
-    
-    static let amanda = User(
-        name: "sch的Sweety🍬",
-        avatar: "data_avatar2",
-        university: "UofT",
-        email: "wenqing@academix.com"
-    )
-    
-    static let sky = User(
-        name: "sky",
-        avatar: "data_avatar3",
-        university: "UofT",
-        email: "sky@academix.com"
-    )
-    
-    static let yuhong = User(
-        name: "Yuhong",
-        avatar: "data_avatar4",
-        university: "UofT",
-        email: "yuhong@academix.com"
-    )
-    
-    static let meixuan = User(
-        name: "Meixuan",
-        avatar: "data_avatar5",
-        university: "UofT",
-        email: "meixuan@academix.com"
-    )
-    
-    static let xiaoning = User(
-        name: "Xiaoning",
-        avatar: "data_avatar6",
-        university: "UofT",
-        email: "xiaoning@academix.com"
-    )
-    
-    static let yitong = User(
-        name: "Yitong",
-        avatar: "data_avatar7",
-        university: "UofT",
-        email: "yitong@academix.com"
-    )
-    
-    static let owen = User(
-        name: "Owen",
-        avatar: "data_avatar8",
-        university: "McMaster",
-        email: "owen@academix.com"
-    )
-    
-    
-    static let leon = User(
-        name: "Leon",
-        avatar: "data_avatar10",
-        university: "UofT",
-        email: "leon@academix.com"
-    )
-    
-    static let bill = User(
-        name: "Bill",
-        avatar: "data_avatar9",
-        university: "University of Melbourne",
-        email: "bill@academix.com"
-    )
-    
-    static let ruizi = User(
-        name: "Ruizi",
-        avatar: "data_avatar11",
-        university: "University of Toronto",
-        email: "ruizi@academix.com"
-    )
-    
-    static let wayne = User(
-        name: "Wayne",
-        avatar: "data_avatar12",
-        university: "McMaster",
-        email: "wayne@academix.com"
-    )
-    
-    static let liuchang = User(
-        name: "Liuchang",
-        avatar: "data_avatar13",
-        university: "McMaster",
-        email: "liuchang@academix.com"
     )
 }

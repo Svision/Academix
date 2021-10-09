@@ -8,10 +8,10 @@
 import Foundation
 
 extension String {
-    func subString(from: Int = 0, to: Int) -> String {
-       let startIndex = self.index(self.startIndex, offsetBy: from)
-       let endIndex = self.index(self.startIndex, offsetBy: to)
-       return String(self[startIndex..<endIndex])
+    func subString(from: Int = 0, to: Int = -1) -> String {
+        let startIndex = self.index(self.startIndex, offsetBy: from)
+        let endIndex = self.index(self.startIndex, offsetBy: to == -1 ? self.count : to)
+        return String(self[startIndex..<endIndex])
     }
     
     var isAlphanumeric: Bool {
