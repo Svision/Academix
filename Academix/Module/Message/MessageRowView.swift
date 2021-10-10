@@ -6,7 +6,6 @@
 //
 
 import SwiftUI
-import Kingfisher
 
 struct MessageRowView: View {
     @EnvironmentObject var viewModel: AppViewModel
@@ -30,25 +29,6 @@ struct MessageRowView: View {
         .padding(.init(top: 8, leading: 12, bottom: 8, trailing: 12))
     }
     
-    struct Avatar: View {
-        let icon: String
-        
-        var body: some View {
-            if icon.hasPrefix("https") {
-                KFImage(URL(string: icon))
-                    .resizable()
-                    .frame(width: 40, height: 40)
-                    .cornerRadius(25)
-            }
-            else {
-                Image(icon)
-                    .resizable()
-                    .frame(width: 40, height: 40)
-                    .cornerRadius(25)
-            }
-        }
-    }
-    
     struct TextMessage: View {
         let isMe: Bool
         let text: String
@@ -62,6 +42,9 @@ struct MessageRowView: View {
                     .padding(.horizontal, 12)
                     .padding(.vertical, 10)
                     .background(background)
+                    .if(isMe) { view in
+                        view.foregroundColor(.black)
+                    }
                     .contextMenu(ContextMenu(menuItems: {
                         Button("Copy", action: {
                             UIPasteboard.general.string = text

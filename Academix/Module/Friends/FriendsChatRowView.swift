@@ -6,7 +6,6 @@
 //
 
 import SwiftUI
-import Kingfisher
 import CoreHaptics
 
 struct FriendsChatRowView: View {
@@ -15,20 +14,8 @@ struct FriendsChatRowView: View {
     
     var body: some View {
         HStack(spacing: 12) {
-            if chat.friend.avatar.hasPrefix("https") {
-                KFImage(URL(string: chat.friend.avatar))
-                    .renderingMode(.original)
-                    .resizable()
-                    .frame(width: 50, height: 50)
-                    .clipShape(Circle())
-                    .overlay(NotificationNumLabel(number: $chat.unreadMessages))
-            }
-            else {
-                Image(chat.friend.avatar)
-                    .resizable()
-                    .frame(width: 50, height: 50)
-                    .cornerRadius(25)
-            }
+            Avatar(icon: chat.friend.avatar, size: 50)
+                .overlay(NotificationNumLabel(number: $chat.unreadMessages))
 
             
             VStack(alignment: .leading, spacing: 5) {

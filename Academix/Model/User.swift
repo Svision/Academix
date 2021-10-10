@@ -73,6 +73,9 @@ class User: Identifiable, ObservableObject, Codable, Equatable  {
             }
         }
         self.courses.append(course)
+        self.courses.sort { (course1, course2) -> Bool in
+            return (course1.courseCode < course2.courseCode)
+        }
     }
     
     func updateFromDB() {

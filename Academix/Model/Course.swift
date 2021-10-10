@@ -14,7 +14,7 @@ class Course: Hashable, Identifiable, ObservableObject, Codable  {
     let university: String
     let department: String
     let courseCode: String
-    let courseDesc: String
+    var courseDesc: String
     let id: String
     var students: Array<User.ID> = []
     

@@ -61,6 +61,8 @@
 		46C77651268C119F00264401 /* RegisterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46C77650268C119F00264401 /* RegisterView.swift */; };
 		46C77653268C1D6C00264401 /* defaultsKeys.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46C77652268C1D6C00264401 /* defaultsKeys.swift */; };
 		46D5C5FE2695663D006EBDB5 /* FriendDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46D5C5FD2695663D006EBDB5 /* FriendDetailView.swift */; };
+		46DC79CD2713A25B00201D60 /* Avatar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46DC79CC2713A25B00201D60 /* Avatar.swift */; };
+		46DC79D22713A78200201D60 /* AllCourseStudentsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46DC79D12713A78200201D60 /* AllCourseStudentsView.swift */; };
 		46E2E03F2687CCA70071649B /* FriendsChatRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46E2E03E2687CCA70071649B /* FriendsChatRowView.swift */; };
 		46E2E0412687CE210071649B /* FriendChat.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46E2E0402687CE210071649B /* FriendChat.swift */; };
 		46E2E0432687CF680071649B /* FriendsFilterByCourseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46E2E0422687CF680071649B /* FriendsFilterByCourseView.swift */; };
@@ -137,6 +139,8 @@
 		46C77650268C119F00264401 /* RegisterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterView.swift; sourceTree = "<group>"; };
 		46C77652268C1D6C00264401 /* defaultsKeys.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = defaultsKeys.swift; sourceTree = "<group>"; };
 		46D5C5FD2695663D006EBDB5 /* FriendDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendDetailView.swift; sourceTree = "<group>"; };
+		46DC79CC2713A25B00201D60 /* Avatar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Avatar.swift; sourceTree = "<group>"; };
+		46DC79D12713A78200201D60 /* AllCourseStudentsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllCourseStudentsView.swift; sourceTree = "<group>"; };
 		46E2E03E2687CCA70071649B /* FriendsChatRowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendsChatRowView.swift; sourceTree = "<group>"; };
 		46E2E0402687CE210071649B /* FriendChat.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendChat.swift; sourceTree = "<group>"; };
 		46E2E0422687CF680071649B /* FriendsFilterByCourseView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendsFilterByCourseView.swift; sourceTree = "<group>"; };
@@ -255,8 +259,8 @@
 		461718BB26863BEC005F12F7 /* Course */ = {
 			isa = PBXGroup;
 			children = (
+				46DC79CE2713A60000201D60 /* CourseDetails */,
 				46B2CED52684D9B8009A006B /* CourseChatView.swift */,
-				46F2E47126883AE5002DDE18 /* CourseChatMoreInfoView.swift */,
 				465E61EF268F925700AC2D47 /* CourseEntryView.swift */,
 				4671063226934F1C0001BED7 /* AddCourseView.swift */,
 			);
@@ -289,6 +293,7 @@
 				461718C1268673D2005F12F7 /* Separator.swift */,
 				465E61EB268F6EDC00AC2D47 /* NotificationNumLabel.swift */,
 				463D84492698979700CEB91E /* ImagePicker.swift */,
+				46DC79CC2713A25B00201D60 /* Avatar.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -390,6 +395,15 @@
 				463243C22694A68600E8B392 /* ForgotPasswordView.swift */,
 			);
 			path = Auth;
+			sourceTree = "<group>";
+		};
+		46DC79CE2713A60000201D60 /* CourseDetails */ = {
+			isa = PBXGroup;
+			children = (
+				46F2E47126883AE5002DDE18 /* CourseChatMoreInfoView.swift */,
+				46DC79D12713A78200201D60 /* AllCourseStudentsView.swift */,
+			);
+			path = CourseDetails;
 			sourceTree = "<group>";
 		};
 		46FD121E26928CE4005965B0 /* Supporting files */ = {
@@ -533,6 +547,7 @@
 				46D5C5FE2695663D006EBDB5 /* FriendDetailView.swift in Sources */,
 				461718C5268676D9005F12F7 /* UIImage++.swift in Sources */,
 				46C77651268C119F00264401 /* RegisterView.swift in Sources */,
+				46DC79D22713A78200201D60 /* AllCourseStudentsView.swift in Sources */,
 				46E2E0412687CE210071649B /* FriendChat.swift in Sources */,
 				463B7AD52708FFB200C1234A /* SearchCoursesView.swift in Sources */,
 				4680290626843070000ADC22 /* MeView.swift in Sources */,
@@ -554,6 +569,7 @@
 				46E2E04B2687DE030071649B /* Media.swift in Sources */,
 				4671063326934F1C0001BED7 /* AddCourseView.swift in Sources */,
 				46633158271249E400F2F845 /* CourseCardView.swift in Sources */,
+				46DC79CD2713A25B00201D60 /* Avatar.swift in Sources */,
 				461807462686C0830001252C /* UIViewController++.swift in Sources */,
 				46C7764F268BD1CE00264401 /* SignInView.swift in Sources */,
 				46F2E4702688353A002DDE18 /* FriendsMoreInfoView.swift in Sources */,

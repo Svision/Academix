@@ -54,6 +54,7 @@ class AppViewModel: ObservableObject {
                     }
                     self?.currUser.saveSelf(forKey: defaultsKeys.currUser)
                     self?.signedIn = true
+                    print("current user: \(self?.currUser.id ?? "unknown")")
                 }
             }
         }
@@ -175,6 +176,9 @@ class AppViewModel: ObservableObject {
                     self.fetchCourse(courseId: courseId) { course in
                         if course != nil {
                             user.courses.append(course!)
+                            user.courses.sort { (course1, course2) -> Bool in
+                                return (course1.courseCode < course2.courseCode)
+                            }
                         }
                     }
                 }
