@@ -15,6 +15,7 @@ struct CourseChatView: View {
     @State var deleted: Bool = false
     @State var courseStudents: [User] = []
     @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
+    @State var scrollToBottom = false
     
     var moreInfoView : some View {
         NavigationLink(destination: CourseChatMoreInfoView(course: course, deleted: $deleted, courseStudents: $courseStudents), isActive: $isMoreInfoViewActive) {
@@ -35,9 +36,10 @@ struct CourseChatView: View {
         GeometryReader { proxy in
             VStack(spacing: 0) {
                 Separator(color: Color("navigation_separator"))
-                MessageListView(messages: $course.messages)
+                MessageListView(messages: $course.messages, scrollToBottom: $scrollToBottom)
                     .onAppear(perform: { course.fetchAllMessages() })
                 ChatSendBar(proxy: proxy, toCourses: true, receiver: course.id)
+                    .onTapGesture { scrollToBottom.toggle() }
             }
             .edgesIgnoringSafeArea(.bottom)
         }

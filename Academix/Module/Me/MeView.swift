@@ -20,8 +20,8 @@ struct MeView: View {
     var body: some View {
         GeometryReader { proxy in
             ZStack {
-                Color("light_gray")
-                    .edgesIgnoringSafeArea(.top)
+//                Color("light_gray")
+//                    .edgesIgnoringSafeArea(.top)
                 ScrollView {
                     VStack  {
                         // Header

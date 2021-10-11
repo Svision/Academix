@@ -67,6 +67,7 @@ struct ChatSendBar: View {
                     HStack(spacing: 12) {
                         TextField("", text: $text)
                             .frame(height: 40)
+                            .padding(EdgeInsets(top: 0, leading: 6, bottom: 0, trailing: 6))
                             .background(Color("chat_send_text_background"))
                             .cornerRadius(4)
                         chatBarMore()

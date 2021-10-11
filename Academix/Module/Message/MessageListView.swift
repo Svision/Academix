@@ -10,6 +10,7 @@ import SwiftUI
 struct MessageListView: View {
     @Binding var messages: Array<Message>
     @EnvironmentObject var viewModel: AppViewModel
+    @Binding var scrollToBottom: Bool
     
     var body: some View {
         ScrollView {
@@ -34,6 +35,13 @@ struct MessageListView: View {
                     proxy.scrollTo(messages.last?.id, anchor: .bottom)
                 }
                 .onChange(of: messages) { messages in
+                    if let lastId = messages.last?.id {
+                        withAnimation {
+                            proxy.scrollTo(lastId, anchor: .bottom)// scoll to last message onChange
+                        }
+                    }
+                }
+                .onChange(of: scrollToBottom) { _ in
                     if let lastId = messages.last?.id {
                         withAnimation {
                             proxy.scrollTo(lastId, anchor: .bottom)// scoll to last message onChange
@@ -66,9 +74,3 @@ struct MessageListView: View {
     }
     
 }
-
-//struct MessageView_Previews: PreviewProvider {
-//    static var previews: some View {
-//        MessageListView()
-//    }
-//}

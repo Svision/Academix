@@ -15,8 +15,11 @@ struct CourseEntryView: View {
             .foregroundColor(.primary)
             .font(.title2)
             .background(RoundedRectangle(cornerRadius: 10)
-                            .stroke(Color.primary)
+                            .fill(Color("inverse_primary"))
                             .frame(width: 150, height: 60))
+            .overlay(RoundedRectangle(cornerRadius: 10)
+                        .stroke(Color.primary)
+                        .frame(width: 150, height: 60))
             .overlay(NotificationNumLabel(number: $course.unreadMessages, forCourse: true))
     }
 }

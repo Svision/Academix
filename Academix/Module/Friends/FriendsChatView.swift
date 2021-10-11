@@ -16,6 +16,7 @@ struct FriendsChatView: View {
     @State var engine: CHHapticEngine?
     @State var deleted: Bool = false
     @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
+    @State var scrollToBottom = false
     
     var moreInfoView : some View {
         NavigationLink(destination: FriendsMoreInfoView(friend: chat.friend, deleted: $deleted), isActive: $isMoreInfoViewActive) {
@@ -37,10 +38,11 @@ struct FriendsChatView: View {
             VStack(spacing: 0) {
                 Separator(color: Color("navigation_separator"))
                 Spacer()
-                MessageListView(messages: $chat.messages)
+                MessageListView(messages: $chat.messages, scrollToBottom: $scrollToBottom)
                     .onAppear { chat.getThisDM() }
                 Spacer()
                 ChatSendBar(proxy: proxy, toCourses: false, receiver: chat.friend.id)
+                    .onTapGesture { scrollToBottom.toggle() }
             }
             .edgesIgnoringSafeArea(.bottom)
         }

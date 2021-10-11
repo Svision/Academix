@@ -44,4 +44,20 @@ extension Date {
             return "\(yearFormatter.string(from: self))"
         }
     }
+    
+    var currentTerm: String {
+        let date = Date()
+        let calendar = Calendar.current
+        
+        let year = calendar.component(.year, from: date)
+        let month = calendar.component(.month, from: date)
+        
+        if 9 <= month && month <= 12 {
+            return "Fall \(year)"
+        } else if 1 <= month && month <= 5 {
+            return "Winter \(year)"
+        } else {
+            return "Summer \(year)"
+        }
+    }
 }

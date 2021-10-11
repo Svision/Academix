@@ -53,6 +53,9 @@
 		4697E5DB2690C00F005AE2E8 /* Published++.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4697E5DA2690C00F005AE2E8 /* Published++.swift */; };
 		4697E5DD2690F030005AE2E8 /* AppViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4697E5DC2690F030005AE2E8 /* AppViewModel.swift */; };
 		46A0CEE1268E59270017F2D6 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46A0CEE0268E59270017F2D6 /* AppDelegate.swift */; };
+		46AC17AA27148B11003F0773 /* PlanRecommandationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46AC17A927148B11003F0773 /* PlanRecommandationView.swift */; };
+		46AC17AC27148B23003F0773 /* MyPlanView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46AC17AB27148B23003F0773 /* MyPlanView.swift */; };
+		46AC17AF27148C61003F0773 /* PlanRecommandationCourseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46AC17AE27148C61003F0773 /* PlanRecommandationCourseView.swift */; };
 		46B2CED62684D9B8009A006B /* CourseChatView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46B2CED52684D9B8009A006B /* CourseChatView.swift */; };
 		46C77643268BCBF500264401 /* FirebaseFirestoreSwift-Beta in Frameworks */ = {isa = PBXBuildFile; productRef = 46C77642268BCBF500264401 /* FirebaseFirestoreSwift-Beta */; };
 		46C77647268BCBF500264401 /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = 46C77646268BCBF500264401 /* FirebaseAuth */; };
@@ -60,6 +63,7 @@
 		46C7764F268BD1CE00264401 /* SignInView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46C7764E268BD1CE00264401 /* SignInView.swift */; };
 		46C77651268C119F00264401 /* RegisterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46C77650268C119F00264401 /* RegisterView.swift */; };
 		46C77653268C1D6C00264401 /* defaultsKeys.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46C77652268C1D6C00264401 /* defaultsKeys.swift */; };
+		46D04D132715000400981CCA /* MyPlanCourseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46D04D122715000400981CCA /* MyPlanCourseView.swift */; };
 		46D5C5FE2695663D006EBDB5 /* FriendDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46D5C5FD2695663D006EBDB5 /* FriendDetailView.swift */; };
 		46DC79CD2713A25B00201D60 /* Avatar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46DC79CC2713A25B00201D60 /* Avatar.swift */; };
 		46DC79D22713A78200201D60 /* AllCourseStudentsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46DC79D12713A78200201D60 /* AllCourseStudentsView.swift */; };
@@ -133,11 +137,15 @@
 		4697E5DC2690F030005AE2E8 /* AppViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppViewModel.swift; sourceTree = "<group>"; };
 		46A0CEE0268E59270017F2D6 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		46A0CEE2268E5AC80017F2D6 /* Academix.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Academix.entitlements; sourceTree = "<group>"; };
+		46AC17A927148B11003F0773 /* PlanRecommandationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlanRecommandationView.swift; sourceTree = "<group>"; };
+		46AC17AB27148B23003F0773 /* MyPlanView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyPlanView.swift; sourceTree = "<group>"; };
+		46AC17AE27148C61003F0773 /* PlanRecommandationCourseView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlanRecommandationCourseView.swift; sourceTree = "<group>"; };
 		46B2CED52684D9B8009A006B /* CourseChatView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CourseChatView.swift; sourceTree = "<group>"; };
 		46C7764C268BCCFB00264401 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		46C7764E268BD1CE00264401 /* SignInView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInView.swift; sourceTree = "<group>"; };
 		46C77650268C119F00264401 /* RegisterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterView.swift; sourceTree = "<group>"; };
 		46C77652268C1D6C00264401 /* defaultsKeys.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = defaultsKeys.swift; sourceTree = "<group>"; };
+		46D04D122715000400981CCA /* MyPlanCourseView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyPlanCourseView.swift; sourceTree = "<group>"; };
 		46D5C5FD2695663D006EBDB5 /* FriendDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendDetailView.swift; sourceTree = "<group>"; };
 		46DC79CC2713A25B00201D60 /* Avatar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Avatar.swift; sourceTree = "<group>"; };
 		46DC79D12713A78200201D60 /* AllCourseStudentsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllCourseStudentsView.swift; sourceTree = "<group>"; };
@@ -249,9 +257,12 @@
 		461718BA26863BDE005F12F7 /* Plan */ = {
 			isa = PBXGroup;
 			children = (
+				46AC17AD27148C3F003F0773 /* PlanRecommandations */,
 				468028FF26843000000ADC22 /* PlanView.swift */,
 				463B7AD22708FF7600C1234A /* EditPlanView.swift */,
 				463B7AD42708FFB200C1234A /* SearchCoursesView.swift */,
+				46AC17AB27148B23003F0773 /* MyPlanView.swift */,
+				46D04D122715000400981CCA /* MyPlanCourseView.swift */,
 			);
 			path = Plan;
 			sourceTree = "<group>";
@@ -385,6 +396,15 @@
 				46969C3E26804CD100A82666 /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		46AC17AD27148C3F003F0773 /* PlanRecommandations */ = {
+			isa = PBXGroup;
+			children = (
+				46AC17A927148B11003F0773 /* PlanRecommandationView.swift */,
+				46AC17AE27148C61003F0773 /* PlanRecommandationCourseView.swift */,
+			);
+			path = PlanRecommandations;
 			sourceTree = "<group>";
 		};
 		46C77640268BC88600264401 /* Auth */ = {
@@ -542,8 +562,10 @@
 				463B7ACF2708FAEE00C1234A /* MeSettingView.swift in Sources */,
 				463310022685508F00E63D68 /* MessageListView.swift in Sources */,
 				463D844A2698979700CEB91E /* ImagePicker.swift in Sources */,
+				46D04D132715000400981CCA /* MyPlanCourseView.swift in Sources */,
 				46C77653268C1D6C00264401 /* defaultsKeys.swift in Sources */,
 				4697E5DD2690F030005AE2E8 /* AppViewModel.swift in Sources */,
+				46AC17AA27148B11003F0773 /* PlanRecommandationView.swift in Sources */,
 				46D5C5FE2695663D006EBDB5 /* FriendDetailView.swift in Sources */,
 				461718C5268676D9005F12F7 /* UIImage++.swift in Sources */,
 				46C77651268C119F00264401 /* RegisterView.swift in Sources */,
@@ -567,6 +589,7 @@
 				463A0CDA2689389A0028C55A /* String++.swift in Sources */,
 				46B2CED62684D9B8009A006B /* CourseChatView.swift in Sources */,
 				46E2E04B2687DE030071649B /* Media.swift in Sources */,
+				46AC17AC27148B23003F0773 /* MyPlanView.swift in Sources */,
 				4671063326934F1C0001BED7 /* AddCourseView.swift in Sources */,
 				46633158271249E400F2F845 /* CourseCardView.swift in Sources */,
 				46DC79CD2713A25B00201D60 /* Avatar.swift in Sources */,
@@ -577,6 +600,7 @@
 				463A0CD826884F5F0028C55A /* AddNewFriendView.swift in Sources */,
 				464F368D268D150D00C32FC2 /* MessageRowView.swift in Sources */,
 				461718BF26867391005F12F7 /* ChatSendBar.swift in Sources */,
+				46AC17AF27148C61003F0773 /* PlanRecommandationCourseView.swift in Sources */,
 				463310002685502800E63D68 /* Message.swift in Sources */,
 				46969C3826804CD000A82666 /* AcademixApp.swift in Sources */,
 				4697E5D726900E2C005AE2E8 /* UserDefaults++.swift in Sources */,

@@ -10,14 +10,9 @@ import SwiftUI
 struct PlanView: View {
     var body: some View {
         GeometryReader { proxy in
-            ZStack {
-                Color("light_gray")
-                VStack(spacing: 0) {
-                    Separator(color: Color("navigation_separator"))
-                    Spacer()
-                    Text("Implementing...")
-                    Spacer()
-                }
+            VStack(spacing: 0) {
+                Separator(color: Color("navigation_separator"))
+                PlanRecommandationView()
             }
         }
     }

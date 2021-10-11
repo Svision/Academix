@@ -15,6 +15,8 @@ struct MainView: View {
     @EnvironmentObject var viewModel: AppViewModel
     
     init() {
+        UITabBar.appearance().backgroundColor = UIColor(Color("light_gray"))
+        
         let currentAppVersion = Bundle.main.object(forInfoDictionaryKey: "CFBundleShortVersionString") as! String
         let previousVersion = defaults.string(forKey: "appVersion")
         if previousVersion == nil {
@@ -170,7 +172,7 @@ struct MainView: View {
             case .plan:
                 return AnyView(NavigationLink(destination: EditPlanView()) {
                     Image(systemName: "pencil")
-                                    .foregroundColor(.primary)
+                        .foregroundColor(.primary)
                 })
             case .me:
                 return AnyView(NavigationLink(destination: MeSettingView()) {
