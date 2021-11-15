@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import SPAlert
 
 struct AddCourseView: View {
     @EnvironmentObject var viewModel: AppViewModel
@@ -15,6 +16,7 @@ struct AddCourseView: View {
     @State var courseCode = ""
     @State var showingAlert: Bool = false
     @State var alertMessage: String = "Something went wrong"
+    @State var showAddedAlert: Bool = false
     
     var body: some View {
         VStack {
@@ -53,6 +55,9 @@ struct AddCourseView: View {
                                     .frame(width: 150, height: 50))
             }
             .padding(.vertical, 30)
+            .spAlert(isPresent: $showAddedAlert,
+                     title: "Course Added",
+                     preset: .done)
             
         }
         .onTapGesture { self.endTextEditing() }
@@ -113,6 +118,7 @@ struct AddCourseView: View {
                 viewModel.setCourseDB(course: newCourse)
             }
         }
+        showAddedAlert.toggle()
         self.presentationMode.wrappedValue.dismiss()
     }
 }

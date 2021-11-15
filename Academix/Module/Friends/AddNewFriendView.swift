@@ -6,12 +6,14 @@
 //
 
 import SwiftUI
+import SPAlert
 
 struct AddNewFriendView: View {
     @EnvironmentObject var viewModel: AppViewModel
     @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
     @State var email = ""
     @State var showingAlert: Bool = false
+    @State var showAddedAlert: Bool = false
     
     var body: some View {
         VStack {
@@ -38,6 +40,10 @@ struct AddNewFriendView: View {
                                     .frame(width: 150, height: 50))
             }
             .padding(.vertical, 30)
+            .spAlert(isPresent: $showAddedAlert,
+                     title: "Friend Added",
+                     message: "Please notify your friend to add you as well",
+                     preset: .done)
             
         }
         .alert(isPresented: $showingAlert) {
@@ -49,10 +55,12 @@ struct AddNewFriendView: View {
     }
     
     func addFriend() {
+        guard !email.isEmpty else { return }
         AppViewModel.fetchUserFull(email: email) { user in
             if user != nil {
                 viewModel.addNewFriend(email)
                 email = ""
+                showAddedAlert.toggle()
                 self.presentationMode.wrappedValue.dismiss()
             }
             else {

@@ -15,8 +15,6 @@ struct MainView: View {
     @EnvironmentObject var viewModel: AppViewModel
     
     init() {
-        UITabBar.appearance().backgroundColor = UIColor(Color("light_gray"))
-        
         let currentAppVersion = Bundle.main.object(forInfoDictionaryKey: "CFBundleShortVersionString") as! String
         let previousVersion = defaults.string(forKey: "appVersion")
         if previousVersion == nil {

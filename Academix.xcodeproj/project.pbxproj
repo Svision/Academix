@@ -43,6 +43,7 @@
 		4680290626843070000ADC22 /* MeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4680290526843070000ADC22 /* MeView.swift */; };
 		46802908268449B4000ADC22 /* Course.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46802907268449B4000ADC22 /* Course.swift */; };
 		468DAE32268E9EE100A270E4 /* FirebaseMessaging in Frameworks */ = {isa = PBXBuildFile; productRef = 468DAE31268E9EE100A270E4 /* FirebaseMessaging */; };
+		469605D62716994F0013CDA4 /* SPAlert in Frameworks */ = {isa = PBXBuildFile; productRef = 469605D52716994F0013CDA4 /* SPAlert */; };
 		46969C3826804CD000A82666 /* AcademixApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46969C3726804CD000A82666 /* AcademixApp.swift */; };
 		46969C3A26804CD000A82666 /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46969C3926804CD000A82666 /* MainView.swift */; };
 		46969C3C26804CD100A82666 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 46969C3B26804CD100A82666 /* Assets.xcassets */; };
@@ -173,6 +174,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				469605D62716994F0013CDA4 /* SPAlert in Frameworks */,
 				463D8452269A5B1D00CEB91E /* Kingfisher in Frameworks */,
 				463D844826980DC200CEB91E /* FirebaseStorageSwift-Beta in Frameworks */,
 				468DAE32268E9EE100A270E4 /* FirebaseMessaging in Frameworks */,
@@ -476,6 +478,7 @@
 				463862CE26961B7300C85153 /* Introspect */,
 				463D844726980DC200CEB91E /* FirebaseStorageSwift-Beta */,
 				463D8451269A5B1D00CEB91E /* Kingfisher */,
+				469605D52716994F0013CDA4 /* SPAlert */,
 			);
 			productName = Academix;
 			productReference = 46969C3426804CD000A82666 /* Academix.app */;
@@ -488,7 +491,7 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 1300;
-				LastUpgradeCheck = 1250;
+				LastUpgradeCheck = 1310;
 				TargetAttributes = {
 					463B7A8C2708C07F00C1234A = {
 						CreatedOnToolsVersion = 13.0;
@@ -513,6 +516,7 @@
 				46C77641268BCBF500264401 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
 				463862CD26961B7300C85153 /* XCRemoteSwiftPackageReference "SwiftUI-Introspect" */,
 				463D8450269A5B1C00CEB91E /* XCRemoteSwiftPackageReference "Kingfisher" */,
+				469605D42716994F0013CDA4 /* XCRemoteSwiftPackageReference "SPAlert" */,
 			);
 			productRefGroup = 46969C3526804CD000A82666 /* Products */;
 			projectDirPath = "";
@@ -697,6 +701,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
@@ -759,6 +764,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
@@ -910,6 +916,14 @@
 				minimumVersion = 7.0.0;
 			};
 		};
+		469605D42716994F0013CDA4 /* XCRemoteSwiftPackageReference "SPAlert" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/ivanvorobei/SPAlert";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 3.0.0;
+			};
+		};
 		46C77641268BCBF500264401 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/firebase/firebase-ios-sdk";
@@ -940,6 +954,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 46C77641268BCBF500264401 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
 			productName = FirebaseMessaging;
+		};
+		469605D52716994F0013CDA4 /* SPAlert */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 469605D42716994F0013CDA4 /* XCRemoteSwiftPackageReference "SPAlert" */;
+			productName = SPAlert;
 		};
 		46C77642268BCBF500264401 /* FirebaseFirestoreSwift-Beta */ = {
 			isa = XCSwiftPackageProductDependency;

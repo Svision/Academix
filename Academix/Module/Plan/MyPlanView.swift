@@ -13,7 +13,7 @@ struct MyPlanView: View {
 
     var body: some View {
         GeometryReader { proxy in
-            TabView {
+//            TabView {
                 LazyVGrid(columns: layout) {
                     ForEach(courses, id: \.id) { course in
                         NavigationLink(destination: MyPlanCourseView(course: course)) {
@@ -30,11 +30,9 @@ struct MyPlanView: View {
                         .padding()
                     }
                 }
-                Text("Implementing...")
-            }
-            .offset(y: -30.0) // delete
-            .tabViewStyle(PageTabViewStyle())
-            .indexViewStyle(PageIndexViewStyle(backgroundDisplayMode: .always))
+//            }
+//            .tabViewStyle(PageTabViewStyle())
+//            .indexViewStyle(PageIndexViewStyle(backgroundDisplayMode: .always))
             .onAppear(perform: sortCourses)
         }
 

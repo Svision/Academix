@@ -32,6 +32,12 @@ struct AcademixApp: App {
         UINavigationBar.appearance().shadowImage = UIImage()
         UINavigationBar.appearance().tintColor = UIColor(named: "navigation_tint")
         UINavigationBar.appearance().barTintColor = UIColor(named: "navigation_bar_tint")
+        
+        // Synchronize tabbar style
+        UITabBar.appearance().backgroundColor = UIColor(Color("light_gray"))
+        
+        // Synchronize Texteditor style
+        UITextView.appearance().textContainerInset = UIEdgeInsets(top: 8, left: 8, bottom: 8, right: 8)
     }
 }
 
