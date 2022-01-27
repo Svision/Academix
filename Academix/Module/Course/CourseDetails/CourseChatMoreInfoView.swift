@@ -13,6 +13,7 @@ struct CourseChatMoreInfoView: View {
     @ObservedObject var course: Course
     @Binding var deleted: Bool
     @Binding var courseStudents: [User]
+    @State var pushNotification: Bool = false
     
     var body: some View {
         GeometryReader { proxy in
@@ -100,9 +101,22 @@ struct CourseChatMoreInfoView: View {
                         Text("Push Notification")
                             .padding()
                         Spacer()
-                        Image(systemName: "bell.slash")
-                            .font(.title3)
-                            .padding()
+                        Button(action: {
+                            pushNotification.toggle()
+                        }, label: {
+                            if pushNotification {
+                                Image(systemName: "bell")
+                                    .font(.title3)
+                                    .foregroundColor(.primary)
+                                    .padding()
+                            }
+                            else {
+                                Image(systemName: "bell.slash")
+                                    .font(.title3)
+                                    .foregroundColor(.primary)
+                                    .padding()
+                            }
+                        })
                     }
                     // TODO
                     Separator()

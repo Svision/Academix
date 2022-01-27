@@ -59,7 +59,7 @@ struct MessageRowView: View {
         
         private var background: some View {
             RoundedRectangle(cornerRadius: 4)
-                .foregroundColor(Color("chat_\(isMe ? "me" : "friend")_background"))
+                .foregroundColor(Color(isMe ? "theme_blue" : "chat_friend_background"))
         }
     }
     
@@ -73,7 +73,7 @@ struct MessageRowView: View {
                 path.addLine(to: .init(x: isMe ? 6 : 0, y: 20))
                 path.addLine(to: .init(x: isMe ? 0 : 6, y: 14))
             }
-            .fill(Color("chat_\(isMe ? "me" : "friend")_background"))
+            .fill(Color(isMe ? "theme_blue" : "chat_friend_background"))
             .frame(width: 6, height: 30)
         }
     }

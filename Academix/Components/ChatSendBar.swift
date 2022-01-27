@@ -14,13 +14,16 @@ struct ChatSendBar: View {
     let proxy: GeometryProxy
     let toCourses: Bool
     let receiver: String
+    static private let normalHeight: CGFloat = 56
+    static private let liftHeight: CGFloat = 216
+    @State var height: CGFloat = ChatSendBar.normalHeight
     
     @State private var text: String = ""
     
-    func chatBarMore() -> some View {
+    var ChatBarMore: some View {
         HStack {
             GeometryReader { hstack in
-                if text == "" {
+                if text.trimmingCharacters(in: .whitespacesAndNewlines) == "" {
                     HStack {
                         Button(action: {
                             // TODO: emoji
@@ -29,6 +32,7 @@ struct ChatSendBar: View {
                         })
                         Button(action: {
                             // TODO: more
+                            // height = ChatSendBar.liftHeight
                         }, label: {
                             Image("chat_send_more")
                         })
@@ -37,9 +41,7 @@ struct ChatSendBar: View {
                 }
                 else {
                     Button(action: {
-                        if text.trimmingCharacters(in: .whitespacesAndNewlines) != "" {
-                            sendMsg(message: Message(timestamp: Date(), sender: viewModel.currUser, text: text))
-                        }
+                        sendMsg(message: Message(timestamp: Date(), sender: viewModel.currUser, text: text))
                     }, label: {
                         Text("Send")
                             .frame(width: hstack.size.width, height: hstack.size.height)
@@ -55,6 +57,25 @@ struct ChatSendBar: View {
         .frame(width: proxy.size.width / 6) // 1/6 of the chat bar width
     }
     
+    var Attachment: some View {
+        Button(action: {
+            
+        }, label: {
+            Image(systemName: "paperclip.circle")
+                .foregroundColor(Color("symbol_color"))
+                .font(Font.system(size: 28, weight: .ultraLight))
+        })
+    }
+    
+    var moreFunctions: some View {
+        // TODO
+        EmptyView()
+    }
+    
+    private var sendImage: some View {
+        Image("photo")
+    }
+    
     var body: some View {
         VStack(spacing: 0) {
             Separator(color: Color("chat_send_line"))
@@ -65,12 +86,18 @@ struct ChatSendBar: View {
                 
                 VStack {
                     HStack(spacing: 12) {
-                        TextField("", text: $text)
+                        Attachment
+                        
+                        TextEditor(text: $text)
                             .frame(height: 40)
-                            .padding(EdgeInsets(top: 0, leading: 6, bottom: 0, trailing: 6))
                             .background(Color("chat_send_text_background"))
-                            .cornerRadius(4)
-                        chatBarMore()
+                            .accentColor(Color("theme_blue"))
+                            .cornerRadius(15)
+                            .onTapGesture {
+                                height = ChatSendBar.normalHeight
+                            }
+
+                        ChatBarMore
                     }
                     .frame(height: 56)
                     .padding(.horizontal, 12)
@@ -78,7 +105,10 @@ struct ChatSendBar: View {
                     Spacer()
                 }
             }
-            .frame(height: proxy.safeAreaInsets.bottom + 56)
+            .frame(height: proxy.safeAreaInsets.bottom + height)
+        }
+        .onTapGesture {
+            height = ChatSendBar.normalHeight
         }
     }
     
