@@ -13,8 +13,9 @@ This application enables students to easily share learning resources, experience
 - ### Course Discussion
 <img src="https://user-images.githubusercontent.com/12111913/150666662-7d8a5f8c-c32d-4229-8ed8-e7cd72610e25.PNG" align="left" width=180>
 <img src="https://user-images.githubusercontent.com/12111913/150666698-e51f8a39-2308-4ef8-9267-20530ec05572.PNG" align="left" width=180>
-<img src="https://user-images.githubusercontent.com/12111913/150666709-e35291b6-a60c-4f29-ad5e-a379648509bf.PNG" align="left" width=180>
+<img src="https://user-images.githubusercontent.com/12111913/151277207-f823812d-de9d-411d-be22-ae88f4f099f0.PNG" align="left" width=180>
 <img src="https://user-images.githubusercontent.com/12111913/150666731-96351d0b-b1bb-4781-b33e-7cb4f25fc400.PNG" width=180>
+
 
 - ### Course Planer (in demo)
 <img src="https://user-images.githubusercontent.com/12111913/150667005-78464ac5-c0d4-4f2d-913a-f5b02e3826a5.PNG" width=180>
@@ -25,8 +26,9 @@ This application enables students to easily share learning resources, experience
 - ### Social Networking
 <img src="https://user-images.githubusercontent.com/12111913/150667013-b4741328-06ae-49cd-a7f7-7bec2cb331f5.PNG" align="left" width=180>
 <img src="https://user-images.githubusercontent.com/12111913/150667014-3cd8becb-6d22-4dff-83a4-066722063255.PNG" align="left" width=180>
-<img src="https://user-images.githubusercontent.com/12111913/150667015-1a353249-ff54-44af-aab8-cb98a6154280.PNG" align="left" width=180>
+<img src="https://user-images.githubusercontent.com/12111913/151277255-6f2d46e1-6519-4ab7-ae81-75b97fc986e7.PNG" align="left" width=180>
 <img src="https://user-images.githubusercontent.com/12111913/150667047-eacbefc9-d9cc-4ce6-a293-f18cda088bbb.PNG" width=180>
+
 
 - ### File Sharing (in development...)
 
